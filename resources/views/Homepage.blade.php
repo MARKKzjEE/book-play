@@ -10,8 +10,24 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
         <!-- Bootstrap core CSS -->
         <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+        <style>
+            .classe-header{
+                /*background-image: url("https://vanguardia.com.mx/sites/default/files/basket-callejero.jpg");*/
+                
+                
+            }
+
+        </style>
+
+
   </head>
 
   <body>
@@ -27,13 +43,13 @@
                         <a class="nav-link" href="#"> !Inscribe tu club! </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Iniciar sesión</a>
+                        <a class="nav-link" href="#"> Iniciar sesión </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Registrar</a>
+                        <a class="nav-link" href="#"> Registrar </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mi perfil</a>
+                        <a class="nav-link" href="#"> Mi perfil </a>
                     </li>
                 </ul>
                
@@ -43,16 +59,15 @@
         <!-- MAIN -->
         <main role="main">
             <!-- Header -->
-            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light classe-header">
                 <p class="lead font-weight-normal">! Reserva tu pista de forma fácil y rapida! </p>
-                <div class="col-md-5 p-lg-5 mx-auto my-5">
-                    <form>
+                <div class="col-md-6 p-lg-5 mx-auto my-5 align-items-center ">
+                    <form >
                         <div class="form-row align-items-center">
-
                             <!-- Sport picker -->
-                            <div class="col-auto">
-                                <label class="sr-only" for="inlineFormCustomSelect"> Preference </label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <div class="col-sm-3 my-1">
+                                <label class="sr-only" for="inlineFormCustomSelect"> Preferencia </label>
+                                <select class="custom-select mr-sm-2 " id="inlineFormCustomSelect">
                                     <option selected> Tenis </option>
                                     <option value="1"> Basquet </option>
                                     <option value="2"> Padel </option>
@@ -62,41 +77,33 @@
                             </div>
 
                             <!-- Place picker -->
-                            <div class="col-auto">
+                            <div class="col-sm-4 my-1">
                                 <label class="sr-only" for="inlineFormInput"> City </label>
-                                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Barcelona" value="Barcelona">
+                                <input type="text" class="form-control" id="inlineFormInput" placeholder="Barcelona" value="Barcelona">
                             </div>
 
                             <!-- Date picker -->
-                            <div class='col-auto'>
-                                <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#datetimepicker1').datetimepicker();
+                            <input id="datepicker" width="170" placeholder="Fecha" />
+                            <script>
+                                $('#datepicker').datepicker({
+                                    uiLibrary: 'bootstrap'
                                 });
                             </script>
-                        
-                            
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary mb-2"> Buscar </button>
+
+                            <div class="col-auto my-1">
+                                <button type="submit" class="btn btn-primary"> Buscar </button>
                             </div>
+                            
                         </div>
-                    </form>                    
+                    </form>
                     
                 </div>
             </div>
 
-            <h2 class="display-5 container-fluid"> Clubs destacados </h2>
+            
 
             <div class="album py-5 bg-light">
+                <h2 class="display-5 container-fluid"> Clubs destacados </h2>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
