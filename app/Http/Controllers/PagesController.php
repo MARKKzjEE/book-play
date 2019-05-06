@@ -27,6 +27,10 @@ class PagesController extends Controller
         return view('nosotros',compact('equipo','nombre') );
     }
 
+    public function club(){
+        return view('Club');
+    }
+
     public function form(Request $request){
         print_r($request->input('ciudad'));
         echo "<br>";
