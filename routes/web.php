@@ -10,3 +10,5 @@ Route::get('nosotros/{nombre?}','PagesController@nosotros')->name('nosotros');
 
 Route::get('form','PagesController@form')->name('formulario');
 
+Route::get('club','PagesController@club')->name('club');
+
