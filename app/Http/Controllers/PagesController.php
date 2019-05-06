@@ -10,57 +10,55 @@ class PagesController extends Controller
 {
     public function inicio(){
         return view('Homepage');
-        
     }
 
-    public function fotos(){
-        return view('fotos');
-    }
-
-    public function noticias(){
-        return view('blog');
-    }
-
-    public function nosotros($nombre = null){
-        
+    /*
+    public function nosotros($nombre = null){    
         $equipo = ['melo','klkl','prediro'];
         return view('nosotros',compact('equipo','nombre') );
+    }
+    */
+
+    public function registrationClub(){
+        return view('RegistrationClub');
+    }
+
+    public function logIn(){
+        return "Hello";
+    }
+
+    public function registration(){
+        return view('Registration');
+    }
+
+    public function myProfile(){
+        return view('MyProfile');
     }
 
     public function club(){
         return view('Club');
     }
 
-    public function form(Request $request){
-        print_r($request->input('ciudad'));
-        echo "<br>";
-        print_r($request->input('deporte'));
-        echo "<br>";
-        print_r($request->input('fecha'));
-        print_r(gettype($request->input('fecha')));
-        echo "<br>";
-        
-        if($request->input('fecha') == ""){
-            $fechaArray = getDate();
-            $dia = $fechaArray['mday'];
-            $mes = $fechaArray['mon'];
-            $año = $fechaArray['year'];
-            $fecha = date_create("$dia-$mes-$año");
-            echo date_format($fecha,"m/d/Y");
-            echo "_1<br>";
-            echo gettype($fecha);
-            echo "_2<br>";
+    public function tournament(){
+        return view('Tournament');
+    }
+
+
+
+    public function search(Request $request){
+        $city = $request->input('city');
+        $sport = $request->input('sport');
+        $date = $request->input('date');
+        //Date format: month/day/year
+        if(is_null($date)){
+            $dateArray = getDate();
+            $day = $dateArray['mday'];
+            $month = $dateArray['mon'];
+            $year = $dateArray['year'];
+            $date = date_create("$day-$month-$year");
+            $date = date_format($date,"m/d/Y");
         }
-        else{
-            $fecha = $request->input('fecha');
-            echo gettype($fecha);
-            echo "_3<br>";
-            echo date_format($fecha,"m/d/Y");
-            echo "_4<br>";
-            print($fechaArray);
-            echo "_5<br>";
-        }
-        
+        return view('Search',compact('city','sport','date'));
     }
 
 }
