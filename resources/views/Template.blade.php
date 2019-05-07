@@ -3,16 +3,17 @@
   <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="LIS">
+        <meta name="author" content="Grupo7">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Book&Play</title>
         <link rel="icon" href="https://getbootstrap.com/favicon.ico">
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
         <!-- Bootstrap core CSS -->
         <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        
-        
+    
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -25,29 +26,31 @@
 
         </style>
 
-
   </head>
 
   <body>
         <!-- Navegation bar -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-            <a class="navbar-brand" href="#"> Book&Play</a>
+            <a class="navbar-brand" href="{{ route('home') }}"> Book&Play</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> !Inscribe tu club! </a>
+                        <a class="nav-link" href="{{ route('registrationClub') }}"> !Inscribe tu club! </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Iniciar sesión </a>
+                        <a class="nav-link" href="{{ route('tournament') }}"> Torneos </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Registrar </a>
+                        <a class="nav-link" href="{{ route('logIn') }}"> Iniciar sesión </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Mi perfil </a>
+                        <a class="nav-link" href="{{ route('registration') }}"> Registrar </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('myProfile') }}"> Mi perfil </a>
                     </li>
                 </ul>
                
@@ -64,7 +67,6 @@
             <div class="row">
                 <!-- logo copyright -->
                 <div class="col-12 col-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
                     <i class="fab fa-twitter"></i>
                     <i class="fab fa-instagram"></i>
                     <i class="fab fa-facebook"></i>

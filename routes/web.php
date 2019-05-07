@@ -1,14 +1,21 @@
 <?php
 
-Route::get('/', 'PagesController@inicio')->name('inicio');
+Route::get('/', 'PagesController@inicio')->name('home');
 
-Route::get('fotos','PagesController@fotos')->name('foto');
+//Route::get('nosotros/{nombre?}','PagesController@nosotros')->name('nosotros');
 
-Route::get('blog','PagesController@noticias')->name('noticias');
-
-Route::get('nosotros/{nombre?}','PagesController@nosotros')->name('nosotros');
-
-Route::get('form','PagesController@form')->name('formulario');
+Route::get('search','PagesController@search')->name('search');
 
 Route::get('club','PagesController@club')->name('club');
+
+Route::get('registrationClub','PagesController@registrationClub')->name('registrationClub');
+
+Route::get('logIn','PagesController@logIn')->name('logIn');
+
+Route::get('registration','PagesController@registration')->name('registration');
+
+Route::get('myProfile','PagesController@myProfile')->name('myProfile');
+
+Route::get('tournament','PagesController@tournament')->name('tournament');
+
 
