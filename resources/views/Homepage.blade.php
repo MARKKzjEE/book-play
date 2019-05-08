@@ -3,9 +3,9 @@
 @section('Main')
     <!-- TopContent -->
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light classe-header">
-        <p class="lead font-weight-normal">! Reserva tu pista de forma fácil y rapida ! </p>
+        <p class="lead font-weight-normal">!Reserva tu pista de forma fácil y rápida!</p>
         <div class="col-md-6 p-lg-5 mx-auto my-5 align-items-center ">
-            <form method="get" action="{{URL::to('/search')}}"> 
+            <form method="get" action="{{URL::to('/search')}}">
                 {{ csrf_field() }}
                 <div class="form-row align-items-center">
                 

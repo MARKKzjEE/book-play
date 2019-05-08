@@ -24,7 +24,12 @@ class PagesController extends Controller
     }
 
     public function logIn(){
-        return "Hello";
+        return view('LogIn');
+    }
+
+    public function logOut(){
+        //return view('LogOut');
+        return "log out";
     }
 
     public function registration(){
@@ -36,6 +41,10 @@ class PagesController extends Controller
     }
 
     public function club(){
+
+        
+
+
         return view('Club');
     }
 

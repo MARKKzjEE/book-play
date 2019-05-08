@@ -12,6 +12,8 @@ Route::get('registrationClub','PagesController@registrationClub')->name('registr
 
 Route::get('logIn','PagesController@logIn')->name('logIn');
 
+Route::get('logOut','PagesController@logOut')->name('logOut');
+
 Route::get('registration','PagesController@registration')->name('registration');
 
 Route::get('myProfile','PagesController@myProfile')->name('myProfile');
