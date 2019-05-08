@@ -53,23 +53,30 @@
             <h2 class="display-5 container-fluid"> Clubs destacados </h2>
             <div class="container">
                 <div class="row">
+                    <?php 
+                    
+                    ?>
 
-                    @for ($i = 0; $i < 6; $i++)
+                    @foreach($sportsCenters as $center)
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top" src="http://www.clubfitness.us/wp-content/gallery/Brentwood/gyms-near-me-trainer-stl-brentwood.jpg" alt="Card image cap">
                                 <div class="card-body">
-                                    <p class="card-text">Aquí va una pequeña descripción del club o iconos con los servicios que ofrece el club </p>
+                                    <p class="card-text"> <?php echo $center->Nombre ?></p>
+                                    <p class="card-text"><?php echo $center->Direccion ?></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="{{ route('club') }}"> <button type="button" class="btn btn-sm btn-outline-secondary">Reservar </button> </a>
+                                            <a href="{{ route('club',$center->ID) }}"> <button type="button" class="btn btn-sm btn-outline-secondary">Reservar </button> </a>
                                         </div>
-                                        <small class="text-muted"> 5€/h </small>
+                                        <small class="text-muted"> <?php echo $center->Deportes ?> </small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                            
+                    @endforeach
+
+                    
 
                 </div>
             </div>

@@ -1,5 +1,6 @@
 @extends('Template')
 
 @section('Main')
-<h1> Hello </h1>
+<h1> Has seleccinado el club: <?php echo $ID?> </h1>
+
 @endsection
