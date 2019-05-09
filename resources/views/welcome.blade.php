@@ -64,19 +64,6 @@
         </style>
     </head>
     <body>
-
-        <h1>
-        <?php 
-            // nos conectamos a ejemplo.com y al puerto 3307
-            $enlace = mysql_connect('localhost:8889', 'root',  'root');
-            if (!$enlace) {
-                die('No pudo conectarse: ' . mysql_error());
-            }
-            echo 'Conectado satisfactoriamente';
-            mysql_close($enlace);
-        ?>
-        </h1>
-
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

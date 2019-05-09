@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 
 
 class PagesController extends Controller
 {
     public function inicio(){
-        return view('Homepage');
+        $sportsCenters = DB::table('establecimientos')->get();
+        return view('Homepage',compact('sportsCenters'));
     }
 
     /*
@@ -40,20 +42,14 @@ class PagesController extends Controller
         return view('MyProfile');
     }
 
-    public function club(){
-
-        
+    public function club($ID = null){
 
 
-        return view('Club');
+        return view('Club',compact('ID'));
     }
 
     public function tournament(){
         return view('Tournament');
-    }
-
-    public function registerTournament(){
-        return view('RegisterTournament');
     }
 
 
