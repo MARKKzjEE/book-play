@@ -10,7 +10,7 @@ use DB;
 class PagesController extends Controller
 {
     public function inicio(){
-        $sportsCenters = DB::table('establecimientos')->get();
+        $sportsCenters = DB::table('establecimiento')->where('prioridad','1')->get();
         return view('Homepage',compact('sportsCenters'));
     }
 
