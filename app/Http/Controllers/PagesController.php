@@ -58,6 +58,11 @@ class PagesController extends Controller
         $city = $request->input('city');
         $sport = $request->input('sport');
         $date = $request->input('date');
+
+        $enclosure =$request->input('enclosure');
+        $surface =$request->input('surface');
+        $wall =$request->input('wall');
+
         //Date format: month/day/year
         if(is_null($date)){
             $dateArray = getDate();
@@ -65,9 +70,10 @@ class PagesController extends Controller
             $month = $dateArray['mon'];
             $year = $dateArray['year'];
             $date = date_create("$day-$month-$year");
-            $date = date_format($date,"m/d/Y");
+            $date = date_format($date,"d/m/Y");
         }
-        return view('Search',compact('city','sport','date'));
+
+        return view('Search',compact('city','sport','date','enclosure','surface','wall'));
     }
 
 }
