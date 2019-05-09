@@ -6,7 +6,7 @@ Route::get('/', 'PagesController@inicio')->name('home');
 
 Route::get('search','PagesController@search')->name('search');
 
-Route::get('club/{ID?}','PagesController@club')->name('club');
+Route::get('club','PagesController@club')->name('club');
 
 Route::get('registrationClub','PagesController@registrationClub')->name('registrationClub');
 
@@ -19,5 +19,7 @@ Route::get('registration','PagesController@registration')->name('registration');
 Route::get('myProfile','PagesController@myProfile')->name('myProfile');
 
 Route::get('tournament','PagesController@tournament')->name('tournament');
+
+Route::get('registerTournament','PagesController@registerTournament')->name('registerTournament');
 
 
