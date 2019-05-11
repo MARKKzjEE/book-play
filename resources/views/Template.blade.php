@@ -19,9 +19,44 @@
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
+        <link href="css/datepicker.min.css" rel="stylesheet" type="text/css">
+        <script src="js/datepicker.min.js" type="text/javascript"></script>
+        <script src="js/i18n/datepicker.en.js" type="text/javascript"></script>
+
         <style>
-            .classe-header{
-                /*background-image: url("https://vanguardia.com.mx/sites/default/files/basket-callejero.jpg");*/
+
+            header {
+                position: relative;
+                background-color: black;
+                height: 75vh;
+                min-height: 25rem;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .masthead {
+                height: 100vh;
+                min-height: 500px;
+                background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            header .container {
+                position: relative;
+                z-index: 2;
+            }
+
+            header .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: black;
+                opacity: 0.5;
+                z-index: 1;
             }
 
         </style>
@@ -29,43 +64,46 @@
   </head>
 
   <body>
-        <!-- Navegation bar -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-            <a class="navbar-brand" href="{{ route('home') }}"> Book&Play</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registrationClub') }}"> !Inscribe tu club! </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tournament') }}"> Torneos </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logIn') }}"> Iniciar sesión </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registration') }}"> Registrar </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('myProfile') }}"> Mi perfil </a>
-                    </li>
-                </ul>
-               
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand" href="{{ route('home') }}"> Book&Play</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('tournament') }}"> Torneos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('registration') }}">Registrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logIn') }}">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('myProfile') }}">Mi perfil</a>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
-
-
         </nav>
 
         <!-- MAIN -->
-        <main role="main">
+        <main role="main" >
             @yield('Main')
         </main>
 
+        
         <!-- Footer -->
-        <footer class="container py-5">
+        <footer class="container py-5 ">
             <div class="row">
                 <!-- logo copyright -->
                 <div class="col-12 col-md">

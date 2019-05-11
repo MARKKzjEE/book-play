@@ -10,8 +10,8 @@ use DB;
 class PagesController extends Controller
 {
     public function inicio(){
-        $sportsCenters = DB::table('establecimiento')->where('prioridad','1')->get();
-        return view('Homepage',compact('sportsCenters'));
+        $sportsCentersVIP = DB::table('establecimiento')->where('prioridad','1')->get();
+        return view('Homepage',compact('sportsCentersVIP'));
     }
 
     /*
@@ -72,8 +72,13 @@ class PagesController extends Controller
             $date = date_create("$day-$month-$year");
             $date = date_format($date,"d/m/Y");
         }
+        
+        $sportsCentersSearched = DB::table('establecimiento')->where('prioridad','1')->get();
 
-        return view('Search',compact('city','sport','date','enclosure','surface','wall'));
+
+
+
+        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched'));
     }
 
 }

@@ -1,29 +1,25 @@
 @extends('Template')
 
 @section('Main')
-
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light classe-header">
-        <h1> Tu búsqueda: </h1>
-        <h5><?php    print_r($city . " "); ?> </h5>
-        <h5><?php    print_r($sport . " "); ?> </h5>
-        <h5><?php    print_r($date . " "); ?> </h5>
-        <h5><?php    print_r($enclosure . " "); ?> </h5>
-        <h5><?php    print_r($surface . " "); ?> </h5>
-        <h5><?php    print_r($wall . " "); ?> </h5>
-    </div>
-
+    <?php /*  print_r($city . " - "); 
+    print_r($sport . " - ");
+    print_r($date . " - ");
+    print_r($enclosure . " - ");
+    print_r($surface . " - ");
+    print_r($wall);*/?> 
+    
     <!-- Top content / Advanced search -->
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-left bg-light classe-header">
+    <div class="position-relative overflow-hidden p-3 p-md-1 m-md-2 text-left">
         <div class="col-md-12 p-lg-1 mx-auto my-1 align-items-center ">
-        
-            <h3 class="lead font-weight-normal"> Ajusta tu búsqueda: </h3>
+            <h5> Ajusta tu búsqueda: </h5>
             <form method="get" action="{{URL::to('/search')}}">
                 {{ csrf_field() }}
-                <div class="form-row d-flex flex-row">    
+                <div class="form-row d-flex d-flex-row align-items-center ">
+                
                     <!-- Sport picker -->
-                    <div class="col-auto my-1">
-                        <select class="custom-select mr-sm-2 " name="sport">
-                            <option value="1" selected> Tenis </option>
+                    <div class="col-sm-1 col-md-1 col-lg-1 my-1">
+                        <select class="custom-select mr-sm-2 form-control " name="sport">
+                            <option value="1"selected> Tenis </option>
                             <option value="2"> Basquet </option>
                             <option value="3"> Padel </option>
                             <option value="4"> Futbol 11 </option>
@@ -32,17 +28,20 @@
                     </div>
 
                     <!-- Place picker -->
-                    <div class="col-auto my-1">
-                        <input type="text" class="form-control" placeholder="<?php echo $city ?>" value="<?php echo $city ?>" name="city">
+                    <div class="col-sm-2 col-md-2 col-lg-2 my-1">
+                        <input type="text" class="form-control" placeholder="Barcelona" value="Barcelona" name="city">
                     </div>
 
                     <!-- Date picker -->
                     <div class="col-auto my-1">
-                        <input id="datepicker" width="150" placeholder="<?php echo $date ?>" name="date" /> 
+                        <input class="form-control" id="datepicker" width="100" placeholder="Hoy" name="date" readonly />
                         <script>
                             $('#datepicker').datepicker({
-                                uiLibrary: 'bootstrap',
-                                format: 'dd/mm/yyyy'
+                                language: 'en',
+                                minDate: new Date(),
+                                dateFormat: "dd/mm/yyyy",
+                                todayButton: new Date(),
+                                clearButton: true
                             });
                         </script>
                     </div>
@@ -72,8 +71,6 @@
                         </select>
                     </div>
 
-                    
-                    
                     <!-- Send info -->
                     <div class="col-auto my-1">
                         <button type="submit" class="btn btn-primary"> Buscar </button>
@@ -81,35 +78,38 @@
                     
                 </div>
             </form>
-            
         </div>
+
+
+
     </div>
 
 
     <!-- BottomContent / Sports centers searched -->
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light classe-header">
+    <div class="position-relative overflow-hidden p-3 p-md-2 m-md-3 text-center bg-light classe-header">
         <div class="album py-5 bg-light">
-            <h2 class="display-5 container-fluid"> Clubs disponibles </h2>
+            <h3 class="display-5 container-fluid"> Clubs encontrados </h3>
             <br/>
             <div class="container">
                 <div class="row">
-                    
+
+                    @foreach($sportsCentersSearched as $center)
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
-                                <img class="card-img-top" src="img/<?php //echo $center->imagen_perfil ?>" alt="image club" height="200" width="150">
+                                <img class="card-img-top" src="img/<?php echo $center->imagen_perfil ?>" alt="image club" height="200" width="150">
                                 <div class="card-body">
-                                    <h5 class="card-text"> <?php //echo $center->nombre ?></h5>
-                                    <small class="text-muted"> <?php //echo $center->direccion ?> </small>
+                                    <h5 class="card-text"> <?php echo $center->nombre ?> </h5>
+                                    <small class="text-muted"> <?php echo $center->direccion ?> </small>
                                     <hr/>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            
+                                            <a href="{{ route('club',$center->id) }}"> <button type="button" class="btn btn-sm btn-outline-secondary"> Ver </button> </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            
+                    @endforeach
                     
 
                     
