@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+    public function perfil(){
+        return view('profile');
+    }
     public function inicio(){
         return view('Homepage');
-        
     }
 
     public function fotos(){

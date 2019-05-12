@@ -49,7 +49,7 @@
                         <a class="nav-link" href="#"> Registrar </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Mi perfil </a>
+                        <a class="nav-link" href="{{URL::to('/perfil')}}"> Mi perfil </a>
                     </li>
                 </ul>
                
