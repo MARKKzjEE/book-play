@@ -26,7 +26,7 @@
                                         </div>
 
                                         <!-- Place picker -->
-                                        <div class="col-sm-4 col-md-4 col-lg-5 my-1">
+                                        <div class="col-sm-4 col-md-4 col-lg-4 my-1">
                                             <input type="text" class="form-control" placeholder="Barcelona" value="Barcelona" name="city">
                                         </div>
 
