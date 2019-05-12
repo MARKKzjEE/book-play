@@ -24,7 +24,7 @@
         <script src="js/i18n/datepicker.en.js" type="text/javascript"></script>
 
         <style>
-
+            /*Backgorund in homepage*/
             header {
                 position: relative;
                 background-color: black;
@@ -58,6 +58,132 @@
                 opacity: 0.5;
                 z-index: 1;
             }
+
+            /* Background in club page */
+            .masthead2 {
+                height: 20vh;
+                min-height: 50px;
+                
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            /* Login style */
+
+            :root {
+                --input-padding-x: 1.5rem;
+                --input-padding-y: 0.75rem;
+            }
+
+            .login,.image {
+                min-height: 100vh;
+            }
+
+            .bg-image {
+                background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+
+            .login-heading {
+                font-weight: 300;
+            }
+
+            .btn-login {
+                font-size: 0.9rem;
+                letter-spacing: 0.05rem;
+                padding: 0.75rem 1rem;
+                border-radius: 2rem;
+            }
+
+            .form-label-group {
+                position: relative;
+                margin-bottom: 1rem;
+            }
+
+            .form-label-group>input, .form-label-group>label {
+                padding: var(--input-padding-y) var(--input-padding-x);
+                height: auto;
+                border-radius: 2rem;
+            }
+
+            .form-label-group>label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                margin-bottom: 0;
+                /* Override default `<label>` margin */
+                line-height: 1.5;
+                color: #495057;
+                cursor: text;
+                /* Match the input under the label */
+                border: 1px solid transparent;
+                border-radius: .25rem;
+                transition: all .1s ease-in-out;
+            }
+
+            .form-label-group input::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input:-ms-input-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input::-ms-input-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input::-moz-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input::placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input:not(:placeholder-shown) {
+                padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+                padding-bottom: calc(var(--input-padding-y) / 3);
+            }
+
+            .form-label-group input:not(:placeholder-shown)~label {
+                padding-top: calc(var(--input-padding-y) / 3);
+                padding-bottom: calc(var(--input-padding-y) / 3);
+                font-size: 12px;
+                color: #777;
+            }
+
+
+            /*Table responsive horitzontal scroll */
+            .dtHorizontalExampleWrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            }
+            #dtHorizontalExample th, td {
+            white-space: nowrap;
+            }
+
+            table.dataTable thead .sorting:after,
+            table.dataTable thead .sorting:before,
+            table.dataTable thead .sorting_asc:after,
+            table.dataTable thead .sorting_asc:before,
+            table.dataTable thead .sorting_asc_disabled:after,
+            table.dataTable thead .sorting_asc_disabled:before,
+            table.dataTable thead .sorting_desc:after,
+            table.dataTable thead .sorting_desc:before,
+            table.dataTable thead .sorting_desc_disabled:after,
+            table.dataTable thead .sorting_desc_disabled:before {
+            bottom: .5em;
+            }
+
+
+
+
+
 
         </style>
 
@@ -149,6 +275,12 @@
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
+        });
+        $(document).ready(function () {
+                $('#dtHorizontalExample').DataTable({
+                    "scrollX": true
+                });
+                $('.dataTables_length').addClass('bs-select');
         });
         </script>
   </body>

@@ -1,116 +1,84 @@
 @extends('Template')
-
 @section('Main')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('¡Contacta con nosotros!') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="mailto:someone@example.com" enctype="text/plain">
-                        @csrf
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"> </div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4"> Registra tu club </h3>
+                                <form method="POST" action="mailto:someone@example.com" enctype="text/plain">
+                                @csrf
+                                    <!-- Name input -->
+                                    <div class="form-label-group">
+                                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Nombre" required autofocus>
+                                        <label for="name"> Nombre </label>
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    <!-- Mail input -->
+                                    <div class="form-label-group">
+                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Correo" required>
+                                        <label for="email"> Correo </label>
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                    <!-- Phone number input -->
+                                    <div class="form-label-group">
+                                        <input id="number" type="tel" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}" name="number" placeholder="Teléfono" required>
+                                        <label for="number"> Teléfono </label>
+                                        @if ($errors->has('number'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('number') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+
+                                    <!-- City input -->
+                                    <div class="form-label-group">
+                                        <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" placeholder="Ciudad" required>
+                                        <label for="city"> Ciudad </label>
+                                        @if ($errors->has('city'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('city') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+
+                                    <!-- Club name input -->
+                                    <div class="form-label-group">
+                                        <input id="clubName" type="text" class="form-control{{ $errors->has('clubName') ? ' is-invalid' : '' }}" name="clubName" placeholder="Nombre del club" required>
+                                        <label for="clubName"> Nombre del club </label>
+                                        @if ($errors->has('clubName'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('clubName') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"> Enviar petición </button>
+                                
+                                </form>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="number" class="col-md-4 col-form-label text-md-right"> {{ __('Teléfono') }}  </label>
-                            <div class="col-md-6">
-                                <input id="number" type="tel" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}" name="number" value="{{ old('number') }}" required>
-
-                                @if ($errors->has('number'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" required>
-
-                                @if ($errors->has('city'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('País') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" required>
-
-                                @if ($errors->has('country'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="clubName" class="col-md-4 col-form-label text-md-right">{{ __('Nombre del club') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="clubName" type="text" class="form-control{{ $errors->has('clubName') ? ' is-invalid' : '' }}" name="clubName" required>
-
-                                @if ($errors->has('clubName'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('clubName') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Enviar petición') }}
-                                </button>
-                            </div>
-                        </div>
-
-
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 
 @endsection

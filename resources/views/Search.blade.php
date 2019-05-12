@@ -11,13 +11,12 @@
     <!-- Top content / Advanced search -->
     <div class="position-relative overflow-hidden p-3 p-md-1 m-md-2 text-left">
         <div class="col-md-12 p-lg-1 mx-auto my-1 align-items-center ">
-            <h5> Ajusta tu búsqueda: </h5>
+            
             <form method="get" action="{{URL::to('/search')}}">
                 {{ csrf_field() }}
                 <div class="form-row d-flex d-flex-row align-items-center ">
-                
                     <!-- Sport picker -->
-                    <div class="col-sm-1 col-md-1 col-lg-1 my-1">
+                    <div class="col-sm-1 col-md-2 col-lg-2 col-xl-1 my-1">
                         <select class="custom-select mr-sm-2 form-control " name="sport">
                             <option value="1"selected> Tenis </option>
                             <option value="2"> Basquet </option>
@@ -28,7 +27,7 @@
                     </div>
 
                     <!-- Place picker -->
-                    <div class="col-sm-2 col-md-2 col-lg-2 my-1">
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1 my-1">
                         <input type="text" class="form-control" placeholder="Barcelona" value="Barcelona" name="city">
                     </div>
 
@@ -86,7 +85,7 @@
 
 
     <!-- BottomContent / Sports centers searched -->
-    <div class="position-relative overflow-hidden p-3 p-md-2 m-md-3 text-center bg-light classe-header">
+    <div class="position-relative overflow-hidden p-3 p-md-2 m-md-3 text-center bg-light ">
         <div class="album py-5 bg-light">
             <h3 class="display-5 container-fluid"> Clubs encontrados </h3>
             <br/>
