@@ -19,6 +19,8 @@
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
+        
+
         <link href="css/datepicker.min.css" rel="stylesheet" type="text/css">
         <script src="js/datepicker.min.js" type="text/javascript"></script>
         <script src="js/i18n/datepicker.en.js" type="text/javascript"></script>
@@ -275,12 +277,6 @@
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
-        });
-        $(document).ready(function () {
-                $('#dtHorizontalExample').DataTable({
-                    "scrollX": true
-                });
-                $('.dataTables_length').addClass('bs-select');
         });
         </script>
   </body>
