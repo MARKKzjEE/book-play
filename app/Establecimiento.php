@@ -2,13 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Establecimiento extends Authenticatable
+class Establecimiento extends Model
 {
-    use Notifiable;
 
     public function servicios(){
         return $this->belongsToMany("App\Servicio");
@@ -19,4 +16,5 @@ class Establecimiento extends Authenticatable
     public function galeria(){
         return $this->hasOne('App\Galeria');
     }
+    protected $table='establecimiento';
 }

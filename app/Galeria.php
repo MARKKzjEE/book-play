@@ -2,15 +2,13 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Galeria extends Authenticatable
+class Galeria extends Model
 {
-    use Notifiable;
 
     public function imagenes(){
         return $this->hasMany("App\Archivo");
     }
+    protected $table='galeria';
 }
