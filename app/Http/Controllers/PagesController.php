@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 
 
 class PagesController extends Controller
 {
     public function inicio(){
-        return view('Homepage');
+        $sportsCentersVIP = DB::table('establecimiento')->where('prioridad','1')->get();
+        return view('Homepage',compact('sportsCentersVIP'));
     }
 
     /*
@@ -40,12 +42,10 @@ class PagesController extends Controller
         return view('MyProfile');
     }
 
-    public function club(){
-
-        
+    public function club($ID = null){
 
 
-        return view('Club');
+        return view('Club',compact('ID'));
     }
 
     public function tournament(){
@@ -58,6 +58,11 @@ class PagesController extends Controller
         $city = $request->input('city');
         $sport = $request->input('sport');
         $date = $request->input('date');
+
+        $enclosure =$request->input('enclosure');
+        $surface =$request->input('surface');
+        $wall =$request->input('wall');
+
         //Date format: month/day/year
         if(is_null($date)){
             $dateArray = getDate();
@@ -65,9 +70,15 @@ class PagesController extends Controller
             $month = $dateArray['mon'];
             $year = $dateArray['year'];
             $date = date_create("$day-$month-$year");
-            $date = date_format($date,"m/d/Y");
+            $date = date_format($date,"d/m/Y");
         }
-        return view('Search',compact('city','sport','date'));
+        
+        $sportsCentersSearched = DB::table('establecimiento')->where('prioridad','1')->get();
+
+
+
+
+        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched'));
     }
 
 }

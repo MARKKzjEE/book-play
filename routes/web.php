@@ -6,7 +6,7 @@ Route::get('/', 'PagesController@inicio')->name('home');
 
 Route::get('search','PagesController@search')->name('search');
 
-Route::get('club','PagesController@club')->name('club');
+Route::get('club/{ID?}','PagesController@club')->name('club');
 
 Route::get('registrationClub','PagesController@registrationClub')->name('registrationClub');
 
