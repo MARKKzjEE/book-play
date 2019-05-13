@@ -2,15 +2,13 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Deporte extends Authenticatable
+class Deporte extends Model
 {
-    use Notifiable;
 
     public function establecimientos(){
         return $this->belongsToMany("App\Establecimiento");
     }
+    protected $table='deporte';
 }
