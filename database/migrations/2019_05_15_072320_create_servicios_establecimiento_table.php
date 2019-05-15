@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiciosEstablecimentoTable extends Migration
+class CreateServiciosEstablecimientoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateServiciosEstablecimentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('servicios_establecimento', function (Blueprint $table) {
+        Schema::create('servicios_establecimiento', function (Blueprint $table) {
             $table->timestamps();
             $table->unsignedBigInteger('id_servicio');
             $table->unsignedBigInteger('id_club');
@@ -21,31 +21,31 @@ class CreateServiciosEstablecimentoTable extends Migration
             $table->foreign('id_servicio')->references('id')->on('servicio');
             $table->foreign('id_club')->references('id')->on('establecimiento');
         });
-        DB::table('servicios_establecimento')->insert(
+        DB::table('servicios_establecimiento')->insert(
             array(
                 'id_servicio' => '1',
                 'id_club' => '1'
             )
         );
-        DB::table('servicios_establecimento')->insert(
+        DB::table('servicios_establecimiento')->insert(
             array(
                 'id_servicio' => '2',
                 'id_club' => '1'
             )
         );
-        DB::table('servicios_establecimento')->insert(
+        DB::table('servicios_establecimiento')->insert(
             array(
                 'id_servicio' => '3',
                 'id_club' => '1'
             )
         );
-        DB::table('servicios_establecimento')->insert(
+        DB::table('servicios_establecimiento')->insert(
             array(
                 'id_servicio' => '4',
                 'id_club' => '1'
             )
         );
-        DB::table('servicios_establecimento')->insert(
+        DB::table('servicios_establecimiento')->insert(
             array(
                 'id_servicio' => '5',
                 'id_club' => '1'
@@ -60,6 +60,6 @@ class CreateServiciosEstablecimentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicios_establecimento');
+        Schema::dropIfExists('servicios_establecimiento');
     }
 }

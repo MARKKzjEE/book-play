@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeportesEstablecimentoTable extends Migration
+class CreateDeportesEstablecimientoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDeportesEstablecimentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('deportes_establecimento', function (Blueprint $table) {
+        Schema::create('deportes_establecimiento', function (Blueprint $table) {
             $table->timestamps();
             $table->unsignedBigInteger('id_deporte');
             $table->unsignedBigInteger('id_club');
@@ -22,13 +22,13 @@ class CreateDeportesEstablecimentoTable extends Migration
             $table->foreign('id_club')->references('id')->on('establecimiento');
 
         });
-        DB::table('deportes_establecimento')->insert(
+        DB::table('deportes_establecimiento')->insert(
             array(
                 'id_deporte' => '1',
                 'id_club' => '1'
             )
         );
-        DB::table('deportes_establecimento')->insert(
+        DB::table('deportes_establecimiento')->insert(
             array(
                 'id_deporte' => '2',
                 'id_club' => '1'
@@ -43,6 +43,6 @@ class CreateDeportesEstablecimentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deportes_establecimento');
+        Schema::dropIfExists('deportes_establecimiento');
     }
 }

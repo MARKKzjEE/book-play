@@ -22,7 +22,7 @@ class CreatePistaTable extends Migration
             $table->unsignedBigInteger('id_club')->nullable();
             $table->foreign('id_club')->references('id')->on('establecimiento')->unsigned();
             $table->unsignedBigInteger('id_deporte')->nullable();
-            //$table->foreign('id_deporte')->references('id')->on('deporte')->unsigned(); NO FUNCIONA PQ????
+            $table->foreign('id_deporte')->references('id')->on('deporte')->unsigned();
             $table->timestamps();
         });
 
