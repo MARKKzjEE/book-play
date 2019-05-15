@@ -7,14 +7,14 @@
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white text-left">
-                    <h3 class="font-weight-normal"> Has seleccinado el club: <?php echo $ID?> </h3>
-                    <h5 class="font-weight-normal"> Direcion club </h5>
+                    <h3 class="font-weight-normal"> <?php echo $center->nombre ?> </h3>
+                    <h5 class="font-weight-normal"> <?php echo $center->direccion ?> </h5>
                 </div>
 
             </div>
         </div>
     </header>
-
+    
 
     <!-- Page Content -->
     <div class="container">

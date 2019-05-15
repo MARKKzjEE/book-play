@@ -20,7 +20,35 @@ class CreateDeporteTable extends Migration
             $table->foreign('id_imagen')->references('id')->on('archivo')->unsigned();
             $table->timestamps();
         });
+
+        DB::table('deporte')->insert(
+            array(
+                'nombre' => 'Tenis',
+            )
+        );
+        DB::table('deporte')->insert(
+            array(
+                'nombre' => 'Basquet',
+            )
+        );
+        DB::table('deporte')->insert(
+            array(
+                'nombre' => 'Padel',
+            )
+        );
+        DB::table('deporte')->insert(
+            array(
+                'nombre' => 'Futbol 11',
+            )
+        );
+        DB::table('deporte')->insert(
+            array(
+                'nombre' => 'Futbol 7',
+            )
+        );
     }
+
+    
 
     /**
      * Reverse the migrations.

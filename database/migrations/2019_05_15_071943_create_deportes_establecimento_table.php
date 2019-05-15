@@ -22,6 +22,18 @@ class CreateDeportesEstablecimentoTable extends Migration
             $table->foreign('id_club')->references('id')->on('establecimiento');
 
         });
+        DB::table('deportes_establecimento')->insert(
+            array(
+                'id_deporte' => '1',
+                'id_club' => '1'
+            )
+        );
+        DB::table('deportes_establecimento')->insert(
+            array(
+                'id_deporte' => '2',
+                'id_club' => '1'
+            )
+        );
     }
 
     /**

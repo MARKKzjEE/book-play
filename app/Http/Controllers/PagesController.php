@@ -44,8 +44,17 @@ class PagesController extends Controller
 
     public function club($ID = null){
 
+        $sportsCenters = DB::table('establecimiento')->where('id',$ID)->get();
+        $center = $sportsCenters[0];
 
-        return view('Club',compact('ID'));
+        $sports = DB::table('deportes_establecimento')->where('id_club',$ID)->get();
+
+        $services = DB::table('servicios_establecimento')->where('id_club',$ID)->get();
+
+        dd($sports);
+
+
+        return view('Club',compact('center','sport'));
     }
 
     public function tournament(){

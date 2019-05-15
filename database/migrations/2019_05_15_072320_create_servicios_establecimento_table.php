@@ -21,6 +21,36 @@ class CreateServiciosEstablecimentoTable extends Migration
             $table->foreign('id_servicio')->references('id')->on('servicio');
             $table->foreign('id_club')->references('id')->on('establecimiento');
         });
+        DB::table('servicios_establecimento')->insert(
+            array(
+                'id_servicio' => '1',
+                'id_club' => '1'
+            )
+        );
+        DB::table('servicios_establecimento')->insert(
+            array(
+                'id_servicio' => '2',
+                'id_club' => '1'
+            )
+        );
+        DB::table('servicios_establecimento')->insert(
+            array(
+                'id_servicio' => '3',
+                'id_club' => '1'
+            )
+        );
+        DB::table('servicios_establecimento')->insert(
+            array(
+                'id_servicio' => '4',
+                'id_club' => '1'
+            )
+        );
+        DB::table('servicios_establecimento')->insert(
+            array(
+                'id_servicio' => '5',
+                'id_club' => '1'
+            )
+        );
     }
 
     /**
