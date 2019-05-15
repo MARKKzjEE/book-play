@@ -7,8 +7,8 @@
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white text-left">
-                    <h3 class="font-weight-normal"> <?php echo $center->nombre ?> </h3>
-                    <h5 class="font-weight-normal"> <?php echo $center->direccion ?> </h5>
+                    <h3 class="font-weight-normal"> {{ $center->nombre }} </h3>
+                    <h5 class="font-weight-normal"> {{ $center->direccion }} </h5>
                 </div>
 
             </div>
@@ -25,7 +25,7 @@
                 
                 <hr>
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+                <img class="img-fluid rounded" src="{{ asset('public/img/'.$center->imagen_perfil) }}" alt="{{$center->imagen_perfil}}">
                 <hr>
 
                 <!-- Post Content -->

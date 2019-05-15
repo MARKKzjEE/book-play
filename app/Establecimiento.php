@@ -13,6 +13,9 @@ class Establecimiento extends Model
     public function deportes(){
         return $this->belongsToMany("App\Deporte")->using(DeportesEstablecimiento::class);
     }
+    public function pistas(){
+        return $this->hasMany('App\Pista', 'id_club','id');
+    }
     public function galeria(){
         return $this->hasOne('App\Galeria');
     }
