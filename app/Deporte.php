@@ -8,7 +8,7 @@ class Deporte extends Model
 {
 
     public function establecimientos(){
-        return $this->belongsToMany("App\Establecimiento");
+        return $this->belongsToMany("App\Establecimiento")->using(DeportesEstablecimiento::class);
     }
     protected $table='deporte';
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Establecimiento;
+use App\Tournaments;
 use Illuminate\Http\Request;
 use DB;
 
@@ -44,12 +46,20 @@ class PagesController extends Controller
 
     public function club($ID = null){
 
-
-        return view('Club',compact('ID'));
+        //$sportsCenters = DB::table('establecimiento')->where('id',$ID)->get();
+        //$center = $sportsCenters[0];
+        /** @var Establecimiento $center */
+        $center = Establecimiento::where('id', $ID)->firstOrFail();
+        /** @var Establecimiento $center */
+        $pistas = $center->pistas;
+        $sports = DB::table('deportes_establecimiento')->where('id_club',$ID)->get();
+        $services = DB::table('servicios_establecimiento')->where('id_club',$ID)->get();
+        return view('Club',compact('center','sport'));
     }
+    public function tournaments(){
+        $tournaments=Tournaments::all();
+        return view('tournament',compact('tournaments'));
 
-    public function tournament(){
-        return view('Tournament');
     }
 
 

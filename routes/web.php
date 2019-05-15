@@ -18,6 +18,8 @@ Route::get('registration','PagesController@registration')->name('registration');
 
 Route::get('myProfile','PagesController@myProfile')->name('myProfile');
 
-Route::get('tournament','PagesController@tournament')->name('tournament');
+Route::get('tournaments','PagesController@tournaments')->name('tournaments');
+
+Route::get('reservar','PagesController@reservar')->name('reservar');
 
 

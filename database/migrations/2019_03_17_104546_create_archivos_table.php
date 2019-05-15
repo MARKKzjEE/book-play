@@ -15,8 +15,8 @@ class CreateArchivosTable extends Migration
     {
         Schema::create('archivo', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('id_galeria')->nullable();
-            //$table->foreign('id_galeria')->references('id')->on('galeria');
+            $table->unsignedBigInteger('id_galeria')->nullable();
+            $table->foreign('id_galeria')->references('id')->on('galeria');
             $table->timestamps();
         });
     }
