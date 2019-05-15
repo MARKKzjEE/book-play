@@ -2,61 +2,93 @@
 
 namespace App\Http\Controllers;
 
+use App\Establecimiento;
+use App\Tournaments;
 use Illuminate\Http\Request;
+use DB;
 
 
 
 class PagesController extends Controller
 {
     public function inicio(){
-        return view('Homepage');
-        
+        $sportsCentersVIP = DB::table('establecimiento')->where('prioridad','1')->get();
+        return view('Homepage',compact('sportsCentersVIP'));
     }
 
-    public function fotos(){
-        return view('fotos');
-    }
-
-    public function noticias(){
-        return view('blog');
-    }
-
-    public function nosotros($nombre = null){
-        
+    /*
+    public function nosotros($nombre = null){    
         $equipo = ['melo','klkl','prediro'];
         return view('nosotros',compact('equipo','nombre') );
     }
+    */
 
-    public function form(Request $request){
-        print_r($request->input('ciudad'));
-        echo "<br>";
-        print_r($request->input('deporte'));
-        echo "<br>";
-        print_r($request->input('fecha'));
-        print_r(gettype($request->input('fecha')));
-        echo "<br>";
-        
-        if($request->input('fecha') == ""){
-            $fechaArray = getDate();
-            $dia = $fechaArray['mday'];
-            $mes = $fechaArray['mon'];
-            $año = $fechaArray['year'];
-            $fecha = date_create("$dia-$mes-$año");
-            echo date_format($fecha,"m/d/Y");
-            echo "_1<br>";
-            echo gettype($fecha);
-            echo "_2<br>";
+    public function registrationClub(){
+        return view('RegistrationClub');
+    }
+
+    public function logIn(){
+        return view('LogIn');
+    }
+
+    public function logOut(){
+        //return view('LogOut');
+        return "log out";
+    }
+
+    public function registration(){
+        return view('Registration');
+    }
+
+    public function myProfile(){
+        return view('MyProfile');
+    }
+
+    public function club($ID = null){
+
+        //$sportsCenters = DB::table('establecimiento')->where('id',$ID)->get();
+        //$center = $sportsCenters[0];
+        /** @var Establecimiento $center */
+        $center = Establecimiento::where('id', $ID)->firstOrFail();
+        /** @var Establecimiento $center */
+        $pistas = $center->pistas;
+        $sports = DB::table('deportes_establecimiento')->where('id_club',$ID)->get();
+        $services = DB::table('servicios_establecimiento')->where('id_club',$ID)->get();
+        return view('Club',compact('center','sport'));
+    }
+
+    public function tournaments(){
+        $tournaments=Tournaments::all();
+        return view('tournament',compact('tournaments'));
+    }
+
+
+
+    public function search(Request $request){
+        $city = $request->input('city');
+        $sport = $request->input('sport');
+        $date = $request->input('date');
+
+        $enclosure =$request->input('enclosure');
+        $surface =$request->input('surface');
+        $wall =$request->input('wall');
+
+        //Date format: month/day/year
+        if(is_null($date)){
+            $dateArray = getDate();
+            $day = $dateArray['mday'];
+            $month = $dateArray['mon'];
+            $year = $dateArray['year'];
+            $date = date_create("$day-$month-$year");
+            $date = date_format($date,"d/m/Y");
         }
-        else{
-            $fecha = $request->input('fecha');
-            echo gettype($fecha);
-            echo "_3<br>";
-            echo date_format($fecha,"m/d/Y");
-            echo "_4<br>";
-            print($fechaArray);
-            echo "_5<br>";
-        }
         
+        $sportsCentersSearched = DB::table('establecimiento')->where('prioridad','1')->get();
+
+
+
+
+        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched'));
     }
 
 }

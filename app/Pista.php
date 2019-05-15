@@ -2,13 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Pista extends Authenticatable
+class Pista extends Model
 {
-    use Notifiable;
 
     public function reservas(){
         return $this->hasMany("App\Reserva");
@@ -16,4 +13,8 @@ class Pista extends Authenticatable
     public function deporte(){
         return $this->hasOne('App\Deporte');
     }
+    public function establecimiento(){
+        return $this->belongsTo('App\Establecimiento', 'id_club', 'id');
+    }
+    protected $table ='pista';
 }

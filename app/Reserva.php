@@ -2,18 +2,15 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Reserva extends Authenticatable
+class Reserva extends Model
 {
-    use Notifiable;
-
     public function usuario(){
         return $this->belongsTo('App\User');
     }
     public function pista(){
         return $this->belongsTo('App\Pista');
     }
+    protected $table='reserva';
 }
