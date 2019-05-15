@@ -20,7 +20,6 @@
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
         
-
         <link href="css/datepicker.min.css" rel="stylesheet" type="text/css">
         <script src="js/datepicker.min.js" type="text/javascript"></script>
         <script src="js/i18n/datepicker.en.js" type="text/javascript"></script>
@@ -182,11 +181,6 @@
             bottom: .5em;
             }
 
-
-
-
-
-
         </style>
 
   </head>
@@ -203,7 +197,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
 
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('tournaments') }}"> Torneos</a>
                         </li>
                         <li class="nav-item">
