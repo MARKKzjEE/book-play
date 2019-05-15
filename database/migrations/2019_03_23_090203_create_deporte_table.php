@@ -16,34 +16,37 @@ class CreateDeporteTable extends Migration
         Schema::create('deporte', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedBigInteger('id_imagen')->nullable();
-            $table->foreign('id_imagen')->references('id')->on('archivo')->unsigned();
-            $table->timestamps();
+            $table->string('id_imagen');
         });
 
         DB::table('deporte')->insert(
             array(
                 'nombre' => 'Tenis',
+                'id_imagen' => 'tenis.png'
             )
         );
         DB::table('deporte')->insert(
             array(
                 'nombre' => 'Basquet',
+                'id_imagen' => 'baloncesto.png'
             )
         );
         DB::table('deporte')->insert(
             array(
                 'nombre' => 'Padel',
+                'id_imagen' => 'padel.png'
             )
         );
         DB::table('deporte')->insert(
             array(
                 'nombre' => 'Futbol 11',
+                'id_imagen' => 'futbol.png'
             )
         );
         DB::table('deporte')->insert(
             array(
                 'nombre' => 'Futbol 7',
+                'id_imagen' => 'futbol.png'
             )
         );
     }
