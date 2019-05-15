@@ -16,13 +16,6 @@ class PagesController extends Controller
         return view('Homepage',compact('sportsCentersVIP'));
     }
 
-    /*
-    public function nosotros($nombre = null){    
-        $equipo = ['melo','klkl','prediro'];
-        return view('nosotros',compact('equipo','nombre') );
-    }
-    */
-
     public function registrationClub(){
         return view('RegistrationClub');
     }
@@ -54,12 +47,30 @@ class PagesController extends Controller
         $pistas = $center->pistas;
         $sports = DB::table('deportes_establecimiento')->where('id_club',$ID)->get();
         $services = DB::table('servicios_establecimiento')->where('id_club',$ID)->get();
-        return view('Club',compact('center','sport'));
+
+        $sportsNames = array();
+        $servicesNames = array();
+
+        foreach($sports as $sport){
+            $sportsClub = DB::table('deporte')->where('id',$sport->id_deporte)->get();
+            array_push($sportsNames,[$sportsClub[0]->nombre,$sportsClub[0]->id_imagen]);
+        }
+
+        foreach($services as $service){
+            $servicesClub = DB::table('servicio')->where('id',$service->id_servicio)->get();
+            array_push($servicesNames,[$servicesClub[0]->nombre,$servicesClub[0]->id_imagen]);
+        }
+
+        return view('Club',compact('center','sportsNames','servicesNames'));
     }
     public function tournaments(){
         $tournaments=Tournaments::all();
         return view('tournament',compact('tournaments'));
 
+    }
+
+    public function reservar(){
+        return view('Reservar');
     }
 
 

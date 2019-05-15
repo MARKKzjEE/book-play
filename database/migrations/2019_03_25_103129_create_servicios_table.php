@@ -16,45 +16,50 @@ class CreateServiciosTable extends Migration
         Schema::create('servicio', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedBigInteger('id_imagen')->nullable();
-            $table->foreign('id_imagen')->references('id')->on('archivo');
-            $table->timestamps();
+            $table->string('id_imagen');
         });
 
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Vestuarios'
+                'nombre' => 'Vestuarios',
+                'id_imagen' => 'vestuario.png'
             )
         );
 
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Parking gratuito'
+                'nombre' => 'Parking gratuito',
+                'id_imagen' => 'parking_gratuito.png'
             )
         );
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Alquiler de material'
+                'nombre' => 'Tienda de materiales',
+                'id_imagen' => 'tienda.png'
             )
         );
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Wifi'
+                'nombre' => 'Wifi',
+                'id_imagen' => 'wifi.png'
             )
         );
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Taquillas'
+                'nombre' => 'Taquillas de seguridad',
+                'id_imagen' => 'taquillas.png'
             )
         );
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Restaurante'
+                'nombre' => 'Restaurante',
+                'id_imagen' => 'restaurante.png'
             )
         );
         DB::table('servicio')->insert(
             array(
-                'nombre' => 'Cafetería'
+                'nombre' => 'Cafetería',
+                'id_imagen' => 'cafeteria.png'
             )
         );
     }
