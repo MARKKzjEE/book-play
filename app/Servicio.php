@@ -8,7 +8,7 @@ class Servicio extends Model
 {
 
     public function establecimientos(){
-        return $this->belongsToMany("App\Establecimiento");
+        return $this->belongsToMany("App\Establecimiento")->using(ServiciosEstablecimiento::class);
     }
     protected $table='servicio';
 }

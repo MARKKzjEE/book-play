@@ -16,8 +16,8 @@ class CreateServiciosTable extends Migration
         Schema::create('servicio', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedInteger('id_imagen')->nullable();
-            //$table->foreign('id_imagen')->references('id')->on('archivo');
+            $table->unsignedBigInteger('id_imagen')->nullable();
+            $table->foreign('id_imagen')->references('id')->on('archivo');
             $table->timestamps();
         });
     }

@@ -23,11 +23,11 @@ class CreateEstablecimientoTable extends Migration
             $table->integer('prioridad');
             //$table->string('geolocalizacion');
             $table->string('imagen_perfil');
-            $table->unsignedInteger('id_galeria')->nullable();
+            $table->unsignedBigInteger('id_galeria')->nullable();
             $table->timestamp('hora_inicio')->nullable();
             $table->timestamp('hora_final')->nullable();
             //$table->foreign('imagen_perfil')->references('id')->on('archivo');
-            //$table->foreign('id_galeria')->references('id')->on('galeria');
+            $table->foreign('id_galeria')->references('id')->on('galeria');
             $table->timestamps();
         });
 

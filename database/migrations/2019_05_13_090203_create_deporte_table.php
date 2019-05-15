@@ -16,8 +16,8 @@ class CreateDeporteTable extends Migration
         Schema::create('deporte', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedInteger('id_imagen')->nullable();
-            //$table->foreign('id_imagen')->references('id')->on('archivo');
+            $table->unsignedBigInteger('id_imagen')->nullable();
+            $table->foreign('id_imagen')->references('id')->on('archivo')->unsigned();
             $table->timestamps();
         });
     }

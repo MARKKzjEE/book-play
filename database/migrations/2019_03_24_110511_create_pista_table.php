@@ -19,9 +19,9 @@ class CreatePistaTable extends Migration
             $table->string('superficie');
             $table->string('cerramiento');
             $table->string('pared');
-            $table->unsignedInteger('id_deporte');
-            $table->unsignedInteger('id_club')->nullable();
-            //$table->foreign('id_club')->references('id')->on('establecimiento');
+            $table->unsignedBigInteger('id_deporte');
+            $table->unsignedBigInteger('id_club')->nullable();
+            $table->foreign('id_club')->references('id')->on('establecimiento')->unsigned();
             $table->timestamps();
         });
     }
