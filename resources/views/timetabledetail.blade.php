@@ -1,5 +1,6 @@
 <div>
-    <img  onclick="quitX()" id="x" src="{{ URL::asset('img/x.png') }}"/>
+    
+    <i class="fas fa-times-circle" onclick="quitX()" id="x">  </i>
 </div>
 <div style="text-align: center; padding-top: 15%;">
     <?php
@@ -54,7 +55,7 @@
     function insertBook($hourinitial, $iduser, $fecha, $idpista){
         var $hourfinal = $('#finalhour').val();
         if($hourfinal == null){
-            alert("escoja un select");
+            alert("escoja un horario");
         }
         console.log($hourfinal, $hourinitial, $iduser, $fecha, $idpista);
         $("#containertimetable").load("{{ route('insertbookbd') }}/" + $hourfinal + "/"+ $hourinitial + "/"+ $iduser + "/"+ $fecha + "/"+ $idpista);
