@@ -28,8 +28,8 @@
                 <!-- Post Content -->
                 <p class="lead"> {{ $center->descripcion}} </p>
                 <hr>
-
-                <button onclick="location.href='{{ route('reservar',$center->id) }}'" type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button>
+                <a href="{{route('timetable')}}/<?php echo $center->id . "/2" ?> "> <button type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button> </a>
+                
             </div>
 
             <!-- Sidebar Widgets Column -->

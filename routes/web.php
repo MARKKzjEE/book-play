@@ -22,4 +22,23 @@ Route::get('reservar','PagesController@reservar')->name('reservar');
 
 Route::get('tournamentsSearched','PagesController@tournamentsSearched')->name('tournamentsSearched');
 
+/**
+ *  Functions to book a field
+ * 
+ * 
+ */
+
+Route::get('insertarReserva','PagesController@insertarReserva')->name('insertarReserva');
+
+Route::get('timetable/{id?}/{id2?}','PagesController@timetable')->name('timetable');
+
+Route::get('insertbookbd/{id?}/{id2?}/{id3?}/{id4?}/{id5?}','PagesController@insertbookbd')->name('insertbookbd');
+
+Route::get('timetablepart/{id?}/{id2?}/{id3?}','PagesController@timetablepart')->name('timetablepart');
+
+Route::get('filters/{id?}/{id2?}/{id3?}/{id4?}/{id5?}/{id6?}/{id7?}','PagesController@filters')->name('filters');
+
+Route::get('detailtimetable/{id?}/{id2?}/{id3?}/{id4?}','PagesController@detailtimetable')->name('detailtimetable');
+
+
 
