@@ -28,7 +28,6 @@ class CreateReservaTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->unsignedBigInteger('id_pista')->nullable();
             $table->foreign('id_pista')->references('id')->on('pista');
-            $table->timestamps();
         });
     }
 

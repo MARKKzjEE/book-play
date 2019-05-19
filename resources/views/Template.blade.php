@@ -38,7 +38,7 @@
             .masthead {
                 height: 100vh;
                 min-height: 500px;
-                background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg');
+                
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -64,12 +64,10 @@
             .masthead2 {
                 height: 20vh;
                 min-height: 50px;
-                
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
             }
-
             /* Login style */
 
             :root {

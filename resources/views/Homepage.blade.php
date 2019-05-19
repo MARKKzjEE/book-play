@@ -1,7 +1,7 @@
 @extends('Template')
 @section('Main')
     <!-- TopContent / Search sports centers  -->
-    <header class="masthead">
+    <header class="masthead" style="background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg')" >
         <div class="overlay"></div>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">

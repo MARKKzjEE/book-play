@@ -14,7 +14,6 @@ class CreateDeportesEstablecimientoTable extends Migration
     public function up()
     {
         Schema::create('deportes_establecimiento', function (Blueprint $table) {
-            $table->timestamps();
             $table->unsignedBigInteger('id_deporte');
             $table->unsignedBigInteger('id_club');
             $table->primary(['id_deporte','id_club']);

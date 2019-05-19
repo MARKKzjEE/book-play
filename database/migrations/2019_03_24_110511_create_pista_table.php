@@ -19,11 +19,11 @@ class CreatePistaTable extends Migration
             $table->string('superficie');
             $table->string('cerramiento');
             $table->string('pared');
+            $table->float('precio');
             $table->unsignedBigInteger('id_club')->nullable();
             $table->foreign('id_club')->references('id')->on('establecimiento')->unsigned();
             $table->unsignedBigInteger('id_deporte')->nullable();
             $table->foreign('id_deporte')->references('id')->on('deporte')->unsigned();
-            $table->timestamps();
         });
 
         DB::table('pista')->insert(
@@ -32,6 +32,7 @@ class CreatePistaTable extends Migration
                 'superficie' => 'Tierrra',
                 'cerramiento' => 'Abierto',
                 'pared' => 'Abierto',
+                'precio' => 3.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -43,6 +44,7 @@ class CreatePistaTable extends Migration
                 'superficie' => 'Tierrra',
                 'cerramiento' => 'Abierto',
                 'pared' => 'Abierto',
+                'precio' => 3.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -54,6 +56,7 @@ class CreatePistaTable extends Migration
                 'superficie' => 'Tierrra',
                 'cerramiento' => 'Abierto',
                 'pared' => 'Abierto',
+                'precio' => 3.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -65,6 +68,7 @@ class CreatePistaTable extends Migration
                 'superficie' => 'Tierrra',
                 'cerramiento' => 'Abierto',
                 'pared' => 'Abierto',
+                'precio' => 3.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -76,6 +80,7 @@ class CreatePistaTable extends Migration
                 'superficie' => 'Tierrra',
                 'cerramiento' => 'Abierto',
                 'pared' => 'Abierto',
+                'precio' => 3.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -87,6 +92,7 @@ class CreatePistaTable extends Migration
                 'superficie' => 'Hierba',
                 'cerramiento' => 'Cerrada',
                 'pared' => 'Muro',
+                'precio' => 4.0,
                 'id_deporte' => '1',
                 'id_club'  => '2'
             )

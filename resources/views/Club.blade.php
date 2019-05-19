@@ -71,23 +71,18 @@
                     <div class="card-body">
                         <?php $weekdays = [ 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo' ]; ?>
                         @foreach($weekdays as $day)
-                        <div class="input-group">
-                            <p class="pl-2" > {{ $day }} </p>
-                            <p class="pl-5 pr-5"> - </p>
-                            <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_apertura)); ?>  </p>
-                            <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_clausuara)); ?>  </p>
-                        </div>
+                            <div class="input-group">
+                                <p class="pl-2" > {{ $day }} </p>
+                                <p class="pl-5 pr-5"> - </p>
+                                <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_apertura)); ?>  </p>
+                                <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_clausuara)); ?>  </p>
+                            </div>
                         @endforeach
                     </div>
                 </div>
-
             </div> <!-- /.sidebar -->
-        
-            
         </div>
         <!-- /.row -->
-        
     </div>
     <!-- /.container -->
-
 @endsection

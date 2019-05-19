@@ -28,7 +28,6 @@ class CreateEstablecimientoTable extends Migration
             $table->time('hora_clausuara')->nullable();
             //$table->foreign('imagen_perfil')->references('id')->on('archivo');
             $table->foreign('id_galeria')->references('id')->on('galeria');
-            $table->timestamps();
         });
 
         
