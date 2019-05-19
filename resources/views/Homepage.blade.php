@@ -82,7 +82,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{{ route('club',$center->id) }}"> <button type="button" class="btn btn-sm btn-outline-secondary"> Ver </button> </a>
-                                            <a href="{{ route('reservar',$center->id) }}"> <button type="button" class="btn btn-sm btn-outline-secondary ml-2 "> Reservar </button> </a>
+                                            <a href="{{ route('timetable') }}<?php echo "/".$center->id . "/2" ?> "> <button type="button" class="btn btn-sm btn-outline-secondary ml-2 "> Reservar </button> </a>
                                         </div>
                                     </div>
                                 </div>
