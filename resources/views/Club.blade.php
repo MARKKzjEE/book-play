@@ -28,8 +28,8 @@
                 <!-- Post Content -->
                 <p class="lead"> {{ $center->descripcion}} </p>
                 <hr>
-
-                <button onclick="location.href='{{ route('reservar',$center->id) }}'" type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button>
+                <a href="{{route('timetable')}}/<?php echo $center->id . "/2" ?> "> <button type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button> </a>
+                
             </div>
 
             <!-- Sidebar Widgets Column -->
@@ -71,23 +71,18 @@
                     <div class="card-body">
                         <?php $weekdays = [ 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo' ]; ?>
                         @foreach($weekdays as $day)
-                        <div class="input-group">
-                            <p class="pl-2" > {{ $day }} </p>
-                            <p class="pl-5 pr-5"> - </p>
-                            <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_apertura)); ?>  </p>
-                            <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_clausuara)); ?>  </p>
-                        </div>
+                            <div class="input-group">
+                                <p class="pl-2" > {{ $day }} </p>
+                                <p class="pl-5 pr-5"> - </p>
+                                <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_inicio)); ?>  </p>
+                                <p class="pl-2" > <?php echo date('H:i',strtotime($center->hora_final)); ?>  </p>
+                            </div>
                         @endforeach
                     </div>
                 </div>
-
             </div> <!-- /.sidebar -->
-        
-            
         </div>
         <!-- /.row -->
-        
     </div>
     <!-- /.container -->
-
 @endsection

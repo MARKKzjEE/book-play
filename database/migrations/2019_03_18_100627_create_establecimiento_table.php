@@ -24,11 +24,10 @@ class CreateEstablecimientoTable extends Migration
             $table->mediumText('descripcion');
             $table->string('imagen_perfil');
             $table->unsignedBigInteger('id_galeria')->nullable();
-            $table->time('hora_apertura')->nullable();
-            $table->time('hora_clausuara')->nullable();
+            $table->timestamp('hora_inicio')->nullable();
+            $table->timestamp('hora_final')->nullable();
             //$table->foreign('imagen_perfil')->references('id')->on('archivo');
             $table->foreign('id_galeria')->references('id')->on('galeria');
-            $table->timestamps();
         });
 
         
@@ -41,8 +40,8 @@ class CreateEstablecimientoTable extends Migration
                 'telefono' => '933952311',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img1.jpg',
-                'hora_apertura' => '08:00',
-                'hora_clausuara' => '22:00',
+                'hora_inicio' => '2019-05-12 08:00:00',
+                'hora_final' => '2019-05-12 22:00',
                 'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
@@ -60,8 +59,8 @@ class CreateEstablecimientoTable extends Migration
                 'telefono' => '934170805',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img2.jpg',
-                'hora_apertura' => '08:00',
-                'hora_clausuara' => '22:00',
+                'hora_inicio' => '2019-05-12 08:00',
+                'hora_final' => '2019-05-12 22:00',
                 'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
@@ -78,8 +77,8 @@ class CreateEstablecimientoTable extends Migration
                 'telefono' => '934652081',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img3.jpg',
-                'hora_apertura' => '08:00',
-                'hora_clausuara' => '22:00',
+                'hora_inicio' => '2019-05-12 08:00',
+                'hora_final' => '2019-05-12 22:00',
                 'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
@@ -96,8 +95,8 @@ class CreateEstablecimientoTable extends Migration
                 'telefono' => '937264500',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img4.jpg',
-                'hora_apertura' => '08:00',
-                'hora_clausuara' => '22:00',
+                'hora_inicio' => '2019-05-12 08:00',
+                'hora_final' => '2019-05-12 22:00',
                 'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
@@ -114,8 +113,8 @@ class CreateEstablecimientoTable extends Migration
                 'telefono' => '938861440',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img5.jpg',
-                'hora_apertura' => '08:00',
-                'hora_clausuara' => '22:00',
+                'hora_inicio' => '2019-05-12 08:00',
+                'hora_final' => '2019-05-12 22:00',
                 'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
@@ -132,8 +131,8 @@ class CreateEstablecimientoTable extends Migration
                 'telefono' => '934650962',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img6.jpg',
-                'hora_apertura' => '08:00',
-                'hora_clausuara' => '22:00',
+                'hora_inicio' => '2019-05-12 08:00',
+                'hora_final' => '2019-05-12 22:00',
                 'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '

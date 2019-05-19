@@ -16,7 +16,6 @@ class CreateGaleriaTable extends Migration
         Schema::create('galeria', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->timestamps();
         });
     }
 

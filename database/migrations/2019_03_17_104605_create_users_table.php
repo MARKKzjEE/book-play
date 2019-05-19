@@ -24,10 +24,8 @@ class CreateUsersTable extends Migration
             $table->integer('sistema_puntos')->nullable();
             $table->integer('codigo_postal')->nullable();
             $table->boolean('verificacion_mail')->nullable();
-            $table->unsignedBigInteger('imagen_perfil')->nullable();
-            $table->foreign('imagen_perfil')->references('id')->on('archivo');
+            $table->string('imagen_perfil');
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

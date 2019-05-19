@@ -1,7 +1,7 @@
 @extends('Template')
 @section('Main')
     <!-- TopContent / Search sports centers  -->
-    <header class="masthead">
+    <header class="masthead" style="background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg')" >
         <div class="overlay"></div>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
@@ -82,7 +82,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{{ route('club',$center->id) }}"> <button type="button" class="btn btn-sm btn-outline-secondary"> Ver </button> </a>
-                                            <a href="{{ route('reservar',$center->id) }}"> <button type="button" class="btn btn-sm btn-outline-secondary ml-2 "> Reservar </button> </a>
+                                            <a href="{{ route('timetable') }}<?php echo "/".$center->id . "/2" ?> "> <button type="button" class="btn btn-sm btn-outline-secondary ml-2 "> Reservar </button> </a>
                                         </div>
                                     </div>
                                 </div>

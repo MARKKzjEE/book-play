@@ -13,7 +13,8 @@
         <!-- Bootstrap core CSS -->
         <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    
+
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}" />
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -38,7 +39,7 @@
             .masthead {
                 height: 100vh;
                 min-height: 500px;
-                background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg');
+                
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -64,12 +65,10 @@
             .masthead2 {
                 height: 20vh;
                 min-height: 50px;
-                
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
             }
-
             /* Login style */
 
             :root {
@@ -266,12 +265,46 @@
         <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
         <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
         <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/bootstrap2.min.js') }}" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+        <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
         <script>
         Holder.addTheme('thumb', {
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
         });
+
+        function opentimetable($fecha, $hora, $idpista, $iduser){
+            $("#detailtimetable").load("{{ route('detailtimetable') }}/" + $fecha + "/" + $hora + "/" + $idpista+ "/" + $iduser);
+            $('#bigwindow').fadeIn("slow");
+        }
+        function filters($superficie,$cercamiento,  $pared, $deporte, $fecha, $id, $user){
+            console.log($superficie,$cercamiento,  $pared, $deporte, $fecha, $id, $user);
+            $("#containertimetable").load("{{ route('filters') }}/" + $superficie + "/" + $cercamiento+ "/"+ $pared + "/" + $deporte + "/"+ $fecha + "/" + $id+ "/" + $user);
+        }
+        function quitX(){
+            $('#bigwindow').fadeOut("medium");
+        }
+
+        function timetableload($idclub, $iduser){
+            let d = new Date();
+            let dnow = new Date(d.getTime() + d.getTimezoneOffset()*-60000);
+            let now = dnow.toISOString();
+            var $today = now.split("T")[0];
+            console.log($today);
+
+            $('#containertimetable').load("{{ route('timetablepart') }}/" + $idclub + "/" + $iduser + "/" + $today);
+        }
         </script>
   </body>
 </html>

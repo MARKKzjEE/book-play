@@ -33,9 +33,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function imagenPerfil(){
-        return $this->hasOne('App\Archivo');
-    }
     public function reservas(){
         return $this->hasMany("App\Reserva");
     }
