@@ -1,12 +1,6 @@
 @extends('Template')
 
 @section('Main')
-    <?php /*  print_r($city . " - "); 
-    print_r($sport . " - ");
-    print_r($date . " - ");
-    print_r($enclosure . " - ");
-    print_r($surface . " - ");
-    print_r($wall);*/?> 
     
     <!-- Top content / Advanced search -->
     <div class="position-relative overflow-hidden p-3 p-md-1 m-md-2 text-left">

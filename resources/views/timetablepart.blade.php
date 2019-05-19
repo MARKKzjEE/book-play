@@ -1,6 +1,6 @@
 
-<table class="table table-striped tablestyletime" style="">
-    <thead>
+<table class="table table-striped tablestyletime pt-5" style="">
+    <thead class="table-dark" > 
     <input type="text" value="{{$iduser}}" id="getuser" style="display: none;">
     <input type="text" value="{{$idclub}}" id="getclub" style="display: none;">
     <tr>
@@ -25,7 +25,7 @@
         $boolean = " ";
 
         foreach($datospista as $dadapista) {
-            $boolean = "<input type='button' value='$dadapista->id_pista' onclick='opentimetable(`$today`,`$timefromdate`, `$dadapista->id_pista`, `$iduser`)'>";
+            $boolean = "<input type='button' value='Disponible' onclick='opentimetable(`$today`,`$timefromdate`, `$dadapista->id_pista`, `$iduser`)'>";
             foreach($datosreserva as $reserva) {
                 //$initreserva = date($reserva->hora_inicio);
                 $datetimereserva = explode(" ",$reserva->hora_inicio);
@@ -54,7 +54,7 @@
                         break;
                     }
                     else{
-                        $boolean = "<input type='button' value='$dadapista->id_pista' onclick='opentimetable(`$datetimereserva[0]`,`$timefromdate`, `$dadapista->id_pista`, `$iduser`)'>";
+                        $boolean = "<input type='button' value='Disponible' onclick='opentimetable(`$datetimereserva[0]`,`$timefromdate`, `$dadapista->id_pista`, `$iduser`)'>";
                     }
                     $tienereserva = true;
                 }

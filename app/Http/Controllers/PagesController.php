@@ -253,12 +253,17 @@ class PagesController extends Controller
 
     public function timetable($idclub, $iduser){
 
+
+        $fieldTypes = DB::table('pista')->select('superficie')->distinct()->get();
+        $enclosureTypes = DB::table('pista')->select('cerramiento')->distinct()->get();
+        $wallTypes = DB::table('pista')->select('pared')->distinct()->get();
+
         //$datosestablecimiento = $this->datosestablecimiento($id);
         $datospista = $this->datospista($idclub);
         //$datosreserva = $this->datosreserva($id);
         $datosdeporte = $this->datosdeporte();
 
-        return view('timetable', compact(  'datosdeporte', 'idclub', 'iduser'));
+        return view('timetable', compact('datosdeporte', 'idclub', 'iduser','fieldTypes','enclosureTypes','wallTypes'));
     }
 
     public function timetablepart($idclub, $iduser,$today){
