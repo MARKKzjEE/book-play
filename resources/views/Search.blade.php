@@ -12,17 +12,16 @@
                     <!-- Sport picker -->
                     <div class="col-sm-1 col-md-2 col-lg-2 col-xl-1 my-1">
                         <select class="custom-select mr-sm-2 form-control " name="sport">
-                            <option value="1"selected> Tenis </option>
-                            <option value="2"> Basquet </option>
-                            <option value="3"> Padel </option>
-                            <option value="4"> Futbol 11 </option>
-                            <option value="5"> Futbol 7 </option>
+                            <option selected disabled hidden>Deporte</option>
+                            @foreach ($sportTypes as $sportType)
+                                <option @if ($sportType->id == $sport) selected @endif value="{{ $sportType->id }}"> {{ $sportType->nombre }} </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <!-- Place picker -->
                     <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1 my-1">
-                        <input type="text" class="form-control" placeholder="Barcelona" value="Barcelona" name="city">
+                        <input type="text" class="form-control" placeholder="Barcelona" value="{{ $city }}" name="city">
                     </div>
 
                     <!-- Date picker -->
@@ -42,25 +41,30 @@
                     <!-- Enclosure picker -->
                     <div class="col-auto my-1">
                         <select class="custom-select mr-sm-2 " name="enclosure">
-                            <option value="1" selected> Interior </option>
-                            <option value="2"> Exterior </option>
+                            <option selected disabled hidden>Cerramiento</option>
+                            @foreach ($enclosureTypes as $enclosureType)
+                                <option @if ($enclosureType->cerramiento == $enclosure) selected @endif value="{{ $enclosureType->cerramiento }}"> {{ $enclosureType->cerramiento }} </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <!-- Surface picker -->
                     <div class="col-auto my-1">
                         <select class="custom-select mr-sm-2 " name="surface">
-                            <option value="1" selected> Hierba </option>
-                            <option value="2"> Tierra </option>
-                            <option value="3"> Cemento </option>
+                            <option selected disabled hidden>Superficie</option>
+                            @foreach ($surfaceTypes as $surfaceType)
+                                <option @if ($surfaceType->superficie == $surface) selected @endif value="{{ $surfaceType->superficie }}"> {{ $surfaceType->superficie }} </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <!-- Wall picker -->
                     <div class="col-auto my-1">
                         <select class="custom-select mr-sm-2 " name="wall">
-                            <option value="1" selected> Muro </option>
-                            <option value="2"> Cristal </option>
+                            <option selected disabled hidden>Pared</option>
+                            @foreach ($wallTypes as $wallType)
+                                <option @if ($wallType->pared == $wall) selected @endif value="{{ $wallType->pared }}"> {{ $wallType->pared }} </option>
+                            @endforeach
                         </select>
                     </div>
 

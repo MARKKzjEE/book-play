@@ -37,7 +37,6 @@ class PagesController extends Controller
     public function registration(){
         return view('Registration');
     }
-
     public function myProfile(){
         return view('MyProfile');
     }
@@ -48,7 +47,7 @@ class PagesController extends Controller
         /** @var Establecimiento $center */
         $center = Establecimiento::where('id', $ID)->firstOrFail();
         /** @var Establecimiento $center */
-        
+
 
         $sports = DeportesEstablecimiento::where('id_club',$ID)->get();
         $services = ServiciosEstablecimiento::where('id_club',$ID)->get();
@@ -69,7 +68,7 @@ class PagesController extends Controller
         return view('Club',compact('center','sportsNames','servicesNames'));
     }
     public function tournaments(){
-        
+
         $tournaments = Tournaments::where('prioridad','1')->get();
         return view('tournament',compact('tournaments'));
 
@@ -78,10 +77,10 @@ class PagesController extends Controller
     public function tournamentsSearched(Request $request){
 
         $city = $request->input('name');
-        
+
         $sport = $request->input('sport');
         $sportName = Deporte::where('id',$sport)->firstOrfail()->nombre;
-        
+
         $gender = $request->input('gender');
         if($gender == 1){
             $gender = 'Masculino';
@@ -91,10 +90,10 @@ class PagesController extends Controller
             $gender = 'Mixto';
         }
 
-        
+
         $date = $request->input('fecha');
         $date = date_format(date_create($date),"y-m-d");
-        
+
         if(is_null($date)){
             $dateArray = getDate();
             $day = $dateArray['mday'];
@@ -110,7 +109,7 @@ class PagesController extends Controller
             ['fecha', '>=' , $date]
         ])->get();
 
-        
+
         return view('TournamentsSearched',compact('city','sport','sportName','gender','date','tournsSearched'));
 
     }
@@ -130,6 +129,33 @@ class PagesController extends Controller
         $surface =$request->input('surface');
         $wall =$request->input('wall');
 
+        $sportsCentersSearched = DB::table('establecimiento');
+        if ($city) {
+            $sportsCentersSearched = $sportsCentersSearched->where('direccion', 'LIKE', '%' . $city . '%');
+        }
+        if ($sport) {
+            $sportsCentersSearched = $sportsCentersSearched->join('deportes_establecimiento', 'establecimiento.id', '=', 'deportes_establecimiento.id_club');
+            $sportsCentersSearched = $sportsCentersSearched->where('deportes_establecimiento.id_deporte', '=', $sport);
+        }
+       /* if ($date) {
+            $sportsCentersSearched = $sportsCentersSearched->join('pista', 'establecimiento.id', '=', 'pista.id_club');
+            $sportsCentersSearched = $sportsCentersSearched->join('reserva', 'pista.id', '=', 'reserva.id_pista');
+            $sportsCentersSearched = $sportsCentersSearched->where('establecimiento.hora_inicio', '=', $date);
+        } */
+        if($enclosure || $surface || $wall){
+            $sportsCentersSearched = $sportsCentersSearched->join('pista', 'establecimiento.id', '=', 'pista.id_club');
+        }
+        if($enclosure){
+            $sportsCentersSearched = $sportsCentersSearched->where('pista.cerramiento', '=', $enclosure);
+        }
+        if($surface){
+            $sportsCentersSearched = $sportsCentersSearched->where('pista.superficie', '=', $surface);
+        }
+        if($wall){
+            $sportsCentersSearched = $sportsCentersSearched->where('pista.pared', '=', $wall);
+        }
+        $sportsCentersSearched = $sportsCentersSearched->get();
+        //Date format: month/day/year
         if(is_null($date)){
             $dateArray = getDate();
             $day = $dateArray['mday'];
@@ -138,24 +164,25 @@ class PagesController extends Controller
             $date = date_create("$day-$month-$year");
             $date = date_format($date,"d/m/Y");
         }
-        
-        $sportsCentersSearched = DB::table('establecimiento')->where('prioridad','1')->get();
-
-        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched'));
+        $surfaceTypes = DB::table('pista')->select('superficie')->distinct()->get();
+        $wallTypes = DB::table('pista')->select('pared')->distinct()->get();
+        $enclosureTypes = DB::table('pista')->select('cerramiento')->distinct()->get();
+        $sportTypes  = DB::table('deporte')->select('id', 'nombre')->distinct()->get();  /* El distinct no es realmente necesario aqui */
+        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched','surfaceTypes','wallTypes','enclosureTypes', 'sportTypes'));
     }
 
     /**
-     * 
-     * 
-     * Functions relative to book a club field 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     * Functions relative to book a club field
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
      */
     public function datosestablecimiento($id){
         return \DB::table('establecimiento')
@@ -317,7 +344,7 @@ class PagesController extends Controller
             ->where('pista.id', '=', $idpista)
             ->get();
     }
-    
+
     public function insertbookbd($finalhour, $initialhour, $iduser, $date, $idpista){
 
 
@@ -368,6 +395,6 @@ class PagesController extends Controller
 
 
 
-    
+
 
 }
