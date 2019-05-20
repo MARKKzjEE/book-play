@@ -199,6 +199,21 @@ class CreateTournamentsTable extends Migration
             )
         );
 
+        DB::table('tournaments')->insert(
+            array(
+                'name' => 'Champions Sant Joan Despi',
+                'id_club' => '7',
+                'email' => 'pfcalvet@sjdespi.net',
+                'id_deporte' => '3',
+                'genero' => 'mixto',
+                'fecha' => date_create ('2019-06-10'),
+                'precio' => '10.00',
+                'prioridad' => '2',
+            )
+        );
+
+
+
     }
 
     /**

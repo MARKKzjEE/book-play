@@ -62,6 +62,24 @@ class CreateServiciosTable extends Migration
                 'id_imagen' => 'cafeteria.png'
             )
         );
+        DB::table('servicio')->insert(
+            array(
+                'nombre' => 'Piscina',
+                'id_imagen' => 'piscina.png'
+            )
+        );
+        DB::table('servicio')->insert(
+            array(
+                'nombre' => 'Sauna',
+                'id_imagen' => 'Sauna.png'
+            )
+        );
+        DB::table('servicio')->insert(
+            array(
+                'nombre' => 'Solarium',
+                'id_imagen' => 'solarium.png'
+            )
+        );
     }
 
     /**

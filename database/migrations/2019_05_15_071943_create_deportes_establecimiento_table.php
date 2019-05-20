@@ -33,6 +33,96 @@ class CreateDeportesEstablecimientoTable extends Migration
                 'id_club' => '1'
             )
         );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '1',
+                'id_club' => '2'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '3',
+                'id_club' => '2'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '1',
+                'id_club' => '3'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '3',
+                'id_club' => '3'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '1',
+                'id_club' => '4'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '3',
+                'id_club' => '4'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '2',
+                'id_club' => '5'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '4',
+                'id_club' => '6'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '5',
+                'id_club' => '6'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '2',
+                'id_club' => '7'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '3',
+                'id_club' => '7'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '2',
+                'id_club' => '8'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '1',
+                'id_club' => '9'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '3',
+                'id_club' => '9'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '3',
+                'id_club' => '10'
+            )
+        );
     }
 
     /**
