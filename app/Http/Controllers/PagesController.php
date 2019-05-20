@@ -70,8 +70,24 @@ class PagesController extends Controller
     }
     public function tournaments(){
         
-        $tournaments = Tournaments::where('prioridad','1')->get();
-        return view('tournament',compact('tournaments'));
+        $tournaments = DB::table('tournaments')
+            ->join('establecimiento','establecimiento.id', '=', 'tournaments.id_club')
+            ->where('tournaments.prioridad','1')->get();
+
+        $sportTypes  = DB::table('deporte')->select('id', 'nombre')->distinct()->get();
+        $sportNames = array();
+        foreach ($tournaments as $tourny ) {
+            $sportsClub = Deporte::where('id',$tourny->id_deporte)->get();
+            $sportNames[$sportsClub[0]->id] = $sportsClub[0]->nombre;
+        }
+        
+
+        
+
+        
+
+
+        return view('tournament',compact('tournaments','sportTypes','clubsNames','sportNames'));
 
     }
 
@@ -80,6 +96,7 @@ class PagesController extends Controller
         $city = $request->input('name');
          
         $sport = $request->input('sport');
+ 
         $sportName = Deporte::where('id',$sport)->firstOrfail()->nombre;
         
         $gender = $request->input('gender');
@@ -286,13 +303,14 @@ class PagesController extends Controller
         $fieldTypes = DB::table('pista')->select('superficie')->distinct()->get();
         $enclosureTypes = DB::table('pista')->select('cerramiento')->distinct()->get();
         $wallTypes = DB::table('pista')->select('pared')->distinct()->get();
+        $center = Establecimiento::where('id', $idclub)->firstOrFail();
 
         //$datosestablecimiento = $this->datosestablecimiento($id);
         $datospista = $this->datospista($idclub);
         //$datosreserva = $this->datosreserva($id);
         $datosdeporte = $this->datosdeporte();
 
-        return view('timetable', compact('datosdeporte', 'idclub', 'iduser','fieldTypes','enclosureTypes','wallTypes'));
+        return view('timetable', compact('datosdeporte', 'idclub', 'iduser','fieldTypes','enclosureTypes','wallTypes','center'));
     }
 
     public function timetablepart($idclub, $iduser,$today){
@@ -519,12 +537,4 @@ class PagesController extends Controller
         }
 
     }
-
-
-
-
-
-
-    
-
 }

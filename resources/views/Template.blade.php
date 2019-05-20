@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Book&Play</title>
-        <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+        
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
         <!-- Bootstrap core CSS -->
         <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">

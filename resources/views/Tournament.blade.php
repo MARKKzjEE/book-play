@@ -22,12 +22,10 @@
                                     <!-- Sport picker -->
                                     <div class="col-sm-3 col-md-5 col-lg-2 my-1">
                                         <label class="sr-only" for="inlineFormCustomSelect"> Deporte </label>
-                                        <select class="custom-select mr-sm-2 " id="inlineFormCustomSelect" name="sport">
-                                            <option value="1" selected> Tenis </option>
-                                            <option value="2"> Basquet </option>
-                                            <option value="3"> Padel </option>
-                                            <option value="4"> Futbol 11 </option>
-                                            <option value="5"> Futbol 7 </option>
+                                        <select class="custom-select mr-sm-2 form-control " name="sport">
+                                            @foreach ($sportTypes as $sportType)
+                                                <option value="{{ $sportType->id }}"> {{ $sportType->nombre }} </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <!-- Gender picker -->
@@ -81,32 +79,40 @@
             <br/>
             <div class="container">
                 <div class="row">
-                    @foreach($tournaments as $i)
+                    @foreach($tournaments as $tourny)
+                    
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">
-                                    <h5 class="card-text"><?php  echo $i->name?>
+
+                                    <h5 class="card-text"> {{ $tourny->name }}
                                         <br>
-                                        <small class="card-text"><?php echo $i->establecimiento->nombre?></small>
-                                    </h5>
-                                    <br>
+                                        <small class="card-text"> {{ $tourny->nombre }} </small>
+                                    </h5> <br>
+
                                     <i class='fa fa-map-marker'></i>
-                                    <small class="text"><?php echo "Barcelona" ?> </small>
-                                    <br>
-                                    <i class='fas fa-table-tennis'></i>
-                                    <small class="text"><?php echo $i->deporte ?> </small>
-                                    <br>
-                                    <i class='fa fa-intersex'></i>
-                                    <small class="text"><?php echo $i->genero ?> </small>
-                                    <br>
+                                    <small class="text"> {{ $tourny->direccion }}  </small>
+                                    <br><br>
+                                    
+                                    <i class="fas fa-trophy"></i>
+                                    <small class="text"> {{ $sportNames[$tourny->id_deporte] }}  </small>
+
+
+                                    <i class="fas fa-venus-mars ml-5"></i>
+                                    <small class="text"><?php echo $tourny->genero ?> </small><br><br>
+                                    
+
                                     <i class='far fa-calendar-alt'></i>
-                                    <small class="text"><?php $date = strtotime($i->fecha);echo date('d/m/Y',$date) ?> </small>
+                                    <small class="text"><?php $date = strtotime($tourny->fecha);echo date('d/m/Y',$date) ?> </small><br> <br>
+
+
                                     <div class="mt-3 d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Inscribirse </button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary"> Inscribirse </button>
                                         </div>
-                                        <small class="text-muted"> <?php echo $i->precio ?>€ por persona</small>
+                                        <small class="text-muted"> <?php echo $tourny->precio ?>€ por persona</small>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

@@ -16,9 +16,10 @@
                                     <small class="card-text"> {{ $tourny->nombre}} </small> <br><br>
                                     
                                     <i class='fa fa-map-marker'></i>
-                                    <small class="text"> {{ $city }} </small>
-                                    <i class='far fa-calendar-alt ml-5 '></i>
-                                    <small class="text"> {{ date_format(date_create($tourny->fecha),"d/m/y") }} </small> <br>
+                                    <small class="text"> {{ $tourny->direccion }} </small>
+                                    <br><br>
+                                    <i class='far fa-calendar-alt'></i>
+                                    <small class="text"> {{ date_format(date_create($tourny->fecha),"d/m/y") }} </small> <br><br>
                                     
                                     <i class="fas fa-trophy"></i>
                                     <small class="text"> {{ $sportName }} </small>
