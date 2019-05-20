@@ -78,7 +78,7 @@ class PagesController extends Controller
     public function tournamentsSearched(Request $request){
 
         $city = $request->input('name');
-        
+         
         $sport = $request->input('sport');
         $sportName = Deporte::where('id',$sport)->firstOrfail()->nombre;
         
@@ -104,12 +104,13 @@ class PagesController extends Controller
         }
 
 
-        $tournsSearched = Tournaments::where([
-            ['genero', '=', $gender],
-            ['id_deporte', '=', $sport],
-            ['fecha', '>=' , $date]
-        ])->get();
-
+        $tournsSearched = DB::table('tournaments')->join('establecimiento','establecimiento.id','=','tournaments.id_club')
+                                                    ->where('establecimiento.direccion','LIKE','%' . $city . '%')
+                                                    ->where([
+                                                        ['genero', '=', $gender],
+                                                        ['id_deporte', '=', $sport],
+                                                        ['fecha', '>=' , $date]
+                                                    ])->get();
         
         return view('TournamentsSearched',compact('city','sport','sportName','gender','date','tournsSearched'));
 
@@ -130,6 +131,33 @@ class PagesController extends Controller
         $surface =$request->input('surface');
         $wall =$request->input('wall');
 
+        $sportsCentersSearched = DB::table('establecimiento');
+        if ($city) {
+            $sportsCentersSearched = $sportsCentersSearched->where('direccion', 'LIKE', '%' . $city . '%');
+        }
+        if ($sport) {
+            $sportsCentersSearched = $sportsCentersSearched->join('deportes_establecimiento', 'establecimiento.id', '=', 'deportes_establecimiento.id_club');
+            $sportsCentersSearched = $sportsCentersSearched->where('deportes_establecimiento.id_deporte', '=', $sport);
+        }
+       /* if ($date) {
+            $sportsCentersSearched = $sportsCentersSearched->join('pista', 'establecimiento.id', '=', 'pista.id_club');
+            $sportsCentersSearched = $sportsCentersSearched->join('reserva', 'pista.id', '=', 'reserva.id_pista');
+            $sportsCentersSearched = $sportsCentersSearched->where('establecimiento.hora_inicio', '=', $date);
+        } */
+        if($enclosure || $surface || $wall){
+            $sportsCentersSearched = $sportsCentersSearched->join('pista', 'establecimiento.id', '=', 'pista.id_club');
+        }
+        if($enclosure){
+            $sportsCentersSearched = $sportsCentersSearched->where('pista.cerramiento', '=', $enclosure);
+        }
+        if($surface){
+            $sportsCentersSearched = $sportsCentersSearched->where('pista.superficie', '=', $surface);
+        }
+        if($wall){
+            $sportsCentersSearched = $sportsCentersSearched->where('pista.pared', '=', $wall);
+        }
+        $sportsCentersSearched = $sportsCentersSearched->get();
+        //Date format: month/day/year
         if(is_null($date)){
             $dateArray = getDate();
             $day = $dateArray['mday'];
@@ -138,10 +166,11 @@ class PagesController extends Controller
             $date = date_create("$day-$month-$year");
             $date = date_format($date,"d/m/Y");
         }
-        
-        $sportsCentersSearched = DB::table('establecimiento')->where('prioridad','1')->get();
-
-        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched'));
+        $surfaceTypes = DB::table('pista')->select('superficie')->distinct()->get();
+        $wallTypes = DB::table('pista')->select('pared')->distinct()->get();
+        $enclosureTypes = DB::table('pista')->select('cerramiento')->distinct()->get();
+        $sportTypes  = DB::table('deporte')->select('id', 'nombre')->distinct()->get();  /* El distinct no es realmente necesario aqui */
+        return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched','surfaceTypes','wallTypes','enclosureTypes', 'sportTypes'));
     }
 
     /**
@@ -253,12 +282,17 @@ class PagesController extends Controller
 
     public function timetable($idclub, $iduser){
 
+
+        $fieldTypes = DB::table('pista')->select('superficie')->distinct()->get();
+        $enclosureTypes = DB::table('pista')->select('cerramiento')->distinct()->get();
+        $wallTypes = DB::table('pista')->select('pared')->distinct()->get();
+
         //$datosestablecimiento = $this->datosestablecimiento($id);
         $datospista = $this->datospista($idclub);
         //$datosreserva = $this->datosreserva($id);
         $datosdeporte = $this->datosdeporte();
 
-        return view('timetable', compact(  'datosdeporte', 'idclub', 'iduser'));
+        return view('timetable', compact('datosdeporte', 'idclub', 'iduser','fieldTypes','enclosureTypes','wallTypes'));
     }
 
     public function timetablepart($idclub, $iduser,$today){
@@ -312,125 +346,6 @@ class PagesController extends Controller
             ->where('pista.id', '=', $idpista)
             ->get();
     }
-
-    public function getprofileinfo($idprofile, $return){
-        $profileInfo = \DB::table('users')
-            ->where('users.id', '=', $idprofile)
-            ->get();
-        return view('myProfile', compact('profileInfo', 'idprofile', 'return'));
-    }
-
-    public function editprofileprivate(Request $request, $idprofile){
-        $username = $request->input('username');
-        $biography = $request->input('biography');
-
-        $query = \DB::table('users')->where('id',$idprofile);
-        $return = false;
-        if($username != null) {
-            $query->update(['username' => $username]);
-            $return = true;
-        }
-
-        if($biography != null) {
-            $query->update(['descripcion'=> $biography]);
-            $return = true;
-        }
-
-        return $this->getprofileinfo($idprofile, $return);
-
-    }
-
-    public function editprofilepublic(Request $request, $idprofile){
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $tel = $request->input('tel');
-        $zip = $request->input('zip');
-        $city = $request->input('city');
-        $adress = $request->input('adress');
-
-        $query = \DB::table('users')->where('id',$idprofile);
-        $return = false;
-        if($name != null) {
-            $query->update(['name' => $name]);
-            $return = true;
-        }
-
-        if($email != null) {
-            $query->update(['email'=> $email]);
-            $return = true;
-        }
-
-        if($tel != null) {
-            $query->update(['telefono' => $tel]);
-            $return = true;
-        }
-
-        if($zip != null) {
-            $query->update(['codigo_postal'=> $zip]);
-            $return = true;
-        }
-
-        if($city != null) {
-            $query->update(['ciudad' => $city]);
-            $return = true;
-        }
-
-        if($adress != null) {
-            $query->update(['direccion'=> $adress]);
-            $return = true;
-        }
-
-        return $this->getprofileinfo($idprofile, $return);
-
-    }
-
-    public function editpassword(Request $request, $idprofile) {
-
-        $bool = false;
-        $bool = false;
-        $actualPasswordInput = brypt($request->input('inputPasswordCurrent'));
-
-        $actualPasswordSelect = \DB::table('users')
-            ->select('users.password')
-            ->where('users.id', '=', $idprofile)
-            ->get();
-
-        if($actualPasswordInput == $actualPasswordSelect){
-            $bool = true;
-        }
-
-        if($request->input('inputPasswordNew') == $request->input('inputPasswordNew2')){
-            $newPasswordInput = bcrypt($request->input('inputPasswordNew'));
-            $bool2 = true;
-        }
-
-        $query = \DB::table('users')->where('id',$idprofile);
-        $query->update(['password' => $newPasswordInput]);
-
-        if($bool && $bool2){
-            $return = true;
-            return $this->getprofileinfo($idprofile, $return);
-        }
-        else {
-            echo '<div style="display:none;" class="card-title mb-0 msgUpdate"><p><b>Contraseña actual o comprobación de la nueva contraseña erroneas.</b></p></div>';
-        }
-
-
-    }
-
-    public function deleteaccount(Request $request, $idprofile) {
-
-        if($request->has('ok')){
-            $query = \DB::table('users')->where('id',$idprofile);
-            $query->delete();
-            echo '<div style="display:none;" class="card-title mb-0 msgUpdate"><p><b>Cuenta eliminada!</b></p></div>';
-
-        }
-        else if($request->has('no')){
-            return $this->getprofileinfo($idprofile, false);
-        }
-
-    }
     
     public function insertbookbd($finalhour, $initialhour, $iduser, $date, $idpista){
 
@@ -458,6 +373,7 @@ class PagesController extends Controller
         echo "<b style='padding-left: 40%; font-size: 20px;'>Pista Reservada!</b>";
 
     }
+
 
     public function insertarReserva(Request $request){
 
