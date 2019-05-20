@@ -17,8 +17,8 @@ class CreateServiciosEstablecimientoTable extends Migration
             $table->unsignedBigInteger('id_servicio');
             $table->unsignedBigInteger('id_club');
             $table->primary(['id_servicio','id_club']);
-            $table->foreign('id_servicio')->references('id')->on('servicio');
-            $table->foreign('id_club')->references('id')->on('establecimiento');
+            //$table->foreign('id_servicio')->references('id')->on('servicio');
+            //$table->foreign('id_club')->references('id')->on('establecimiento');
         });
         DB::table('servicios_establecimiento')->insert(
             array(
