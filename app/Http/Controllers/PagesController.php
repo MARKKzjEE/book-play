@@ -393,6 +393,134 @@ class PagesController extends Controller
 
 
 
+    /**
+     *  Functions relative to ClubPage
+     * 
+     * 
+     * 
+     * 
+     */
+
+    public function getprofileinfo($idprofile, $return){
+        $profileInfo = \DB::table('users')
+            ->where('users.id', '=', $idprofile)
+            ->get();
+        return view('myProfile', compact('profileInfo', 'idprofile', 'return'));
+    }
+
+    public function editprofileprivate(Request $request, $idprofile){
+        $username = $request->input('username');
+        $biography = $request->input('biography');
+
+        $query = \DB::table('users')->where('id',$idprofile);
+        $return = false;
+        if($username != null) {
+            $query->update(['username' => $username]);
+            $return = true;
+        }
+
+        if($biography != null) {
+            $query->update(['descripcion'=> $biography]);
+            $return = true;
+        }
+
+        return $this->getprofileinfo($idprofile, $return);
+
+    }
+
+    public function editprofilepublic(Request $request, $idprofile){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $tel = $request->input('tel');
+        $zip = $request->input('zip');
+        $city = $request->input('city');
+        $adress = $request->input('adress');
+
+        $query = \DB::table('users')->where('id',$idprofile);
+        $return = false;
+        if($name != null) {
+            $query->update(['name' => $name]);
+            $return = true;
+        }
+
+        if($email != null) {
+            $query->update(['email'=> $email]);
+            $return = true;
+        }
+
+        if($tel != null) {
+            $query->update(['telefono' => $tel]);
+            $return = true;
+        }
+
+        if($zip != null) {
+            $query->update(['codigo_postal'=> $zip]);
+            $return = true;
+        }
+
+        if($city != null) {
+            $query->update(['ciudad' => $city]);
+            $return = true;
+        }
+
+        if($adress != null) {
+            $query->update(['direccion'=> $adress]);
+            $return = true;
+        }
+
+        return $this->getprofileinfo($idprofile, $return);
+
+    }
+
+    public function editpassword(Request $request, $idprofile) {
+
+        $bool = false;
+        $bool = false;
+        $actualPasswordInput = brypt($request->input('inputPasswordCurrent'));
+
+        $actualPasswordSelect = \DB::table('users')
+            ->select('users.password')
+            ->where('users.id', '=', $idprofile)
+            ->get();
+
+        if($actualPasswordInput == $actualPasswordSelect){
+            $bool = true;
+        }
+
+        if($request->input('inputPasswordNew') == $request->input('inputPasswordNew2')){
+            $newPasswordInput = bcrypt($request->input('inputPasswordNew'));
+            $bool2 = true;
+        }
+
+        $query = \DB::table('users')->where('id',$idprofile);
+        $query->update(['password' => $newPasswordInput]);
+
+        if($bool && $bool2){
+            $return = true;
+            return $this->getprofileinfo($idprofile, $return);
+        }
+        else {
+            echo '<div style="display:none;" class="card-title mb-0 msgUpdate"><p><b>Contraseña actual o comprobación de la nueva contraseña erroneas.</b></p></div>';
+        }
+
+
+    }
+
+    public function deleteaccount(Request $request, $idprofile) {
+
+        if($request->has('ok')){
+            $query = \DB::table('users')->where('id',$idprofile);
+            $query->delete();
+            echo '<div style="display:none;" class="card-title mb-0 msgUpdate"><p><b>Cuenta eliminada!</b></p></div>';
+
+        }
+        else if($request->has('no')){
+            return $this->getprofileinfo($idprofile, false);
+        }
+
+    }
+
+
 
 
 

@@ -25,8 +25,32 @@ class CreateUsersTable extends Migration
             $table->integer('codigo_postal')->nullable();
             $table->boolean('verificacion_mail')->nullable();
             $table->string('imagen_perfil');
+            $table->string('descripcion');
+            $table->string('ciudad');
+            $table->string('direccion');
             $table->rememberToken();
         });
+
+        DB::table('users')->insert(
+            array(
+                'name' => 'Marc Gallego Gines',
+                'username' => 'marcgallego',
+                'email' => 'mark.gallego.gines@gmail.com',
+                'email_verified_at' => '2019-05-12 08:00:00',
+                'password' => bcrypt('1234567'),
+                'telefono' => '933952311',
+                'sistema_puntos' => '1',
+                'codigo_postal' => '08020',
+                'verificacion_mail' => true,
+                'imagen_perfil' => 'coche.jpg',
+                'descripcion' => 'Soy un chico deportista',
+                'ciudad' => 'Barcelona',
+                'direccion' => 'Calle Pelayo 247'
+            )
+        );
+
+
+
     }
 
     /**

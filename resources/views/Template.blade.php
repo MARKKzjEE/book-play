@@ -209,7 +209,7 @@
                             <a class="nav-link" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('myProfile') }}">Mi perfil</a>
+                            <a class="nav-link" href="{{ route('getprofileinfo') }}/1/false">Mi perfil</a>
                         </li>
 
                     </ul>

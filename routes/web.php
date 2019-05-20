@@ -41,4 +41,19 @@ Route::get('filters/{id?}/{id2?}/{id3?}/{id4?}/{id5?}/{id6?}/{id7?}','PagesContr
 Route::get('detailtimetable/{id?}/{id2?}/{id3?}/{id4?}','PagesController@detailtimetable')->name('detailtimetable');
 
 
+/**
+ * Functions relative to clubpage
+ */
+
+
+Route::get('getprofileinfo/{id?}/{id2?}','PagesController@getprofileinfo')->name('getprofileinfo');
+
+Route::post('editprofileprivate/{id?}','PagesController@editprofileprivate')->name('editprofileprivate');
+
+Route::post('editprofilepublic/{id?}','PagesController@editprofilepublic')->name('editprofilepublic');
+
+Route::post('editpassword/{id?}','PagesController@editpassword')->name('editpassword');
+
+Route::get('deleteaccount/{id?}','PagesController@deleteaccount')->name('deleteaccount');
+
 
