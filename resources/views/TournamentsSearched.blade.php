@@ -13,7 +13,7 @@
                                 <div class="card-body bg-light text-dark">
 
                                     <h4 class="card-text"> {{ $tourny->name }} </h4>
-                                    <small class="card-text"> {{ $tourny->establecimiento->nombre}} </small> <br><br>
+                                    <small class="card-text"> {{ $tourny->nombre}} </small> <br><br>
                                     
                                     <i class='fa fa-map-marker'></i>
                                     <small class="text"> {{ $city }} </small>

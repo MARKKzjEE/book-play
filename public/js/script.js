@@ -58,11 +58,11 @@ $(document).ready(function(){
 
         /*
         DESCOMENTAR SI NO QUEREMOS PONER FECHAS ANTERIORES AL DIA ACTUAL.
-
-        * if($("#date_today").val() < today){
+        */
+        if($("#date_today").val() < today){
             $("#date_today").val(today);
         }
-        * */
+        
         var cercamiento = $('#cercamiento option:selected').val();
         var superficie = $('#superficie option:selected').val();
         var pared = $('#pared option:selected').val();
@@ -95,5 +95,5 @@ $(document).ready(function(){
         document.getElementById("buttonsearch").addEventListener('click', filters(superficie,cercamiento,pared,deporte,date,club,user));
 
     });
-
 });
+

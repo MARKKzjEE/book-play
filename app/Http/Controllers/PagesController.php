@@ -37,6 +37,7 @@ class PagesController extends Controller
     public function registration(){
         return view('Registration');
     }
+
     public function myProfile(){
         return view('MyProfile');
     }
@@ -47,7 +48,7 @@ class PagesController extends Controller
         /** @var Establecimiento $center */
         $center = Establecimiento::where('id', $ID)->firstOrFail();
         /** @var Establecimiento $center */
-
+        
 
         $sports = DeportesEstablecimiento::where('id_club',$ID)->get();
         $services = ServiciosEstablecimiento::where('id_club',$ID)->get();
@@ -68,7 +69,7 @@ class PagesController extends Controller
         return view('Club',compact('center','sportsNames','servicesNames'));
     }
     public function tournaments(){
-
+        
         $tournaments = Tournaments::where('prioridad','1')->get();
         return view('tournament',compact('tournaments'));
 
@@ -77,10 +78,10 @@ class PagesController extends Controller
     public function tournamentsSearched(Request $request){
 
         $city = $request->input('name');
-
+         
         $sport = $request->input('sport');
         $sportName = Deporte::where('id',$sport)->firstOrfail()->nombre;
-
+        
         $gender = $request->input('gender');
         if($gender == 1){
             $gender = 'Masculino';
@@ -90,10 +91,10 @@ class PagesController extends Controller
             $gender = 'Mixto';
         }
 
-
+        
         $date = $request->input('fecha');
         $date = date_format(date_create($date),"y-m-d");
-
+        
         if(is_null($date)){
             $dateArray = getDate();
             $day = $dateArray['mday'];
@@ -103,13 +104,14 @@ class PagesController extends Controller
         }
 
 
-        $tournsSearched = Tournaments::where([
-            ['genero', '=', $gender],
-            ['id_deporte', '=', $sport],
-            ['fecha', '>=' , $date]
-        ])->get();
-
-
+        $tournsSearched = DB::table('tournaments')->join('establecimiento','establecimiento.id','=','tournaments.id_club')
+                                                    ->where('establecimiento.direccion','LIKE','%' . $city . '%')
+                                                    ->where([
+                                                        ['genero', '=', $gender],
+                                                        ['id_deporte', '=', $sport],
+                                                        ['fecha', '>=' , $date]
+                                                    ])->get();
+        
         return view('TournamentsSearched',compact('city','sport','sportName','gender','date','tournsSearched'));
 
     }
@@ -172,17 +174,17 @@ class PagesController extends Controller
     }
 
     /**
-     *
-     *
-     * Functions relative to book a club field
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
+     * 
+     * 
+     * Functions relative to book a club field 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
      */
     public function datosestablecimiento($id){
         return \DB::table('establecimiento')
@@ -344,7 +346,7 @@ class PagesController extends Controller
             ->where('pista.id', '=', $idpista)
             ->get();
     }
-
+    
     public function insertbookbd($finalhour, $initialhour, $iduser, $date, $idpista){
 
 
@@ -395,6 +397,6 @@ class PagesController extends Controller
 
 
 
-
+    
 
 }

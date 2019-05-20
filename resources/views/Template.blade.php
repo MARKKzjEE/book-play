@@ -272,11 +272,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="{{ asset('js/bootstrap2.min.js') }}" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-        <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-        <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        
+        
+        
+        
+        
         <script>
         Holder.addTheme('thumb', {
             bg: '#55595c',
