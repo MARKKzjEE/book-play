@@ -68,6 +68,14 @@ class PagesController extends Controller
 
         return view('Club',compact('center','sportsNames','servicesNames'));
     }
+
+    /**
+     * 
+     * Functions relative to Tournaments
+     */
+
+
+
     public function tournaments(){
         
         $tournaments = DB::table('tournaments')
@@ -81,12 +89,6 @@ class PagesController extends Controller
             $sportNames[$sportsClub[0]->id] = $sportsClub[0]->nombre;
         }
         
-
-        
-
-        
-
-
         return view('tournament',compact('tournaments','sportTypes','clubsNames','sportNames'));
 
     }
@@ -133,9 +135,29 @@ class PagesController extends Controller
 
     }
 
-    public function reservar(){
-        return view('Reservar');
+
+
+    public function signUpTournament($idTournament, Request $request){
+
+        echo $idTournament . "<br>";
+        $idUser = 2;
+        echo $numPlayers = $request->input('number');
+        
+
+        /* EL ID DEL USUSRIO SE PUEDE SACAR CON $this->authorize('modifyUser', auth()->user()); 
+        **
+        **
+        */
+        
+        
+        
+
+
+
+
     }
+
+    
 
 
 

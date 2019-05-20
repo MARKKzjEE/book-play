@@ -25,6 +25,8 @@ class CreateTournamentsTable extends Migration
             $table->date('fecha');
             $table->float('precio');
             $table->float('prioridad');
+            $table->integer('num_participantes_max');
+            $table->integer('num_participantes_actual');
         });
 
         DB::table('tournaments')->insert(
@@ -37,6 +39,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-06-05'),
                 'precio' => '8.00',
                 'prioridad' => '1',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -50,6 +54,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-06-10'),
                 'precio' => '8.00',
                 'prioridad' => '1',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -64,6 +70,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-06-15'),
                 'precio' => '8.00',
                 'prioridad' => '1',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -78,6 +86,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-06-20'),
                 'precio' => '8.00',
                 'prioridad' => '1',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -92,6 +102,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-06-25'),
                 'precio' => '8.00',
                 'prioridad' => '1',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -105,6 +117,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-07-05'),
                 'precio' => '8.00',
                 'prioridad' => '1',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -118,6 +132,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-08-20'),
                 'precio' => '12.30',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -131,6 +147,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-08-21'),
                 'precio' => '12.30',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -144,6 +162,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-07-21'),
                 'precio' => '5.30',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -157,6 +177,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-07-22'),
                 'precio' => '5.30',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -170,6 +192,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-07-22'),
                 'precio' => '5.30',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
         
@@ -183,6 +207,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-07-21'),
                 'precio' => '5.30',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -196,6 +222,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create('2019-08-22'),
                 'precio' => '10.00',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 
@@ -209,6 +237,8 @@ class CreateTournamentsTable extends Migration
                 'fecha' => date_create ('2019-06-10'),
                 'precio' => '10.00',
                 'prioridad' => '2',
+                'num_participantes_max' => '30',
+                'num_participantes_actual' => '0',
             )
         );
 

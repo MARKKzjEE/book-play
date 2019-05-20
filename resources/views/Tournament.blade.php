@@ -107,10 +107,57 @@
 
 
                                     <div class="mt-3 d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-primary"> Inscribirse </button>
-                                        </div>
                                         <small class="text-muted"> <?php echo $tourny->precio ?>€ por persona</small>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Inscribirse </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle"> Numero de participantes </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <form class="formTournament" action=" {{ URL::to('/signUpTournament', $tourny->id)  }}" method="get" >
+                                                            {{ csrf_field() }}
+                                                            <div class="form-group row">
+                                                                <label class="sr-only" for="numParticipantes"> Numero participantes </label>
+                                                                <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="{{ $tourny->num_participantes_max - $tourny->num_participantes_actual }}" >
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
+
+
+                                                        </form>
+
+                                                    </div>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                            
+                                        
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     </div>
 
                                 </div>
