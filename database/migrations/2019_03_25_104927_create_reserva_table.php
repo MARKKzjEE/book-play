@@ -24,9 +24,11 @@ class CreateReservaTable extends Migration
             $table->integer('id_pago');
             $table->float('cantidad');
             $table->string('descripcion');
-            $table->unsignedInteger('id_usuario')->nullable();
-            //$table->foreign('id_usuario')->references('id')->on('user');
-            $table->unsignedInteger('id_pista')->nullable();
+            $table->unsignedBigInteger('id_usuario')->nullable();
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->unsignedBigInteger('id_pista')->nullable();
+            $table->foreign('id_pista')->references('id')->on('pista');
+            $table->timestamps();
         });
     }
 
