@@ -68,18 +68,20 @@ class PagesController extends Controller
 
 
     public function tournaments(){
-        
-        $tournaments = DB::table('tournaments')
-            ->join('establecimiento','establecimiento.id', '=', 'tournaments.id_club')
-            ->where('tournaments.prioridad','1')->get();
 
+        $tournaments = Tournaments::join('establecimiento','establecimiento.id','=','tournaments.id')
+                                ->where('tournaments.prioridad',1)->get();
+ 
         $sportTypes  = DB::table('deporte')->select('id', 'nombre')->distinct()->get();
         $sportNames = array();
         foreach ($tournaments as $tourny ) {
             $sportsClub = Deporte::where('id',$tourny->id_deporte)->get();
             $sportNames[$sportsClub[0]->id] = $sportsClub[0]->nombre;
         }
+
+        //dd($tournaments);
         
+
         return view('tournament',compact('tournaments','sportTypes','clubsNames','sportNames'));
 
     }
@@ -114,25 +116,45 @@ class PagesController extends Controller
         }
 
 
-        $tournsSearched = DB::table('tournaments')->join('establecimiento','establecimiento.id','=','tournaments.id_club')
-                                                    ->where('establecimiento.direccion','LIKE','%' . $city . '%')
-                                                    ->where([
-                                                        ['genero', '=', $gender],
-                                                        ['id_deporte', '=', $sport],
-                                                        ['fecha', '>=' , $date]
-                                                    ])->get();
+        $tourns = Tournaments::join('establecimiento','establecimiento.id','=','tournaments.id_club')->get();
         
+
+
+        $tournsSearched = Tournaments::join('establecimiento','establecimiento.id','=','tournaments.id_club')
+            ->where('establecimiento.direccion','LIKE','%' . $city . '%')
+            ->where([
+                ['genero', '=', $gender],
+                ['id_deporte', '=', $sport],
+                ['fecha', '>=' , $date]
+            ])->get();
+
+        dd($tourns);
+
         return view('TournamentsSearched',compact('city','sport','sportName','gender','date','tournsSearched'));
 
     }
 
 
 
-    public function signUpTournament($idTournament, Request $request){
+    public function signUpTournament($idTournament,Request $request){
 
-        echo $idTournament . "<br>";
+        echo "id de torneo: " . $idTournament . "<br>";
         $idUser = 2;
-        echo $numPlayers = $request->input('number');
+        echo "num de players: " . $numPlayers = $request->input('number');
+
+        DB::table('tournaments')
+                    ->where('id',$idTournament)
+                    ->increment('num_participantes_actual', $numPlayers);
+
+        DB::table('reserva_tournament')->insert(
+            array(
+                'id_tournament' => $idTournament,
+                'id_usuario' => 1,
+                'num_inscripciones' => $numPlayers
+            )
+        );
+
+        
         
 
         /* EL ID DEL USUSRIO SE PUEDE SACAR CON $this->authorize('modifyUser', auth()->user()); 
