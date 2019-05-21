@@ -42,7 +42,7 @@ class CreateEstablecimientoTable extends Migration
                 'imagen_perfil' => 'img1.jpg',
                 'hora_inicio' => '2019-05-12 08:00:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
+                'descripcion' => 'Con una superficie de 3.000 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
                 
@@ -61,9 +61,8 @@ class CreateEstablecimientoTable extends Migration
                 'imagen_perfil' => 'img2.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'Club Barcino se encuentra en el centro del Barrio de Sants y cuenta con un gran número de pistas de tennis de tierra
+                 batida. Ven a disfrutar de tu deporte favorito en las mejores pistas de toda Barcelona!'
                 
             )
         );
@@ -79,9 +78,9 @@ class CreateEstablecimientoTable extends Migration
                 'imagen_perfil' => 'img3.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'Nos encontramos a las afueras de Badalona para poder darte todos los servicios posibles de la manera más
+                        amplia posible. Nuestro recinto cuenta con pistas de padel y pistas de tennis ( tierra batida y cemento). Además, 
+                        tenemos abierta nuestra gran piscina descubierta toda la temporada de verano.'
                 
             )
         );
@@ -97,9 +96,8 @@ class CreateEstablecimientoTable extends Migration
                 'imagen_perfil' => 'img4.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'En el centro de Sabadell tenemos el club de tennis más grande de toda la ciudad. Contamos con una piscina de
+                        100X50 metros cubierta y un gran numero de pistas de tennis y de padel.'
                 
             )
         );
@@ -115,9 +113,9 @@ class CreateEstablecimientoTable extends Migration
                 'imagen_perfil' => 'img5.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'En club Basquet Vic ofrecemos nuestras canchas para que puedas disfrutar de un buen partido con tus amigos
+                        bajo techo. En el precio de la reserva te incluimos un vestuario para todos los integrantes tu equipo. Además, podràs
+                        disfrutar de las grandes ofertas de nuestro Bar.'
                 
             )
         );
@@ -133,9 +131,8 @@ class CreateEstablecimientoTable extends Migration
                 'imagen_perfil' => 'img6.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'Con una superficie total de 1 hectarea, ofrecemos los mejores campos de futbol cesped de toda Badalona.
+                        Aprovecha nuestros vestuarios totalmente reformados y no olvides que en nuestro recinto contamos con un parking gratuito para todos nuestros clientes.'
                 
             )
         );
