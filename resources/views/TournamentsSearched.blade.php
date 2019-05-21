@@ -31,7 +31,7 @@
                                     <small class="text"> {{ $tourny->precio }}€/pers. </small><br> <br>
 
                                     
-                                    <p class="text-muted"> Numero de entradas: </p>
+                                    <p class="text-muted"> Numero de inscripciones: </p>
 
                                     <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id_tourny)  }}" method="get" >
                                             {{ csrf_field() }}
