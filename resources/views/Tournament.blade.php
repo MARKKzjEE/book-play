@@ -1,6 +1,8 @@
 @extends('Template')
 @section('Main')
-
+@if($errors->any())
+<div class="p-3 mb-2 bg-success text-white text-center"> <h3>{{$errors->first()}}</h3> </div>
+@endif
     <!-- TopContent / Search sports centers  -->
     <header class="masthead" style="background-image: url('https://pbs.twimg.com/media/DfLzJ9aU8AA1sx_.jpg');">
         <div class="overlay"></div>
@@ -76,6 +78,7 @@
 
     <!-- BottomContent / VIP Sports centers -->
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            
         <div class="album py-5 ">
             <h2 class="display-5 container-fluid"> Torneos destacados </h2>
             <br/>

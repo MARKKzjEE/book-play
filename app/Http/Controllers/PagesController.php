@@ -114,21 +114,17 @@ class PagesController extends Controller
             $year = $dateArray['year'];
             $date = date_create("$year-$month-$day");
         }
+  
 
-
-        $tourns = Tournaments::join('establecimiento','establecimiento.id','=','tournaments.id_club')->get();
-        
-
-
-        $tournsSearched = Tournaments::join('establecimiento','establecimiento.id','=','tournaments.id_club')
+        $tournsSearched = Tournaments::select('*','tournaments.id as id_tourny')
+            ->join('establecimiento','establecimiento.id','=','tournaments.id_club')
             ->where('establecimiento.direccion','LIKE','%' . $city . '%')
             ->where([
                 ['genero', '=', $gender],
                 ['id_deporte', '=', $sport],
                 ['fecha', '>=' , $date]
-            ])->get();
-
-        dd($tourns);
+            ])
+            ->get();
 
         return view('TournamentsSearched',compact('city','sport','sportName','gender','date','tournsSearched'));
 
@@ -138,9 +134,9 @@ class PagesController extends Controller
 
     public function signUpTournament($idTournament,Request $request){
 
-        echo "id de torneo: " . $idTournament . "<br>";
-        $idUser = 2;
-        echo "num de players: " . $numPlayers = $request->input('number');
+        //echo "id de torneo: " . $idTournament . "<br>";
+        //$idUser = 2;
+        $numPlayers = $request->input('number');
 
         DB::table('tournaments')
                     ->where('id',$idTournament)
@@ -153,21 +149,11 @@ class PagesController extends Controller
                 'num_inscripciones' => $numPlayers
             )
         );
-
-        
-        
-
         /* EL ID DEL USUSRIO SE PUEDE SACAR CON $this->authorize('modifyUser', auth()->user()); 
         **
         **
         */
-        
-        
-        
-
-
-
-
+        return redirect()->route('tournaments')->withErrors(['Inscripción guardada','Inscripción guardada']);
     }
 
     

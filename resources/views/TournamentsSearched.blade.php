@@ -33,7 +33,7 @@
                                     
                                     <p class="text-muted"> Numero de entradas: </p>
 
-                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id)  }}" method="get" >
+                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id_tourny)  }}" method="get" >
                                             {{ csrf_field() }}
 
                                             <div class="form-group col">
