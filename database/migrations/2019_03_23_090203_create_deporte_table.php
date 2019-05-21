@@ -21,7 +21,7 @@ class CreateDeporteTable extends Migration
 
         DB::table('deporte')->insert(
             array(
-                'nombre' => 'Tenis',
+                'nombre' => 'Tennis',
                 'id_imagen' => 'tenis.png'
             )
         );

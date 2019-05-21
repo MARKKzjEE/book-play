@@ -18,7 +18,7 @@ class CreatePistaTable extends Migration
             $table->string('nombre');
             $table->string('superficie');
             $table->string('cerramiento');
-            $table->string('pared');
+            $table->string('pared')->nullable();
             $table->float('precio');
             $table->unsignedBigInteger('id_club')->nullable();
             //$table->foreign('id_club')->references('id')->on('establecimiento')->unsigned();
@@ -29,11 +29,10 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 1',
-                'superficie' => 'Tierra',
-                'cerramiento' => 'Interior',
-                'pared' => 'Muro',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
                 'precio' => 3.0,
-                'id_deporte' => '1',
+                'id_deporte' => '3',
                 'id_club'  => '1'
             )
         );
@@ -41,9 +40,8 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 2',
-                'superficie' => 'Tierra',
+                'superficie' => 'Cesped',
                 'cerramiento' => 'Exterior',
-                'pared' => 'Panorámico',
                 'precio' => 3.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
@@ -53,11 +51,11 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 3',
-                'superficie' => 'Tierra',
-                'cerramiento' => 'Interior',
-                'pared' => 'Muro',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Panorámico',
                 'precio' => 3.0,
-                'id_deporte' => '1',
+                'id_deporte' => '3',
                 'id_club'  => '1'
             )
         );
@@ -65,10 +63,9 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 4',
-                'superficie' => 'Tierra',
+                'superficie' => 'Tierra Batida',
                 'cerramiento' => 'Exterior',
-                'pared' => 'Cristal',
-                'precio' => 3.0,
+                'precio' => 5.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -77,10 +74,42 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 5',
-                'superficie' => 'Tierra',
-                'cerramiento' => 'Interior',
-                'pared' => 'Cristal',
-                'precio' => 3.0,
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
+                'id_deporte' => '1',
+                'id_club'  => '1'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 6',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
+                'id_deporte' => '1',
+                'id_club'  => '1'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 7',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
+                'id_deporte' => '1',
+                'id_club'  => '1'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 8',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
                 'id_deporte' => '1',
                 'id_club'  => '1'
             )
@@ -89,16 +118,642 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 1',
-                'superficie' => 'Hierba',
+                'superficie' => 'Tierra Batida',
                 'cerramiento' => 'Exterior',
-                'pared' => 'Muro',
                 'precio' => 4.0,
                 'id_deporte' => '1',
                 'id_club'  => '2'
             )
         );
 
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 4.0,
+                'id_deporte' => '1',
+                'id_club'  => '2'
+            )
+        );
 
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 4.0,
+                'id_deporte' => '1',
+                'id_club'  => '2'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 4',
+                'superficie' => 'Resina Sintética',
+                'cerramiento' => 'Exterior',
+                'precio' => 4.0,
+                'id_deporte' => '1',
+                'id_club'  => '2'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 5',
+                'superficie' => 'Resina Sintética',
+                'cerramiento' => 'Exterior',
+                'precio' => 4.0,
+                'id_deporte' => '1',
+                'id_club'  => '2'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 6',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Muro',
+                'precio' => 3.5,
+                'id_deporte' => '3',
+                'id_club'  => '2'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 7',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Muro',
+                'precio' => 3.5,
+                'id_deporte' => '3',
+                'id_club'  => '2'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '3'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '3'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '3'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 4',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 5.0,
+                'id_deporte' => '3',
+                'id_club'  => '3'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 5',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 5.0,
+                'id_deporte' => '3',
+                'id_club'  => '3'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '4'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '4'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Cemento',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '4'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 4',
+                'superficie' => 'Cemento',
+                'cerramiento' => 'Exterior',
+                'precio' => 6.0,
+                'id_deporte' => '1',
+                'id_club'  => '4'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 5',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 5.0,
+                'id_deporte' => '3',
+                'id_club'  => '4'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 6',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 5.0,
+                'id_deporte' => '3',
+                'id_club'  => '4'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 7',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 5.0,
+                'id_deporte' => '3',
+                'id_club'  => '4'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'precio' => 25.0,
+                'id_deporte' => '2',
+                'id_club'  => '5'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'precio' => 25.0,
+                'id_deporte' => '2',
+                'id_club'  => '5'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 100.0,
+                'id_deporte' => '4',
+                'id_club'  => '6'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 11',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 75.0,
+                'id_deporte' => '5',
+                'id_club'  => '6'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 12',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 75.0,
+                'id_deporte' => '5',
+                'id_club'  => '6'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'precio' => 30.0,
+                'id_deporte' => '2',
+                'id_club'  => '7'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'precio' => 30.0,
+                'id_deporte' => '2',
+                'id_club'  => '7'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'precio' => 30.0,
+                'id_deporte' => '2',
+                'id_club'  => '7'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 3.0,
+                'id_deporte' => '3',
+                'id_club'  => '7'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 3.0,
+                'id_deporte' => '3',
+                'id_club'  => '7'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 3.0,
+                'id_deporte' => '3',
+                'id_club'  => '7'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Sintético',
+                'cerramiento' => 'Interior',
+                'precio' => 30.0,
+                'id_deporte' => '2',
+                'id_club'  => '8'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Sintético',
+                'cerramiento' => 'Interior',
+                'precio' => 30.0,
+                'id_deporte' => '2',
+                'id_club'  => '8'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 4',
+                'superficie' => 'Tierra Batida',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 5',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 6',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 7',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 9.0,
+                'id_deporte' => '1',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 8',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 9',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 10',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 11',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Muro',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 12',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Muro',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 13',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'pared' => 'Muro',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '9'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Sintetica',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '10'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Sintetica',
+                'cerramiento' => 'Exterior',
+                'pared' => 'Cristal',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '10'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Sintetica',
+                'cerramiento' => 'Interior',
+                'pared' => 'Muro',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '10'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 4',
+                'superficie' => 'Sintetica',
+                'cerramiento' => 'Interior',
+                'pared' => 'Muro',
+                'precio' => 7.0,
+                'id_deporte' => '3',
+                'id_club'  => '10'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 140.0,
+                'id_deporte' => '4',
+                'id_club'  => '11'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 70.0,
+                'id_deporte' => '5',
+                'id_club'  => '11'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 70.0,
+                'id_deporte' => '5',
+                'id_club'  => '11'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 1',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 50.0,
+                'id_deporte' => '5',
+                'id_club'  => '12'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 2',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 50.0,
+                'id_deporte' => '5',
+                'id_club'  => '12'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 3',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 50.0,
+                'id_deporte' => '5',
+                'id_club'  => '12'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 4',
+                'superficie' => 'Cesped',
+                'cerramiento' => 'Exterior',
+                'precio' => 50.0,
+                'id_deporte' => '5',
+                'id_club'  => '12'
+            )
+        );
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 5',
+                'superficie' => 'Parquet',
+                'cerramiento' => 'Interior',
+                'precio' => 50.0,
+                'id_deporte' => '5',
+                'id_club'  => '12'
+            )
+        );
 
     }
 

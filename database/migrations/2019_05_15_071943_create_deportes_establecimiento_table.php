@@ -29,7 +29,7 @@ class CreateDeportesEstablecimientoTable extends Migration
         );
         DB::table('deportes_establecimiento')->insert(
             array(
-                'id_deporte' => '2',
+                'id_deporte' => '3',
                 'id_club' => '1'
             )
         );
@@ -121,6 +121,24 @@ class CreateDeportesEstablecimientoTable extends Migration
             array(
                 'id_deporte' => '3',
                 'id_club' => '10'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '4',
+                'id_club' => '11'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '5',
+                'id_club' => '11'
+            )
+        );
+        DB::table('deportes_establecimiento')->insert(
+            array(
+                'id_deporte' => '5',
+                'id_club' => '12'
             )
         );
     }

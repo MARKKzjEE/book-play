@@ -35,14 +35,14 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'infoclub@tennisclubbadalona.org',
                 'nombre' => 'Club Tennis Badalona',
-                'direccion' => 'Avda. Juan de Austria, 58-60 08915 , Badalona',
+                'direccion' => 'Avda. Juan de Austria, 58-60, 08915 , Badalona',
                 'codigo_postal' => '08912',
                 'telefono' => '933952311',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img1.jpg',
                 'hora_inicio' => '2019-05-12 08:00:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
+                'descripcion' => 'Con una superficie de 3.000 metros quadrados, el club tennis badalonna es unos de los
                 mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
                 Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
                 
@@ -54,16 +54,15 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'ctbarcino@ctbarcino.cat',
                 'nombre' => 'Club Tennis Barcino',
-                'direccion' => 'Plaça de Narcisa Freixas, 2,',
+                'direccion' => 'Plaça de Narcisa Freixas, 2, 08022, Barcelona',
                 'codigo_postal' => '08022',
                 'telefono' => '934170805',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img2.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'Club Barcino se encuentra en el centro del Barrio de Sants y cuenta con un gran número de pistas de tennis de tierra
+                 batida. Ven a disfrutar de tu deporte favorito en las mejores pistas de toda Barcelona!'
                 
             )
         );
@@ -72,16 +71,16 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'masramce@hotmail.com',
                 'nombre' => 'Club Esportiu Mas-Ram',
-                'direccion' => 'Plaça eucaliptus, 3',
+                'direccion' => 'Plaça eucaliptus, 3, 08916, Badalona',
                 'codigo_postal' => '08916',
                 'telefono' => '934652081',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img3.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'Nos encontramos a las afueras de Badalona para poder darte todos los servicios posibles de la manera más
+                        amplia posible. Nuestro recinto cuenta con pistas de padel y pistas de tennis ( tierra batida y cemento). Además, 
+                        tenemos abierta nuestra gran piscina descubierta toda la temporada de verano.'
                 
             )
         );
@@ -90,16 +89,15 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'clubsabadell@gmail.com',
                 'nombre' => 'Club Tennis Sabadell',
-                'direccion' => 'Carrer Prat de la Riba, 91',
+                'direccion' => 'Carrer Prat de la Riba, 91, 08206, Sabadell',
                 'codigo_postal' => '08206',
                 'telefono' => '937264500',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img4.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'En el centro de Sabadell tenemos el club de tennis más grande de toda la ciudad. Contamos con una piscina de
+                        100X50 metros cubierta y un gran numero de pistas de tennis y de padel.'
                 
             )
         );
@@ -108,16 +106,16 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'cbvicat@gmail.com',
                 'nombre' => 'Club Bàsquet Vic',
-                'direccion' => 'Crta. de Gurb, s/n – Pl.Pare Millan',
+                'direccion' => 'Crta. de Gurb, s/n – Pl.Pare Millan, 08500, Vic',
                 'codigo_postal' => '08500',
                 'telefono' => '938861440',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img5.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'En club Basquet Vic ofrecemos nuestras canchas para que puedas disfrutar de un buen partido con tus amigos
+                        bajo techo. En el precio de la reserva te incluimos un vestuario para todos los integrantes tu equipo. Además, podràs
+                        disfrutar de las grandes ofertas de nuestro Bar.'
                 
             )
         );
@@ -126,16 +124,15 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'administracio@ceeuropa.cat',
                 'nombre' => 'Camb Futbol Montigalà',
-                'direccion' => 'Trv. Montigalà, 08917, Barcelona',
+                'direccion' => 'Trv. Montigalà, S/N, 08917, Barcelona',
                 'codigo_postal' => '08917',
                 'telefono' => '934650962',
                 'prioridad' => '1',
                 'imagen_perfil' => 'img6.jpg',
                 'hora_inicio' => '2019-05-12 08:00',
                 'hora_final' => '2019-05-12 22:00',
-                'descripcion' => 'Con una superficie de 300 metros quadrados, el club tennis badalonna es unos de los
-                mayores espacios deportivos de Badalona. Dispone de 5 pistas de 10 pistas de padel, 5 de tenis,5 de basquet y 3 de futbol 7
-                Además destaca por sus servicios de parking gratuito, vestuarios modernos y una tienda de alquiler de productos '
+                'descripcion' => 'Con una superficie total de 1 hectarea, ofrecemos los mejores campos de futbol cesped de toda Badalona.
+                        Aprovecha nuestros vestuarios totalmente reformados y no olvides que en nuestro recinto contamos con un parking gratuito para todos nuestros clientes.'
                 
             )
         );
@@ -199,7 +196,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'info@diagonalDir.com',
                 'nombre' => 'Diagonal DiR',
-                'direccion' => 'Carrer de Ganduxer, 25, Barcelona',
+                'direccion' => 'Carrer de Ganduxer, 25, 08021, Barcelona',
                 'codigo_postal' => '08021',
                 'telefono' => '932022202',
                 'prioridad' => '0',
@@ -211,6 +208,43 @@ class CreateEstablecimientoTable extends Migration
                     y nuestro Dir Zen donde podras disfrustar de asombrosos masajes.'
             )
         );
+
+        //id = 11
+        DB::table('establecimiento')->insert(
+            array(
+                'mail' => 'info@futbolelclot.com',
+                'nombre' => 'Futbol el Clot',
+                'direccion' => 'Carrer d\'Andrade, 40, 08018, Barcelona',
+                'codigo_postal' => '08018',
+                'telefono' => '933909215',
+                'prioridad' => '0',
+                'imagen_perfil' => 'img11.jpg',
+                'hora_inicio' => '2019-05-12 06:15',
+                'hora_final' => '2019-05-12 22:45',
+                'descripcion' => 'Nos encontraras en el centro del barrio del Clot de Barcelona. Entre la gran multitud de casas deniveladas,
+                            en una gran esplanada se encuentra nuestro campo. Disponemos de vestuarios que se pueden cerrar con llave para cada equipo
+                            y un total de 2 pistas para futbol 7 que se pueden utilizar para jugar a futbol 11.'
+            )
+        );
+
+        //id = 12
+        DB::table('establecimiento')->insert(
+            array(
+                'mail' => 'oficines@sagratcor.org',
+                'nombre' => 'Sagrat Cor de Sarria',
+                'direccion' => 'Carrer del Sagrat Cor, 25, 08034, Barcelona',
+                'codigo_postal' => '08034',
+                'telefono' => '932030200',
+                'prioridad' => '0',
+                'imagen_perfil' => 'img12.jpg',
+                'hora_inicio' => '2019-05-12 06:15',
+                'hora_final' => '2019-05-12 22:45',
+                'descripcion' => 'Los días de entre semana, después del horario escolar, la escuela Sagrat Cor de Sarria deja abierta
+                        sus puertas a aquellas personas que desen hacer actividades deportivas en su recinto. Disponemos de vestuarios para cada equipo
+                        y un total de 5 pistas de futbol 7.'
+            )
+        );
+
         /**
          * Los clubes con prioridad 1 son los clubes destacados
          * Los otros tiene prioridad 0
