@@ -42,7 +42,7 @@
 
                     @foreach($sports as $sport)
                         <div class="input-group">
-                        <img class="img-fluid rounded mb-2" src="{{ asset('img/sports/'. $sport->id_imagen )}}" alt="" width="35px" height="10px" >
+                        <img class="img-fluid rounded mb-2" src="{{ asset('img/sports/'. $sport->id_imagen )}}" style="width:35px!important; height:30px!important;"  >
                             <p class="pl-5 pb-2" > {{ $sport->nombre }} </p>
                         </div>
                     @endforeach
@@ -57,7 +57,7 @@
 
                         @foreach($services as $service)
                             <div class="input-group">
-                                <img class="img-fluid rounded mb-2" src="{{ asset('img/services/'. $service->id_imagen )}}" alt="" width="35px" height="10px" >
+                                <img class="img-fluid rounded mb-2" src="{{ asset('img/services/'. $service->id_imagen )}}" style="width:35px!important; height:30px!important;" >
                                 <p class="pl-5" > {{ $service->nombre }} </p>
                             </div>
                         @endforeach

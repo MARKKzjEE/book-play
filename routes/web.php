@@ -65,3 +65,5 @@ Route::get('tournamentsSearched','PagesController@tournamentsSearched')->name('t
 
 Route::get('signUpTournament/{id?}','PagesController@signUpTournament')->name('signUpTournament');
 
+Route::get('unsuscribeTournament/{id?}/{id2?}/{id3?}','PagesController@unsuscribeTournament')->name('unsuscribeTournament');
+

@@ -156,10 +156,27 @@ class PagesController extends Controller
         return redirect()->route('tournaments')->withErrors(['Inscripción guardada','Inscripción guardada']);
     }
 
-    
+    public function unsuscribeTournament($idReserveTourny, $idTourny, $numPlayers){
+        DB::table('reserva_tournament')
+            ->where('id',$idReserveTourny)->delete();
 
+        DB::table('tournaments')
+            ->where('id',$idTourny)
+            ->decrement('num_participantes_actual',$numPlayers);
 
-
+        return redirect()->route('home')->withErrors(['Inscripción eliminada','Inscripción eliminada']);
+    }
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
     public function search(Request $request){
         $city = $request->input('city');
         $sport = $request->input('sport');
@@ -444,7 +461,14 @@ class PagesController extends Controller
         $profileInfo = \DB::table('users')
             ->where('users.id', '=', $idprofile)
             ->get();
-        return view('myProfile', compact('profileInfo', 'idprofile', 'return'));
+
+        $myTournaments = DB::table('reserva_tournament')
+            ->select('*','reserva_tournament.id as id_reserva')
+            ->join('tournaments','tournaments.id','=','reserva_tournament.id_tournament')
+            ->join('deporte','deporte.id','=','tournaments.id_deporte')
+            ->where('id_usuario',1)->get()->toArray();
+        //dd($myTournaments);
+        return view('myProfile', compact('profileInfo', 'idprofile', 'return','myTournaments'));
     }
 
     public function editprofileprivate(Request $request, $idprofile){

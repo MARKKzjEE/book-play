@@ -48,7 +48,7 @@
     ?>
     <div class="container p-0">
 
-        <div class="row">
+        <div class="row py-5">
             <div class="col-md-5 col-xl-4">
 
                 <div class="card">
@@ -69,6 +69,10 @@
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#delete" role="tab">
                             Eliminar cuenta
                         </a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#myTournaments" role="tab">
+                            Mis torneos
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -287,6 +291,66 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="tab-pane fade" id="myTournaments" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
+                                    <h3 class="card-title"> Torneos inscritos </h3>
+                                    <p> Aquí se muestran todas las incripciones a los torneos que ha realizado.
+                                    Para desapuntarse de alguno solo ha de pulsar sobre el icono de eliminar </p>
+                                    <div class="table-responsive">          
+                                        <table class="table text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th> Nombre </th>
+                                                    <th> Fecha </th>
+                                                    <th> Deporte </th>
+                                                    <th> Genero </th>
+                                                    <th> Nº reservas </th>
+                                                    <th>  </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @for ($i = 0; $i < sizeof($myTournaments); $i++)
+
+                                                    <tr>
+                                                        <td> {{$myTournaments[$i]->name}} </td>
+                                                        <td> {{ $myTournaments[$i]->fecha }} </td>
+                                                        <td> {{$myTournaments[$i]->nombre}} </td>
+                                                        <td> {{$myTournaments[$i]->genero}} </td>
+                                                        <td> {{$myTournaments[$i]->num_inscripciones }} </td>
+                                                        <td> <a href="{{ route('unsuscribeTournament', [$myTournaments[$i]->id_reserva, $myTournaments[$i]->id_tournament, $myTournaments[$i]->num_inscripciones]) }}"> <i class="fas fa-minus-circle"> </i> </a>  </td>
+
+                                                        
+                                                    </tr>
+
+
+                                                @endfor 
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                
+
+                              
+                                
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    
+
+
+
+
                 </div>
             </div>
         </div>
