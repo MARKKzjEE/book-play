@@ -35,7 +35,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'infoclub@tennisclubbadalona.org',
                 'nombre' => 'Club Tennis Badalona',
-                'direccion' => 'Avda. Juan de Austria, 58-60 08915 , Badalona',
+                'direccion' => 'Avda. Juan de Austria, 58-60, 08915 , Badalona',
                 'codigo_postal' => '08912',
                 'telefono' => '933952311',
                 'prioridad' => '1',
@@ -54,7 +54,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'ctbarcino@ctbarcino.cat',
                 'nombre' => 'Club Tennis Barcino',
-                'direccion' => 'Plaça de Narcisa Freixas, 2,',
+                'direccion' => 'Plaça de Narcisa Freixas, 2, 08022, Barcelona',
                 'codigo_postal' => '08022',
                 'telefono' => '934170805',
                 'prioridad' => '1',
@@ -72,7 +72,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'masramce@hotmail.com',
                 'nombre' => 'Club Esportiu Mas-Ram',
-                'direccion' => 'Plaça eucaliptus, 3',
+                'direccion' => 'Plaça eucaliptus, 3, 08916, Badalona',
                 'codigo_postal' => '08916',
                 'telefono' => '934652081',
                 'prioridad' => '1',
@@ -90,7 +90,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'clubsabadell@gmail.com',
                 'nombre' => 'Club Tennis Sabadell',
-                'direccion' => 'Carrer Prat de la Riba, 91',
+                'direccion' => 'Carrer Prat de la Riba, 91, 08206, Sabadell',
                 'codigo_postal' => '08206',
                 'telefono' => '937264500',
                 'prioridad' => '1',
@@ -108,7 +108,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'cbvicat@gmail.com',
                 'nombre' => 'Club Bàsquet Vic',
-                'direccion' => 'Crta. de Gurb, s/n – Pl.Pare Millan',
+                'direccion' => 'Crta. de Gurb, s/n – Pl.Pare Millan, 08500, Vic',
                 'codigo_postal' => '08500',
                 'telefono' => '938861440',
                 'prioridad' => '1',
@@ -126,7 +126,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'administracio@ceeuropa.cat',
                 'nombre' => 'Camb Futbol Montigalà',
-                'direccion' => 'Trv. Montigalà, 08917, Barcelona',
+                'direccion' => 'Trv. Montigalà, S/N, 08917, Barcelona',
                 'codigo_postal' => '08917',
                 'telefono' => '934650962',
                 'prioridad' => '1',
@@ -199,7 +199,7 @@ class CreateEstablecimientoTable extends Migration
             array(
                 'mail' => 'info@diagonalDir.com',
                 'nombre' => 'Diagonal DiR',
-                'direccion' => 'Carrer de Ganduxer, 25, Barcelona',
+                'direccion' => 'Carrer de Ganduxer, 25, 08021, Barcelona',
                 'codigo_postal' => '08021',
                 'telefono' => '932022202',
                 'prioridad' => '0',
@@ -211,6 +211,43 @@ class CreateEstablecimientoTable extends Migration
                     y nuestro Dir Zen donde podras disfrustar de asombrosos masajes.'
             )
         );
+
+        //id = 11
+        DB::table('establecimiento')->insert(
+            array(
+                'mail' => 'info@futbolelclot.com',
+                'nombre' => 'Futbol el Clot',
+                'direccion' => 'Carrer d\'Andrade, 40, 08018, Barcelona',
+                'codigo_postal' => '08018',
+                'telefono' => '933909215',
+                'prioridad' => '0',
+                'imagen_perfil' => 'img11.jpg',
+                'hora_inicio' => '2019-05-12 06:15',
+                'hora_final' => '2019-05-12 22:45',
+                'descripcion' => 'Nos encontraras en el centro del barrio del Clot de Barcelona. Entre la gran multitud de casas deniveladas,
+                            en una gran esplanada se encuentra nuestro campo. Disponemos de vestuarios que se pueden cerrar con llave para cada equipo
+                            y un total de 2 pistas para futbol 7 que se pueden utilizar para jugar a futbol 11.'
+            )
+        );
+
+        //id = 12
+        DB::table('establecimiento')->insert(
+            array(
+                'mail' => 'oficines@sagratcor.org',
+                'nombre' => 'Sagrat Cor de Sarria',
+                'direccion' => 'Carrer del Sagrat Cor, 25, 08034, Barcelona',
+                'codigo_postal' => '08034',
+                'telefono' => '932030200',
+                'prioridad' => '0',
+                'imagen_perfil' => 'img12.jpg',
+                'hora_inicio' => '2019-05-12 06:15',
+                'hora_final' => '2019-05-12 22:45',
+                'descripcion' => 'Los días de entre semana, después del horario escolar, la escuela Sagrat Cor de Sarria deja abierta
+                        sus puertas a aquellas personas que desen hacer actividades deportivas en su recinto. Disponemos de vestuarios para cada equipo
+                        y un total de 5 pistas de futbol 7.'
+            )
+        );
+
         /**
          * Los clubes con prioridad 1 son los clubes destacados
          * Los otros tiene prioridad 0

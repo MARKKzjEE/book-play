@@ -19,6 +19,7 @@ class CreateServiciosTable extends Migration
             $table->string('id_imagen');
         });
 
+        //id = 1
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Vestuarios',
@@ -26,54 +27,71 @@ class CreateServiciosTable extends Migration
             )
         );
 
+        //id = 2
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Parking gratuito',
                 'id_imagen' => 'parking_gratuito.png'
             )
         );
+
+        //id = 3
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Tienda de materiales',
                 'id_imagen' => 'tienda.png'
             )
         );
+
+        //id = 4
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Wifi',
                 'id_imagen' => 'wifi.png'
             )
         );
+
+        //id = 5
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Taquillas de seguridad',
                 'id_imagen' => 'taquillas.png'
             )
         );
+
+        //id = 6
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Restaurante',
                 'id_imagen' => 'restaurante.png'
             )
         );
+
+        //id = 7
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Cafetería',
                 'id_imagen' => 'cafeteria.png'
             )
         );
+
+        //id = 8
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Piscina',
                 'id_imagen' => 'piscina.png'
             )
         );
+
+        //id = 9
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Sauna',
                 'id_imagen' => 'Sauna.png'
             )
         );
+
+        //id = 10
         DB::table('servicio')->insert(
             array(
                 'nombre' => 'Solarium',

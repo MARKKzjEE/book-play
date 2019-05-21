@@ -357,6 +357,28 @@ class CreateServiciosEstablecimientoTable extends Migration
                 'id_club' => '10'
             )
         );
+
+        DB::table('servicios_establecimiento')->insert(
+            array(
+                'id_servicio' => '1',
+                'id_club' => '11'
+            )
+        );
+
+        DB::table('servicios_establecimiento')->insert(
+            array(
+                'id_servicio' => '7',
+                'id_club' => '11'
+            )
+        );
+
+        DB::table('servicios_establecimiento')->insert(
+            array(
+                'id_servicio' => '1',
+                'id_club' => '12'
+            )
+        );
+
     }
 
     /**
