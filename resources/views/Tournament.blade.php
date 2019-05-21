@@ -1,6 +1,8 @@
 @extends('Template')
 @section('Main')
-
+@if($errors->any())
+<div class="p-3 mb-2 bg-success text-white text-center"> <h3>{{$errors->first()}}</h3> </div>
+@endif
     <!-- TopContent / Search sports centers  -->
     <header class="masthead" style="background-image: url('https://pbs.twimg.com/media/DfLzJ9aU8AA1sx_.jpg');">
         <div class="overlay"></div>
@@ -59,6 +61,8 @@
                                 </div>
                             </form>
 
+                            
+
                                 
                                 
                             </div>
@@ -74,6 +78,7 @@
 
     <!-- BottomContent / VIP Sports centers -->
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            
         <div class="album py-5 ">
             <h2 class="display-5 container-fluid"> Torneos destacados </h2>
             <br/>
@@ -95,7 +100,7 @@
                                     <br><br>
                                     
                                     <i class="fas fa-trophy"></i>
-                                    <small class="text"> {{ $sportNames[$tourny->id_deporte] }}  </small>
+                                    <small class="text"> {{ $sportNames[$tourny->id_deporte] }}</small>
 
 
                                     <i class="fas fa-venus-mars ml-5"></i>
@@ -103,67 +108,38 @@
                                     
 
                                     <i class='far fa-calendar-alt'></i>
-                                    <small class="text"><?php $date = strtotime($tourny->fecha);echo date('d/m/Y',$date) ?> </small><br> <br>
+                                    <small class="text"><?php $date = strtotime($tourny->fecha);echo date('d/m/Y',$date) ?> </small>
 
+                                    <i class="fas fa-money-bill-wave ml-5"></i>
+                                    <small class="text"> {{ $tourny->precio }}€/pers. </small><br> <br>
 
-                                    <div class="mt-3 d-flex justify-content-between align-items-center">
-                                        <small class="text-muted"> <?php echo $tourny->precio ?>€ por persona</small>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Inscribirse </button>
+                                    <p class="text-muted"> Numero de inscripciones: </p>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle"> Numero de participantes </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
+                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id)  }}" method="get" >
+                                            {{ csrf_field() }}
 
-                                                        <form class="formTournament" action=" {{ URL::to('/signUpTournament', $tourny->id)  }}" method="get" >
-                                                            {{ csrf_field() }}
-                                                            <div class="form-group row">
-                                                                <label class="sr-only" for="numParticipantes"> Numero participantes </label>
-                                                                <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="{{ $tourny->num_participantes_max - $tourny->num_participantes_actual }}" >
-                                                            </div>
-                                                            <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
-
-
-                                                        </form>
-
-                                                    </div>
-                                                
-                                                </div>
+                                            <div class="form-group col">
+                                                <label class="sr-only" for="numParticipantes"> Numero participantes </label>
+                                                <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="{{ $tourny->num_participantes_max - $tourny->num_participantes_actual }}" >
                                             </div>
-                                        </div>
+
+                                            <div class="form-group col">
+                                                <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
+                                            </div>
 
 
-                                            
-                                        
-                                        
+                                    </form>
 
 
+  
+  
 
-
-
-
-
-
-
-
-
-
-
-
-                                    </div>
 
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                    
                 </div>
             </div>
         </div>

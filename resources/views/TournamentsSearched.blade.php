@@ -19,20 +19,36 @@
                                     <small class="text"> {{ $tourny->direccion }} </small>
                                     <br><br>
                                     <i class='far fa-calendar-alt'></i>
-                                    <small class="text"> {{ date_format(date_create($tourny->fecha),"d/m/y") }} </small> <br><br>
+                                    <small class="text"> {{ date_format(date_create($tourny->fecha),"d/m/y") }} </small> 
                                     
-                                    <i class="fas fa-trophy"></i>
-                                    <small class="text"> {{ $sportName }} </small>
-                                    <i class="fas fa-venus-mars ml-5"></i>
-                                    <small class="text"> {{ $gender }}  </small><br> <br>
+                                    <i class="fas fa-trophy ml-5"></i>
+                                    <small class="text"> {{ $sportName }} </small><br><br>
+
+                                    <i class="fas fa-venus-mars"></i>
+                                    <small class="text"> {{ $gender }}  </small>
+
+                                    <i class="fas fa-money-bill-wave ml-5"></i>
+                                    <small class="text"> {{ $tourny->precio }}€/pers. </small><br> <br>
 
                                     
-                                    <div class="mt-3 d-flex justify-content-between align-items-center ">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-primary">Inscribirse </button>
-                                        </div>
-                                        <small class="text-muted"> <?php echo $tourny->precio ?>€ por persona</small>
-                                    </div> 
+                                    <p class="text-muted"> Numero de inscripciones: </p>
+
+                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id_tourny)  }}" method="get" >
+                                            {{ csrf_field() }}
+
+                                            <div class="form-group col">
+                                                <label class="sr-only" for="numParticipantes"> Numero participantes </label>
+                                                <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="{{ $tourny->num_participantes_max - $tourny->num_participantes_actual }}" >
+                                            </div>
+
+                                            <div class="form-group col">
+                                                <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
+                                            </div>
+
+                                            
+
+
+                                    </form>
 
                                 </div>
                             </div>
