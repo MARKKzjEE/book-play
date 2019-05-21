@@ -42,7 +42,7 @@ class PagesController extends Controller
         return view('MyProfile');
     }
 
-    public function club($ID = null){
+    public function club($ID){
         //$pistas = $center->pistas;
 
         /** @var Establecimiento $center */
@@ -50,23 +50,14 @@ class PagesController extends Controller
         /** @var Establecimiento $center */
         
 
-        $sports = DeportesEstablecimiento::where('id_club',$ID)->get();
-        $services = ServiciosEstablecimiento::where('id_club',$ID)->get();
+        $sports = DeportesEstablecimiento::where('id_club',$ID)
+                ->join('deporte','deporte.id','=','deportes_establecimiento.id_deporte')->get();
+        
+        $services = ServiciosEstablecimiento::where('id_club',$ID)
+                ->join('servicio','servicio.id','=','servicios_establecimiento.id_servicio')->get();
+        
 
-        $sportsNames = array();
-        $servicesNames = array();
-
-        foreach($sports as $sport){
-            $sportsClub = Deporte::where('id',$sport->id_deporte)->get();
-            array_push($sportsNames,[$sportsClub[0]->nombre,$sportsClub[0]->id_imagen]);
-        }
-
-        foreach($services as $service){
-            $servicesClub = Servicio::where('id',$service->id_servicio)->get();
-            array_push($servicesNames,[$servicesClub[0]->nombre,$servicesClub[0]->id_imagen]);
-        }
-
-        return view('Club',compact('center','sportsNames','servicesNames'));
+        return view('Club',compact('center','sports','services'));
     }
 
     /**

@@ -40,10 +40,10 @@
                     <h5 class="card-header bg-dark text-white"> Deportes  </h5>
                     <div class="card-body">
 
-                    @foreach($sportsNames as $name)
+                    @foreach($sports as $sport)
                         <div class="input-group">
-                        <img class="img-fluid rounded mb-2" src="{{ asset('img/sports/'.$name[1] )}}" alt="" width="35px" height="10px" >
-                            <p class="pl-5 pb-2" > {{ $name[0] }} </p>
+                        <img class="img-fluid rounded mb-2" src="{{ asset('img/sports/'. $sport->id_imagen )}}" alt="" width="35px" height="10px" >
+                            <p class="pl-5 pb-2" > {{ $sport->nombre }} </p>
                         </div>
                     @endforeach
 
@@ -55,10 +55,10 @@
                     <h5 class="card-header bg-dark text-white"> Servicios </h5>
                     <div class="card-body">
 
-                        @foreach($servicesNames as $name)
+                        @foreach($services as $service)
                             <div class="input-group">
-                                <img class="img-fluid rounded mb-2" src="{{ asset('img/services/'. $name[1] )}}" alt="" width="35px" height="10px" >
-                                <p class="pl-5" > {{ $name[0] }} </p>
+                                <img class="img-fluid rounded mb-2" src="{{ asset('img/services/'. $service->id_imagen )}}" alt="" width="35px" height="10px" >
+                                <p class="pl-5" > {{ $service->nombre }} </p>
                             </div>
                         @endforeach
 
