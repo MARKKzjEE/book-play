@@ -113,22 +113,28 @@
                                     <i class="fas fa-money-bill-wave ml-5"></i>
                                     <small class="text"> {{ $tourny->precio }}€/pers. </small><br> <br>
 
-                                    <p class="text-muted"> Numero de inscripciones: </p>
+                                    
 
-                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id_tournament)  }}" method="get" >
-                                            {{ csrf_field() }}
+                                    @if(Auth::check())
+                                        <p class="text-muted"> Numero de inscripciones: </p>
+                                        <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id_tournament)  }}" method="get" >
+                                                {{ csrf_field() }}
 
-                                            <div class="form-group col">
-                                                <label class="sr-only" for="numParticipantes"> Numero participantes </label>
-                                                <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="{{ $tourny->num_participantes_max - $tourny->num_participantes_actual }}" >
-                                            </div>
+                                                <div class="form-group col">
+                                                    <label class="sr-only" for="numParticipantes"> Numero participantes </label>
+                                                    <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="{{ $tourny->num_participantes_max - $tourny->num_participantes_actual }}" >
+                                                </div>
 
-                                            <div class="form-group col">
-                                                <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
-                                            </div>
+                                                <div class="form-group col">
+                                                    <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
+                                                </div>
 
 
-                                    </form>
+                                        </form>
+                                    @else
+                                        <p class="text-muted"> Inicia sesión para inscribirte </p>
+
+                                    @endif
 
 
   

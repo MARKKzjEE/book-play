@@ -125,8 +125,6 @@ class PagesController extends Controller
 
     public function signUpTournament($idTournament,Request $request){
 
-        //echo "id de torneo: " . $idTournament . "<br>";
-        //$idUser = 2;
         $numPlayers = $request->input('number');
 
         DB::table('tournaments')
@@ -136,14 +134,11 @@ class PagesController extends Controller
         DB::table('reserva_tournament')->insert(
             array(
                 'id_tournament' => $idTournament,
-                'id_usuario' => 1,
+                'id_usuario' => \Auth::user()->id,
                 'num_inscripciones' => $numPlayers
             )
         );
-        /* EL ID DEL USUSRIO SE PUEDE SACAR CON $this->authorize('modifyUser', auth()->user()); 
-        **
-        **
-        */
+
         return redirect()->route('tournaments')->withErrors(['Inscripción guardada','Inscripción guardada']);
     }
 
@@ -457,7 +452,7 @@ class PagesController extends Controller
             ->select('*','reserva_tournament.id as id_reserva')
             ->join('tournaments','tournaments.id','=','reserva_tournament.id_tournament')
             ->join('deporte','deporte.id','=','tournaments.id_deporte')
-            ->where('id_usuario',1)->get()->toArray();
+            ->where('id_usuario',\Auth::user()->id )->get()->toArray();
         //dd($myTournaments);
         return view('myProfile', compact('profileInfo', 'idprofile', 'return','myTournaments'));
     }

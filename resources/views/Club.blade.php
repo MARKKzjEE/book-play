@@ -28,8 +28,11 @@
                 <!-- Post Content -->
                 <p class="lead"> {{ $center->descripcion}} </p>
                 <hr>
-                <a href="{{route('timetable')}}/<?php echo $center->id . "/2" ?> "> <button type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button> </a>
-                
+                @if(Auth::check())
+                    <a href="{{route('timetable')}}/<?php echo $center->id . "/" . \Auth::user()->id ?> "> <button type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button> </a>
+                @else
+                    <a href="{{route('login')}}"> <button type="button" class="btn btn-primary btn-lg btn-block"> Reservar </button> </a>
+                @endif
             </div>
 
             <!-- Sidebar Widgets Column -->
