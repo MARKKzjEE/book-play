@@ -17,11 +17,9 @@
                                         <!-- Sport picker -->
                                         <div class="col-sm-3 col-md-5 col-lg-3 my-1">
                                             <select class="custom-select mr-sm-2 form-control " name="sport">
-                                                <option value="1"selected> Tenis </option>
-                                                <option value="2"> Basquet </option>
-                                                <option value="3"> Padel </option>
-                                                <option value="4"> Futbol 11 </option>
-                                                <option value="5"> Futbol 7 </option>
+                                                @foreach ($sportTypes as $sportType)
+                                                    <option value="{{ $sportType->id }}"> {{ $sportType->nombre }} </option>
+                                                @endforeach
                                             </select>
                                         </div>
 

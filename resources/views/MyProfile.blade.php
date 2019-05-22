@@ -317,10 +317,10 @@
 
                                                     <tr>
                                                         <td> {{$myTournaments[$i]->name}} </td>
-                                                        <td> {{ $myTournaments[$i]->fecha }} </td>
+                                                        <td> {{$myTournaments[$i]->fecha}} </td>
                                                         <td> {{$myTournaments[$i]->nombre}} </td>
                                                         <td> {{$myTournaments[$i]->genero}} </td>
-                                                        <td> {{$myTournaments[$i]->num_inscripciones }} </td>
+                                                        <td> {{$myTournaments[$i]->num_inscripciones}} </td>
                                                         <td> <a href="{{ route('unsuscribeTournament', [$myTournaments[$i]->id_reserva, $myTournaments[$i]->id_tournament, $myTournaments[$i]->num_inscripciones]) }}"> <i class="fas fa-minus-circle"> </i> </a>  </td>
 
                                                         

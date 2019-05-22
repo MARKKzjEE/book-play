@@ -90,9 +90,9 @@
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">
 
-                                    <h5 class="card-text"> {{ $tourny->name }}
+                                    <h5 class="card-text"> {{ $tourny->name_tourny }}
                                         <br>
-                                        <small class="card-text"> {{ $tourny->nombre }} </small>
+                                        <small class="card-text"> {{ $tourny->name_club }} </small>
                                     </h5> <br>
 
                                     <i class='fa fa-map-marker'></i>
@@ -100,22 +100,22 @@
                                     <br><br>
                                     
                                     <i class="fas fa-trophy"></i>
-                                    <small class="text"> {{ $sportNames[$tourny->id_deporte] }}</small>
+                                    <small class="text"> {{ $tourny->name_sport }}</small>
 
 
                                     <i class="fas fa-venus-mars ml-5"></i>
-                                    <small class="text"><?php echo $tourny->genero ?> </small><br><br>
+                                    <small class="text"> {{ $tourny->genero }}</small><br><br>
                                     
 
                                     <i class='far fa-calendar-alt'></i>
-                                    <small class="text"><?php $date = strtotime($tourny->fecha);echo date('d/m/Y',$date) ?> </small>
+                                    <small class="text"> {{ date('d/m/Y',strtotime($tourny->fecha)) }} </small>
 
                                     <i class="fas fa-money-bill-wave ml-5"></i>
                                     <small class="text"> {{ $tourny->precio }}€/pers. </small><br> <br>
 
                                     <p class="text-muted"> Numero de inscripciones: </p>
 
-                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id)  }}" method="get" >
+                                    <form class="formTournament" action=" {{ URL::to('/signUpTournament' , $tourny->id_tournament)  }}" method="get" >
                                             {{ csrf_field() }}
 
                                             <div class="form-group col">

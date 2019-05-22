@@ -17,8 +17,10 @@ use DateTime;
 class PagesController extends Controller
 {
     public function inicio(){
+
+        $sportTypes  = Deporte::getAllSports();
         $sportsCentersVIP = DB::table('establecimiento')->where('prioridad','1')->get();
-        return view('Homepage',compact('sportsCentersVIP'));
+        return view('Homepage',compact('sportsCentersVIP','sportTypes'));
     }
 
     public function registrationClub(){
@@ -69,20 +71,9 @@ class PagesController extends Controller
 
     public function tournaments(){
 
-        $tournaments = Tournaments::join('establecimiento','establecimiento.id','=','tournaments.id')
-                                ->where('tournaments.prioridad',1)->get();
- 
-        $sportTypes  = DB::table('deporte')->select('id', 'nombre')->distinct()->get();
-        $sportNames = array();
-        foreach ($tournaments as $tourny ) {
-            $sportsClub = Deporte::where('id',$tourny->id_deporte)->get();
-            $sportNames[$sportsClub[0]->id] = $sportsClub[0]->nombre;
-        }
-
-        //dd($tournaments);
-        
-
-        return view('tournament',compact('tournaments','sportTypes','clubsNames','sportNames'));
+        $tournaments = Tournaments::getAllTournamentsVip();
+        $sportTypes  = Deporte::getAllSports();
+        return view('tournament',compact('tournaments','sportTypes'));
 
     }
 
