@@ -2,18 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
+    use Notifiable;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','imagen_perfil',
     ];
 
     /**
@@ -36,5 +37,5 @@ class User extends Authenticatable
     public function reservas(){
         return $this->hasMany("App\Reserva");
     }
-    protected $table='user';
+    protected $table='users';
 }

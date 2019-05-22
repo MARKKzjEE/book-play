@@ -25,10 +25,11 @@ class CreateUsersTable extends Migration
             $table->integer('codigo_postal')->nullable();
             $table->boolean('verificacion_mail')->nullable();
             $table->string('imagen_perfil');
-            $table->string('descripcion');
-            $table->string('ciudad');
-            $table->string('direccion');
+            $table->string('descripcion')->nullable();
+            $table->string('ciudad')->nullable();
+            $table->string('direccion')->nullable();
             $table->rememberToken();
+            $table->timestamps();
         });
 
         DB::table('users')->insert(

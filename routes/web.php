@@ -1,7 +1,12 @@
 <?php
 
 Route::get('/', 'PagesController@inicio')->name('home');
-
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 Route::get('search','PagesController@search')->name('search');
 
 Route::get('club/{ID?}','PagesController@club')->name('club');
@@ -67,3 +72,5 @@ Route::get('signUpTournament/{id?}','PagesController@signUpTournament')->name('s
 
 Route::get('unsuscribeTournament/{id?}/{id2?}/{id3?}','PagesController@unsuscribeTournament')->name('unsuscribeTournament');
 
+
+Auth::routes();

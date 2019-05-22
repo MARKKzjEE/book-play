@@ -202,7 +202,7 @@ class PagesController extends Controller
         if($wall){
             $sportsCentersSearched = $sportsCentersSearched->where('pista.pared', '=', $wall);
         }
-        $sportsCentersSearched = $sportsCentersSearched->get();
+        $sportsCentersSearched = $sportsCentersSearched->select('establecimiento.*')->distinct()->get();
         //Date format: month/day/year
         if(is_null($date)){
             $dateArray = getDate();
@@ -213,7 +213,7 @@ class PagesController extends Controller
             $date = date_format($date,"d/m/Y");
         }
         $surfaceTypes = DB::table('pista')->select('superficie')->distinct()->get();
-        $wallTypes = DB::table('pista')->select('pared')->distinct()->get();
+        $wallTypes = DB::table('pista')->where('pared', '!=', null)->select('pared')->distinct()->get();
         $enclosureTypes = DB::table('pista')->select('cerramiento')->distinct()->get();
         $sportTypes  = DB::table('deporte')->select('id', 'nombre')->distinct()->get();  /* El distinct no es realmente necesario aqui */
         return view('Search',compact('city','sport','date','enclosure','surface','wall','sportsCentersSearched','surfaceTypes','wallTypes','enclosureTypes', 'sportTypes'));

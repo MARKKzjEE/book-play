@@ -194,25 +194,42 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
+                <li class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        @if (Route::has('login'))
+                                @auth
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar Sesión') }}
+                                    </a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tournaments') }}"> Torneos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('registration') }}">Registrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logIn') }}">Iniciar sesión</a>
-                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('getprofileinfo') }}/1/false">Mi perfil</a>
+                                </li>
+                                @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
+                                </li>
+
+                                    @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">Registrar</a>
+                                    </li>
+                                    @endif
+                                @endauth
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getprofileinfo') }}/1/false">Mi perfil</a>
+                            <a class="nav-link" href="{{ route('tournaments') }}"> Torneos</a>
                         </li>
-
                     </ul>
                 </div>
             </div>
