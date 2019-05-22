@@ -11,3 +11,5 @@ npm-debug.log
 yarn-error.log
 
 \.DS_Store
+app/Http/.DS_Store
+.gitignore

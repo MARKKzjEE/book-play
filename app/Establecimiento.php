@@ -19,5 +19,16 @@ class Establecimiento extends Model
     public function galeria(){
         return $this->hasOne('App\Galeria');
     }
+
+    public static function getAllClubsVip(){
+        return Establecimiento::where('prioridad','1')->get();
+    }
+
+    public static function getClubById($id){
+        return Establecimiento::where('id', $id)->firstOrFail();
+    }
+
+
+
     protected $table='establecimiento';
 }
