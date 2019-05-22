@@ -453,8 +453,14 @@ class PagesController extends Controller
             ->join('tournaments','tournaments.id','=','reserva_tournament.id_tournament')
             ->join('deporte','deporte.id','=','tournaments.id_deporte')
             ->where('id_usuario',\Auth::user()->id )->get()->toArray();
+        $reservas = \DB::table('reserva')
+            ->select('reserva.*','establecimiento.imagen_perfil', 'establecimiento.nombre')
+            ->where('id_usuario', '=', $idprofile)
+            ->join('pista', 'pista.id', '=', 'reserva.id_pista')
+            ->join('establecimiento', 'establecimiento.id', '=', 'pista.id_club')
+            ->get();
         //dd($myTournaments);
-        return view('myProfile', compact('profileInfo', 'idprofile', 'return','myTournaments'));
+        return view('myProfile', compact('profileInfo', 'idprofile', 'return','myTournaments', 'reservas'));
     }
 
     public function editprofileprivate(Request $request, $idprofile){
@@ -566,6 +572,19 @@ class PagesController extends Controller
         else if($request->has('no')){
             return $this->getprofileinfo($idprofile, false);
         }
+
+    }
+    public function deletebook($idbook, $idprofile) {
+
+
+        $query = \DB::table('reserva')->where('id',$idbook);
+        $query->delete();
+        //echo '<div style="display:none;" class="card-title mb-0 msgUpdate"><p><b>Cuenta eliminada!</b></p></div>';
+
+
+
+        return $this->getprofileinfo($idprofile, false);
+
 
     }
 }

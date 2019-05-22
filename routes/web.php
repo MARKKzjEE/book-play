@@ -57,7 +57,7 @@ Route::post('editpassword/{id?}','PagesController@editpassword')->name('editpass
 
 Route::get('deleteaccount/{id?}','PagesController@deleteaccount')->name('deleteaccount');
 
-
+Route::get('deletebook/{id?}/{id2?}','PagesController@deletebook')->name('deletebook');
 /**
  * 
  *  Functions relative to Tournaments

@@ -72,7 +72,9 @@
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#myTournaments" role="tab">
                             Mis torneos
                         </a>
-
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#misreservas" role="tab" >
+                            Mis Reservas
+                        </a>
                     </div>
                 </div>
             </div>
@@ -343,7 +345,55 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="misreservas" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">Mis reservas</h3>
+                                <p> Aquí se muestran todas las reservas que se han realizado.
+                                    Para desapuntarse de alguna solo ha de pulsar sobre el icono de eliminar </p>
+                                <div class="table-responsive">
+                                    <table class="table text-center">
+                                        <thead>
+                                        <tr>
 
+                                            <th> Nombre </th>
+                                            <th> Fecha </th>
+                                            <th> Hora </th>
+
+
+                                            <th>  </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        @foreach ($reservas as $reserva)
+                                            <?php
+                                            $datetime = explode(" ",$reserva->hora_inicio);
+                                            $datetimefinal = explode(" ",$reserva->hora_final);
+
+
+                                            ?>
+                                            <tr>
+
+                                                <td> {{$reserva->nombre}} </td>
+                                                <td> {{$datetime[0] }} </td>
+                                                <td> {{substr($datetime[1],0,-3)." - ".substr($datetimefinal[1],0,-3)}} </td>
+
+
+                                                <td> <a href="{{ route('deletebook') }}/{{$reserva->id}}/{{$idprofile}}"> <i class="fas fa-minus-circle"> </i> </a>  </td>
+
+
+                                            </tr>
+
+
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
 
                     
