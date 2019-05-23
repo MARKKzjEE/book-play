@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Tournaments extends Model
 {
@@ -27,5 +28,42 @@ class Tournaments extends Model
             ->get();
     }
 
+    public static function findTournaments($city,$gender,$sport,$date){
+        return Tournaments::select('*','tournaments.id as id_tourny')
+            ->join('establecimiento','establecimiento.id','=','tournaments.id_club')
+            ->where('establecimiento.direccion','LIKE','%' . $city . '%')
+            ->where([
+                ['genero', '=', $gender],
+                ['id_deporte', '=', $sport],
+                ['fecha', '>=' , $date]
+            ])
+            ->get();
+    }
 
+    public static function incrementParticipantsInATournament($idTournament,$numPlayers){
+        DB::table('tournaments')
+                    ->where('id',$idTournament)
+                    ->increment('num_participantes_actual', $numPlayers);
+    }
+
+    public static function signUpForATournament($idTournament,$numPlayers){
+        DB::table('reserva_tournament')->insert(
+            array(
+                'id_tournament' => $idTournament,
+                'id_usuario' => \Auth::user()->id,
+                'num_inscripciones' => $numPlayers
+            )
+        );
+    }
+
+    public static function deleteInscription($idInscription){
+        DB::table('reserva_tournament')
+            ->where('id',$idInscription)->delete();        
+    }
+
+    public static function decrementParticipantsInATournament($idTournament,$numPlayers){
+        DB::table('tournaments')
+            ->where('id',$idTournament)
+            ->decrement('num_participantes_actual',$numPlayers);
+    }
 }

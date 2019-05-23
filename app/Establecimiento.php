@@ -28,8 +28,5 @@ class Establecimiento extends Model
     public static function getClubById($id){
         return Establecimiento::where('id', $id)->firstOrFail();
     }
-
-
-
     protected $table='establecimiento';
 }
