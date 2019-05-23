@@ -58,7 +58,6 @@
                                                 <tr>
                                                     <td> {{$clubs[$i]->id}} </td>
                                                     <td> {{$clubs[$i]->nombre }} </td>
-                                                    <!--<td> <?php// {{$clubs[$i]->direccion}} ?></td>-->
                                                     <td> <a href="{{ route('deleteClub', [$clubs[$i]->id ]) }}"> <i class="fas fa-minus-circle"> </i> </a>  </td>
 
 
@@ -97,7 +96,7 @@
                                                 <tr>
                                                     <td> {{$deportes[$i]->id}} </td>
                                                     <td> {{$deportes[$i]->nombre }} </td>
-                                                <!--<td> <?php// {{$clubs[$i]->direccion}} ?></td>-->
+                                                
                                                     <td> <a href="{{ route('deleteDeporte', [$deportes[$i]->id ]) }}"> <i class="fas fa-minus-circle"> </i> </a>  </td>
 
 
@@ -136,7 +135,7 @@
                                                 <tr>
                                                     <td> {{$servicios[$i]->id}} </td>
                                                     <td> {{$servicios[$i]->nombre }} </td>
-                                                <!--<td> <?php// {{$clubs[$i]->direccion}} ?></td>-->
+                                                
                                                     <td> <a href="{{ route('deleteServicio', [$servicios[$i]->id ]) }}"> <i class="fas fa-minus-circle"> </i> </a>  </td>
 
 
@@ -243,3 +242,4 @@
         </div>
     </div>
 </body>
+@endsection
