@@ -22,6 +22,18 @@ Route::get('logOut','PagesController@logOut')->name('logOut');
 
 
 /**
+ * Eliminar Clubes, Torneos,...
+ */
+
+Route::get('eliminar','PagesController@Eliminar')->name('eliminar');
+Route::get('deleteClub/{id?}','PagesController@deleteClub')->name('deleteClub');
+Route::get('deleteDeporte/{id?}','PagesController@deleteDeporte')->name('deleteDeporte');
+Route::get('deleteServicio/{id?}','PagesController@deleteServicio')->name('deleteServicio');
+Route::get('deletePista/{id?}','PagesController@deletePista')->name('deletePista');
+Route::get('deleteTorneo/{id?}','PagesController@deleteTorneo')->name('deleteTorneo');
+
+
+/**
  *  Functions to book a field
  * 
  * 
