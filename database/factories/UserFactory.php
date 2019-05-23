@@ -24,14 +24,3 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
-
-$factory->define(Establecimiento::class, function (Faker $faker) {
-    return [
-        'id' => $faker->randomDigit,
-        'nombre' => $faker->sentence,
-        'email' => $faker->unique()->safeEmail,
-        'description' => $faker->paragraph,
-        'telefono' => $faker->phoneNumber,
-        'prioridad' => 1,
-    ];
-});

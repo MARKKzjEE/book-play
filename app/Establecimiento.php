@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Establecimiento extends Model
 {
+    public $timestamps = false;
 
     public function servicios(){
         return $this->belongsToMany("App\Servicio")->using(ServiciosEstablecimiento::class);
