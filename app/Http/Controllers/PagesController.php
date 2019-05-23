@@ -18,11 +18,11 @@ class PagesController extends Controller
 {
     /**
      * Muestra la página principal de la web
-     * 
+     *
      * En la página principal solo se muestran los clubes
-     * destacados. Y un formulario con diferentes filtros 
+     * destacados. Y un formulario con diferentes filtros
      * para buscar clubes.
-     * 
+     *
      *  @author HolgerCastillo
      */
     public function inicio(){
@@ -33,11 +33,11 @@ class PagesController extends Controller
 
     /**
      * Devuelve un formulario para registrar un club
-     * 
+     *
      * Devuele una vista con un formulario para enviar
-     * una petición al administrador para añadir un club 
+     * una petición al administrador para añadir un club
      * a la página web.
-     * 
+     *
      * @author HolgerCastillo
      */
     public function registrationClub(){
@@ -48,20 +48,103 @@ class PagesController extends Controller
      * METODO TEMPORAL
      */
     public function logOut(){
+        //return view('LogOut');
         return "log out";
     }
 
+    public function registration(){
+        return view('Registration');
+    }
+
+    public function myProfile(){
+        return view('MyProfile');
+    }
+
+    public function eliminar(){
+
+        $clubs  = DB::table('establecimiento')->select('id', 'nombre', 'direccion')->distinct()->get();
+
+        $deportes = DB::table('deporte')->select('id','nombre')->distinct()->get();
+
+        $servicios = DB::table('servicio')->select('id','nombre')->distinct()->get();
+
+        $pistas = DB::table('pista')->select('id','nombre','id_club','id_deporte')->distinct()->get();
+
+        $torneos = DB::table('tournaments')->select('id','name','id_club','id_deporte')->distinct()->get();
+
+        return view('Eliminar', compact('clubs','deportes','servicios','pistas','torneos'));
+    }
+
+    public function deleteClub($idClub){
+
+        DB::table('deportes_establecimiento')
+            ->where('id_club',$idClub)->delete();
+
+        DB::table('tournaments')
+            ->where('id_club',$idClub)->delete();
+
+        DB::table('establecimiento')
+            ->where('id',$idClub)->delete();
+
+        return redirect()->route('eliminar')->withErrors(['Club eliminado','Club eliminado']);
+    }
+
+    public function deleteDeporte($idDeporte){
+
+        DB::table('tournaments')
+            ->where('id_deporte',$idDeporte)->delete();
+
+        DB::table('deportes_establecimiento')
+            ->where('id_deporte',$idDeporte)->delete();
+
+        DB::table('Deporte')
+            ->where('id',$idDeporte)->delete();
+
+        return redirect()->route('eliminar')->withErrors(['Deporte eliminado','Deporte eliminado']);
+    }
+
+    public function deleteServicio($idServe){
+
+        DB::table('servicios_establecimiento')
+            ->where('id_servicio',$idServe)->delete();
+
+        DB::table('servicio')
+            ->where('id',$idServe)->delete();
+
+        return redirect()->route('eliminar')->withErrors(['Servicio eliminado','Servicio eliminado']);
+    }
+
+    public function deletePista($idpista){
+
+        DB::table('pista')
+            ->where('id',$idpista)->delete();
+
+        return redirect()->route('eliminar')->withErrors(['Club eliminado','Club eliminado']);
+    }
+
+    public function deleteTorneo($torneo){
+
+        DB::table('tournaments')
+            ->where('id',$torneo)->delete();
+
+        return redirect()->route('eliminar')->withErrors(['Torneo eliminado','Torneo eliminado']);
+    }
+
+
+
+
+
     /**
      * Muestra la información de un club
-     * 
+     *
      * Muestra los deportes y los servicios que proporciona
-     * un club, además muestra una foto del establecimiento 
+     * un club, además muestra una foto del establecimiento
      * y una pequeña descripción de este.
-     * 
+     *
      * @author HolgerCastillo
      */
     public function club($ID){
-        $center = Establecimiento::getClubById($ID);         
+        $center = Establecimiento::getClubById($ID);
         $sports = DeportesEstablecimiento::getAllSportByClubId($ID);
         $services = ServiciosEstablecimiento::getAllServicesByClubId($ID);
         return view('Club',compact('center','sports','services'));
@@ -70,9 +153,9 @@ class PagesController extends Controller
     /**
      * 
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author HolgerCastillo
      * @author marcgarcia1997
      */
@@ -82,13 +165,13 @@ class PagesController extends Controller
         return view('tournament',compact('tournaments','sportTypes'));
     }
 
-    
+
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author HolgerCastillo
      * @author marcgarcia1997
      */
@@ -138,11 +221,11 @@ class PagesController extends Controller
 
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author HolgerCastillo
      * @author marcgarcia1997
      */
@@ -167,11 +250,11 @@ class PagesController extends Controller
 
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author HolgerCastillo
      * @author marcgarcia1997
      */
@@ -185,7 +268,7 @@ class PagesController extends Controller
 
         return redirect()->route('home')->withErrors(['Inscripción eliminada','Inscripción eliminada']);
     }
-    
+
 
 
 
@@ -194,7 +277,7 @@ class PagesController extends Controller
      * Descripción básica (1 linea)
      * 
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function search(Request $request){
@@ -263,11 +346,11 @@ class PagesController extends Controller
      */
 
      /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datosestablecimiento($id){
@@ -279,11 +362,11 @@ class PagesController extends Controller
 
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datospista($id){
@@ -296,11 +379,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datospistafilter( $superficie,$cercamiento, $pared, $deporte, $fecha, $id)
@@ -327,11 +410,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datosreservafilter($superficie,$cercamiento, $pared, $deporte, $fecha, $id)
@@ -361,11 +444,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datosreserva($id,$today){
@@ -380,11 +463,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datosdeporte(){
@@ -394,11 +477,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function filters($superficie,$cercamiento,  $pared, $deporte, $today, $idclub, $iduser){
@@ -414,11 +497,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function timetable($idclub, $iduser){
@@ -438,11 +521,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function timetablepart($idclub, $iduser,$today){
@@ -455,11 +538,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function timenextbook($id_pista, $fecha_total, $dia){
@@ -473,11 +556,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function datosestablecimientoidpista($id){
@@ -489,11 +572,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function detailtimetable($fecha, $hora, $id_pista, $id_user){
@@ -515,11 +598,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function getpreciopista($idpista){
@@ -530,11 +613,11 @@ class PagesController extends Controller
     }
     
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function insertbookbd($finalhour, $initialhour, $iduser, $date, $idpista){
@@ -566,11 +649,11 @@ class PagesController extends Controller
 
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function insertarReserva(Request $request){
@@ -600,11 +683,11 @@ class PagesController extends Controller
      */
 
      /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function getprofileinfo($idprofile, $return){
@@ -628,11 +711,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function editprofileprivate(Request $request, $idprofile){
@@ -656,11 +739,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function editprofilepublic(Request $request, $idprofile){
@@ -708,11 +791,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function editpassword(Request $request, $idprofile) {
@@ -750,11 +833,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function deleteaccount(Request $request, $idprofile) {
@@ -772,11 +855,11 @@ class PagesController extends Controller
     }
 
     /**
-     * 
+     *
      * Descripción básica (1 linea)
-     * 
+     *
      * Descripción detallada
-     * 
+     *
      * @author nickGithub
      */
     public function deletebook($idbook, $idprofile) {
@@ -792,4 +875,8 @@ class PagesController extends Controller
 
 
     }
+
+
 }
+
+

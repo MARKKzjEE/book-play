@@ -225,11 +225,15 @@
                                 @endauth
                         @endif
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('eliminar') }}"> Eliminar</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tournaments') }}"> Torneos</a>
                         </li>
+
                     </ul>
                 </div>
             </div>

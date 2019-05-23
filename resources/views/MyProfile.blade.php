@@ -72,9 +72,10 @@
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#myTournaments" role="tab">
                             Mis torneos
                         </a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#misreservas" role="tab" >
-                            Mis Reservas
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#misreservas" role="tab">
+                            Mis reservas
                         </a>
+
                     </div>
                 </div>
             </div>
@@ -394,6 +395,7 @@
                             </div>
                         </div>
                     </div>
+
                     
 
                     
