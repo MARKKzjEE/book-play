@@ -2,12 +2,13 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Deporte;
+use App\Servicio;
 use Faker\Generator as Faker;
 
-$factory->define(Deporte::class, function (Faker $faker) {
+$factory->define(Servicio::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->name,
+        'id' => $faker->randomDigitNotNull,
+        'nombre' => $faker->word,
         'id_imagen' => $faker->imageUrl($width = 640, $height = 480)
     ];
 });

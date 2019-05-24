@@ -7,6 +7,7 @@ use DB;
 
 class Tournaments extends Model
 {
+    public $timestamps = false;
     public function establecimiento(){
         return $this->belongsTo('App\Establecimiento', 'id_club', 'id');
     }
@@ -42,15 +43,15 @@ class Tournaments extends Model
 
     public static function incrementParticipantsInATournament($idTournament,$numPlayers){
         DB::table('tournaments')
-                    ->where('id',$idTournament)
-                    ->increment('num_participantes_actual', $numPlayers);
+            ->where('id',$idTournament)
+            ->increment('num_participantes_actual', $numPlayers);
     }
 
-    public static function signUpForATournament($idTournament,$numPlayers){
+    public static function signUpForATournament($idTournament,$numPlayers,$idUser){
         DB::table('reserva_tournament')->insert(
             array(
                 'id_tournament' => $idTournament,
-                'id_usuario' => \Auth::user()->id,
+                'id_usuario' => $idUser,
                 'num_inscripciones' => $numPlayers
             )
         );

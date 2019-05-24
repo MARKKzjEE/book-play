@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Deporte extends Model
 {
-
+    public $timestamps = false;
     public function establecimientos(){
         return $this->belongsToMany("App\Establecimiento")->using(DeportesEstablecimiento::class);
     }

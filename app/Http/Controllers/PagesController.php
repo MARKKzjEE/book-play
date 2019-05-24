@@ -255,7 +255,7 @@ class PagesController extends Controller
     public function signUpTournament($idTournament,Request $request){
         $numPlayers = $request->input('number');
         Tournaments::incrementParticipantsInATournament($idTournament,$numPlayers);
-        Tournaments::signUpForATournament($idTournament,$numPlayers);
+        Tournaments::signUpForATournament($idTournament,$numPlayers,\Auth::user()->id);
         return redirect()->route('tournaments')->withErrors(['Inscripción guardada','Inscripción guardada']);
     }
 
@@ -273,7 +273,7 @@ class PagesController extends Controller
         Tournaments::decrementParticipantsInATournament($idTourny,$numPlayers);
         return redirect()->route('home')->withErrors(['Inscripción eliminada','Inscripción eliminada']);
     }
-    
+
     /**
      * 
      * Descripción básica (1 linea)
