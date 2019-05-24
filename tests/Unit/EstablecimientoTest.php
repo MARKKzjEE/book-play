@@ -20,4 +20,17 @@ class EstablecimientoTest extends TestCase
             $this->assertTrue($club->prioridad == 1);
         }
     }
+
+    /** 
+     * @test
+     */
+    public function testGetClubById()
+    {
+        $fakeClub = factory(Establecimiento::class,1)->create([
+            'nombre' => 'Futbol Club Hospitalet',
+            'id' => 4545
+        ]);
+        $clubQuery = Establecimiento::getClubById($fakeClub[0]->id);
+        $this->assertTrue($clubQuery->id == 4545);
+    }
 }

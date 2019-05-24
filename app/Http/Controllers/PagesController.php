@@ -52,14 +52,14 @@ class PagesController extends Controller
         return "log out";
     }
 
-    public function registration(){
-        return view('Registration');
-    }
-
-    public function myProfile(){
-        return view('MyProfile');
-    }
-
+    /**
+     * 
+     * Descripción básica (1 linea)
+     * 
+     * Descripción detallada
+     *
+     * @author nickGithub
+     */
     public function eliminar(){
 
         $clubs  = DB::table('establecimiento')->select('id', 'nombre', 'direccion')->distinct()->get();
@@ -75,6 +75,14 @@ class PagesController extends Controller
         return view('Eliminar', compact('clubs','deportes','servicios','pistas','torneos'));
     }
 
+    /**
+     * 
+     * Descripción básica (1 linea)
+     * 
+     * Descripción detallada
+     *
+     * @author nickGithub
+     */
     public function deleteClub($idClub){
 
         DB::table('deportes_establecimiento')
@@ -89,6 +97,14 @@ class PagesController extends Controller
         return redirect()->route('eliminar')->withErrors(['Club eliminado','Club eliminado']);
     }
 
+    /**
+     * 
+     * Descripción básica (1 linea)
+     * 
+     * Descripción detallada
+     *
+     * @author nickGithub
+     */
     public function deleteDeporte($idDeporte){
 
         DB::table('tournaments')
@@ -103,6 +119,14 @@ class PagesController extends Controller
         return redirect()->route('eliminar')->withErrors(['Deporte eliminado','Deporte eliminado']);
     }
 
+    /**
+     * 
+     * Descripción básica (1 linea)
+     * 
+     * Descripción detallada
+     *
+     * @author nickGithub
+     */
     public function deleteServicio($idServe){
 
         DB::table('servicios_establecimiento')
@@ -114,6 +138,14 @@ class PagesController extends Controller
         return redirect()->route('eliminar')->withErrors(['Servicio eliminado','Servicio eliminado']);
     }
 
+    /**
+     * 
+     * Descripción básica (1 linea)
+     * 
+     * Descripción detallada
+     *
+     * @author nickGithub
+     */
     public function deletePista($idpista){
 
         DB::table('pista')
@@ -122,6 +154,14 @@ class PagesController extends Controller
         return redirect()->route('eliminar')->withErrors(['Club eliminado','Club eliminado']);
     }
 
+    /**
+     * 
+     * Descripción básica (1 linea)
+     * 
+     * Descripción detallada
+     *
+     * @author nickGithub
+     */
     public function deleteTorneo($torneo){
 
         DB::table('tournaments')
@@ -129,10 +169,6 @@ class PagesController extends Controller
 
         return redirect()->route('eliminar')->withErrors(['Torneo eliminado','Torneo eliminado']);
     }
-
-
-
-
 
     /**
      * Muestra la información de un club
@@ -165,6 +201,22 @@ class PagesController extends Controller
         return view('tournament',compact('tournaments','sportTypes'));
     }
 
+    /**
+     * 
+     * Descripción básica (1 linea)
+     *
+     * Descripción detallada
+     *
+     * @author HolgerCastillo
+     */
+    public function getActualDate(){
+        $dateArray = getDate();
+        $day = $dateArray['mday'];
+        $month = $dateArray['mon'];
+        $year = $dateArray['year'];
+        $date = date_create("$year-$month-$day");
+        return $date;
+    }
 
     /**
      *
@@ -176,47 +228,18 @@ class PagesController extends Controller
      * @author marcgarcia1997
      */
     public function tournamentsSearched(Request $request){
-
         $city = $request->input('name');
-         
         $sport = $request->input('sport');
- 
-        $sportName = Deporte::where('id',$sport)->firstOrfail()->nombre;
-        
-        $gender = $request->input('gender');
-        if($gender == 1){
-            $gender = 'Masculino';
-        }else if($gender == 2){
-            $gender = 'Femenino';
-        }else{
-            $gender = 'Mixto';
-        }
-
-        
+        $sportName = Deporte::getSportNameById($sport);
+        $idGender = $request->input('gender');
+        $gender = Deporte::transformIdToGender($idGender);        
         $date = $request->input('fecha');
         $date = date_format(date_create($date),"y-m-d");
-        
         if(is_null($date)){
-            $dateArray = getDate();
-            $day = $dateArray['mday'];
-            $month = $dateArray['mon'];
-            $year = $dateArray['year'];
-            $date = date_create("$year-$month-$day");
+            $date = getActualDate();
         }
-  
-
-        $tournsSearched = Tournaments::select('*','tournaments.id as id_tourny')
-            ->join('establecimiento','establecimiento.id','=','tournaments.id_club')
-            ->where('establecimiento.direccion','LIKE','%' . $city . '%')
-            ->where([
-                ['genero', '=', $gender],
-                ['id_deporte', '=', $sport],
-                ['fecha', '>=' , $date]
-            ])
-            ->get();
-
-        return view('TournamentsSearched',compact('city','sport','sportName','gender','date','tournsSearched'));
-
+        $tournsSearched = Tournaments::findTournaments($city,$gender,$sport,$date);
+        return view('TournamentsSearched',compact('city','sportName','gender','date','tournsSearched'));
     }
 
 
@@ -230,24 +253,11 @@ class PagesController extends Controller
      * @author marcgarcia1997
      */
     public function signUpTournament($idTournament,Request $request){
-
         $numPlayers = $request->input('number');
-
-        DB::table('tournaments')
-                    ->where('id',$idTournament)
-                    ->increment('num_participantes_actual', $numPlayers);
-
-        DB::table('reserva_tournament')->insert(
-            array(
-                'id_tournament' => $idTournament,
-                'id_usuario' => \Auth::user()->id,
-                'num_inscripciones' => $numPlayers
-            )
-        );
-
+        Tournaments::incrementParticipantsInATournament($idTournament,$numPlayers);
+        Tournaments::signUpForATournament($idTournament,$numPlayers,\Auth::user()->id);
         return redirect()->route('tournaments')->withErrors(['Inscripción guardada','Inscripción guardada']);
     }
-
 
     /**
      *
@@ -258,19 +268,11 @@ class PagesController extends Controller
      * @author HolgerCastillo
      * @author marcgarcia1997
      */
-    public function unsuscribeTournament($idReserveTourny, $idTourny, $numPlayers){
-        DB::table('reserva_tournament')
-            ->where('id',$idReserveTourny)->delete();
-
-        DB::table('tournaments')
-            ->where('id',$idTourny)
-            ->decrement('num_participantes_actual',$numPlayers);
-
+    public function unsuscribeTournament($idInscription, $idTourny, $numPlayers){
+        Tournaments::deleteInscription($idInscription);
+        Tournaments::decrementParticipantsInATournament($idTourny,$numPlayers);
         return redirect()->route('home')->withErrors(['Inscripción eliminada','Inscripción eliminada']);
     }
-
-
-
 
     /**
      * 

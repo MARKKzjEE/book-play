@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Establecimiento extends Model
 {
     public $timestamps = false;
-
     public function servicios(){
         return $this->belongsToMany("App\Servicio")->using(ServiciosEstablecimiento::class);
     }
@@ -28,8 +27,5 @@ class Establecimiento extends Model
     public static function getClubById($id){
         return Establecimiento::where('id', $id)->firstOrFail();
     }
-
-
-
     protected $table='establecimiento';
 }

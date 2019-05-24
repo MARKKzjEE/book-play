@@ -24,7 +24,6 @@ class HomepageTest extends TestCase
             'nombre' => 'TestClub2',
             'prioridad' => 2
         ]);
-        
         $this->assertDatabaseHas('establecimiento',[
             'nombre' => 'TestClub1' 
         ]);
