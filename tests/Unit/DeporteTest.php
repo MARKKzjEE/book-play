@@ -54,4 +54,22 @@ class DeporteTest extends TestCase
         $gender5 = Deporte::transformIdToGender('acb');
         $this->assertTrue($gender5 == 'Mixto');
     }
+    /**
+     * @test
+     */
+    public function testDeleteSport(){
+        $fakeSport = factory(Deporte::class,1)->create([
+            'id' => 454545,
+            'nombre' => 'Squash'
+        ]);
+        $this->assertDatabaseHas('deporte',[
+            'nombre' => 'Squash'
+        ]);
+        Deporte::deleteSport($fakeSport[0]->id);
+        $this->assertDatabaseMissing('deporte',[
+            'nombre' => 'Squash'
+        ]);
+
+    }
+
 }

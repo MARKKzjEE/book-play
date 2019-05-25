@@ -7,7 +7,7 @@ use DB;
 
 class Pista extends Model
 {
-
+    public $timestamps = false;
     public function reservas(){
         return $this->hasMany("App\Reserva");
     }

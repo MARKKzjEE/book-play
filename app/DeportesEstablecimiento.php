@@ -9,9 +9,15 @@ class DeportesEstablecimiento extends Model
 {
     public $timestamps = false;
     public static function getAllSportByClubId($id){
-        return DeportesEstablecimiento::where('id_club',$id)
+        $sports = DeportesEstablecimiento::where('id_club',$id)
         ->join('deporte','deporte.id','=','deportes_establecimiento.id_deporte')
         ->get();
+        if($sports->count() == 0){
+            return null;
+        }
+        else{
+            return $sports;
+        }
     }
 
     public static function deleteByClubId($id){

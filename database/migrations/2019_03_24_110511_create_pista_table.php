@@ -63,7 +63,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 4',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 5.0,
                 'id_deporte' => '1',
@@ -74,7 +74,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 5',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 5.0,
                 'id_deporte' => '1',
@@ -85,7 +85,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 6',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 5.0,
                 'id_deporte' => '1',
@@ -96,7 +96,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 7',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 5.0,
                 'id_deporte' => '1',
@@ -107,7 +107,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 8',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 5.0,
                 'id_deporte' => '1',
@@ -118,7 +118,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 1',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 4.0,
                 'id_deporte' => '1',
@@ -129,7 +129,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 2',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 4.0,
                 'id_deporte' => '1',
@@ -140,7 +140,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 3',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 4.0,
                 'id_deporte' => '1',
@@ -197,7 +197,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 1',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 6.0,
                 'id_deporte' => '1',
@@ -208,7 +208,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 2',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 6.0,
                 'id_deporte' => '1',
@@ -219,7 +219,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 3',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 6.0,
                 'id_deporte' => '1',
@@ -254,7 +254,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 1',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 6.0,
                 'id_deporte' => '1',
@@ -265,7 +265,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 2',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 6.0,
                 'id_deporte' => '1',
@@ -478,7 +478,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 1',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 9.0,
                 'id_deporte' => '1',
@@ -489,7 +489,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 2',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 9.0,
                 'id_deporte' => '1',
@@ -500,7 +500,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 3',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 9.0,
                 'id_deporte' => '1',
@@ -511,7 +511,7 @@ class CreatePistaTable extends Migration
         DB::table('pista')->insert(
             array(
                 'nombre' => 'Pista 4',
-                'superficie' => 'Tierra Batida',
+                'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
                 'precio' => 9.0,
                 'id_deporte' => '1',
