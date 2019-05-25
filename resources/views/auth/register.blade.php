@@ -3,7 +3,7 @@
 @section('Main')
     <div class="container-fluid">
         <div class="row no-gutter">
-            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Pala_de_padel.jpg/1024px-Pala_de_padel.jpg');"></div>
             <div class="col-md-8 col-lg-6">
                 <div class="login d-flex align-items-center py-5">
                     <div class="container">

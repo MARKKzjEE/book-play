@@ -3,7 +3,7 @@
 @section('Main')
     
     <!-- Top content / Advanced search -->
-    <div class="position-relative overflow-hidden p-3 p-md-1 m-md-2 text-left">
+    <div class="position-relative overflow-hidden p-3 p-md-1 m-md-2 text-left bg-secundary ">
         <div class="col-md-12 p-lg-1 mx-auto my-1 align-items-center ">
             
             <form method="get" action="{{URL::to('/search')}}">
@@ -83,8 +83,8 @@
 
 
     <!-- BottomContent / Sports centers searched -->
-    <div class="position-relative overflow-hidden p-3 p-md-2 m-md-3 text-center bg-light ">
-        <div class="album py-5 bg-light">
+    <div class="position-relative overflow-hidden p-3 p-md-2 m-md-3 text-center bg-secundary ">
+        <div class="album py-5 bg-secundary">
             <h3 class="display-5 container-fluid"> Clubs encontrados </h3>
             <br/>
             <div class="container">

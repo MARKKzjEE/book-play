@@ -10,7 +10,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto">
-                                <h3 class="login-heading mb-4"> Registra tu club </h3>
+                                <h4 class="login-heading mb-4"> Rellena este formulario y contactaremos contigo para añadir tu club a nuestra web </h4>
                                 <form method="POST" action="mailto:someone@example.com" enctype="text/plain">
                                 @csrf
                                     <!-- Name input -->

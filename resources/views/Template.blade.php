@@ -22,9 +22,24 @@
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
         
-        <link href="css/datepicker.min.css" rel="stylesheet" type="text/css">
-        <script src="js/datepicker.min.js" type="text/javascript"></script>
-        <script src="js/i18n/datepicker.en.js" type="text/javascript"></script>
+        <link href="{{ URL::asset('css/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ URL::asset('js/datepicker.min.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/i18n/datepicker.en.js') }}" type="text/javascript"></script>
+
+
+
+
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="{{ URL::asset('vendor/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="{{ URL::asset('css/stylish-portfolio.min.css') }}" rel="stylesheet">
 
         <style>
             /*Backgorund in homepage*/
@@ -82,7 +97,7 @@
             }
 
             .bg-image {
-                background-image: url('https://s2.best-wallpaper.net/wallpaper/3840x1200/1609/Sunny-day-summer-tennis-stadium-ground_3840x1200.jpg');
+                background-image: url('https://wallpaperaccess.com/full/656665.jpg');
                 background-size: cover;
                 background-position: center;
             }
@@ -185,99 +200,96 @@
 
   </head>
 
-  <body>
-        
+  <body id="page-top" >
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}"> Book&Play</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <li class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        @if (Route::has('login'))
-                                @auth
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Cerrar Sesión') }}
-                                    </a>
+        <a class="menu-toggle rounded" href="#"> <i class="fas fa-bars"> </i> </a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand ">
+                    <a class="js-scroll-trigger" href="{{ route('home') }}"> Book&Play</a>
+                </li>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('getprofileinfo') }}/{{ \Auth::user()->id }}/false">Mi perfil</a>
-                                </li>
-                                @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
-                                </li>
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" href="{{ route('home') }}"> Inicio </a>
+                </li>
 
-                                    @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">Registrar</a>
-                                    </li>
-                                    @endif
-                                @endauth
-                        @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('eliminar') }}"> Eliminar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tournaments') }}"> Torneos</a>
-                        </li>
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" href="{{ route('tournaments') }}"> Torneos</a>
+                </li>
 
-                    </ul>
-                </div>
-            </div>
+                @if (Route::has('login'))
+                        @auth
+                            <li class="sidebar-nav-item">
+                                <a class="js-scroll-trigger" href="{{ route('getprofileinfo') }}/{{ \Auth::user()->id }}/false">Mi perfil</a>
+                            </li>
+
+                            <li class="sidebar-nav-item">
+                                <a class="js-scroll-trigger" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar Sesión') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                            
+                            @else
+                            <li class="sidebar-nav-item">
+                                <a class="js-scroll-trigger" href="{{ route('login') }}">Iniciar sesión</a>
+                            </li>
+
+                            @if (Route::has('register'))
+                            <li class="sidebar-nav-item">
+                                <a class="js-scroll-trigger" href="{{ route('register') }}">Registrar</a>
+                            </li>
+                            @endif
+                        @endauth
+                @endif
+                
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" href="{{ route('eliminar') }}"> AdminTools </a>
+                </li>
+                
+
+
+
+            </ul>
         </nav>
-
         <!-- MAIN -->
         <main role="main" >
             @yield('Main')
         </main>
 
-        
-        <!-- Footer -->
-        <footer class="container py-5 ">
-            <div class="row">
-                <!-- logo copyright -->
-                <div class="col-12 col-md">
-                    <i class="fab fa-twitter"></i>
+         <!-- Footer -->
+        <footer class="footer text-center">
+            <div class="container">
+            <ul class="list-inline mb-5">
+                <li class="list-inline-item">
+                <a class="social-link rounded-circle text-white mr-3" href="https://github.com/MARKKzjEE/book-play">
+                    <i class="fab fa-github"></i>
+                </a>
+                </li>
+                <li class="list-inline-item">
+                <a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/">
                     <i class="fab fa-instagram"></i>
-                    <i class="fab fa-facebook"></i>
-                    <small class="d-block mb-3 text-muted">&copy; Proyecto de LIS 2019</small>
-                </div>
-
-                <div class="col-6 col-md">
-                    <h5>Télefono</h5>
-                </div>
-
-                <div class="col-6 col-md">
-                    <h5>Contáctanos</h5>
-                </div>
-
-                <div class="col-6 col-md">
-                    <h5>Dirección</h5>
-                </div>
-
-                <div class="col-6 col-md">
-                    <h5>Sobre nosotros</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">¿Quiénes somos?</a></li>
-                        <li><a class="text-muted" href="#">Politica de cookies</a></li>
-                        <li><a class="text-muted" href="#">Terminos legal</a></li>
-                    </ul>
-                </div>
+                </a>
+                </li>
+                <li class="list-inline-item">
+                <a class="social-link rounded-circle text-white" href="https://twitter.com/?lang=es">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                </li>
+            </ul>
+            <p class="text-muted small mb-0">Copyright &copy; Proyecto de LIS 2019</p>
             </div>
         </footer>
+
 
 
         <!-- Bootstrap core JavaScript
@@ -294,7 +306,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="{{ asset('js/bootstrap2.min.js') }}" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         
-        
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="{{ URL::asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="{{ URL::asset('js/stylish-portfolio.min.js') }}"></script>
+
         
         
         

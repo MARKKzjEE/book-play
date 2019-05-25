@@ -2,7 +2,7 @@
 @section('Main')
     <div class="container-fluid">
         <div class="row no-gutter">
-            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"> </div>
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://images6.alphacoders.com/323/thumb-1920-323997.jpg');" > </div>
             <div class="col-md-8 col-lg-6">
                 <div class="login d-flex align-items-center py-5">
                     <div class="container">
