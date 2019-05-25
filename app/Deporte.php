@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Deporte extends Model
 {
@@ -28,5 +29,11 @@ class Deporte extends Model
         }
         return $gender;
     }
+
+    public static function deleteSport($id){
+        DB::table('Deporte')
+            ->where('id',$id)->delete();
+    }
+
     protected $table='deporte';
 }

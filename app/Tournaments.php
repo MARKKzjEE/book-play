@@ -67,4 +67,24 @@ class Tournaments extends Model
             ->where('id',$idTournament)
             ->decrement('num_participantes_actual',$numPlayers);
     }
+
+    public static function getAllTournaments(){
+        return Tournaments::select('id','name','id_club','id_deporte')->distinct()->get();
+    }
+
+    public static function deleteTournamentsOfClub($id){
+        DB::table('tournaments')
+            ->where('id_club',$id)->delete();
+    }
+
+    public static function deleteTournamentsOfSport($id){
+        DB::table('tournaments')
+            ->where('id_deporte',$id)->delete();
+    }
+
+    public static function deleteTournament($id){
+        DB::table('tournaments')
+            ->where('id',$id)->delete();
+    }
+
 }

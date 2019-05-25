@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Establecimiento extends Model
 {
@@ -26,6 +27,15 @@ class Establecimiento extends Model
 
     public static function getClubById($id){
         return Establecimiento::where('id', $id)->firstOrFail();
+    }
+
+    public static function getAllClubs(){
+        return Establecimiento::select('id', 'nombre', 'direccion')->distinct()->get();
+    }
+
+    public static function deleteClub($id){
+        DB::table('establecimiento')
+            ->where('id',$id)->delete();
     }
     protected $table='establecimiento';
 }

@@ -6,6 +6,7 @@ use App\Establecimiento;
 use App\Tournaments;
 use App\Deporte;
 use App\Servicio;
+use App\Pista;
 use App\DeportesEstablecimiento;
 use App\ServiciosEstablecimiento;
 use Illuminate\Http\Request;
@@ -61,17 +62,11 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function eliminar(){
-
-        $clubs  = DB::table('establecimiento')->select('id', 'nombre', 'direccion')->distinct()->get();
-
-        $deportes = DB::table('deporte')->select('id','nombre')->distinct()->get();
-
-        $servicios = DB::table('servicio')->select('id','nombre')->distinct()->get();
-
-        $pistas = DB::table('pista')->select('id','nombre','id_club','id_deporte')->distinct()->get();
-
-        $torneos = DB::table('tournaments')->select('id','name','id_club','id_deporte')->distinct()->get();
-
+        $clubs  = Establecimiento::getAllClubs(); 
+        $deportes = Deporte::getAllSports();
+        $servicios = Servicio::getAllServices();
+        $pistas = Pista::getAllPistas();
+        $torneos = Tournaments::getAllTournaments();
         return view('Eliminar', compact('clubs','deportes','servicios','pistas','torneos'));
     }
 
@@ -84,16 +79,9 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function deleteClub($idClub){
-
-        DB::table('deportes_establecimiento')
-            ->where('id_club',$idClub)->delete();
-
-        DB::table('tournaments')
-            ->where('id_club',$idClub)->delete();
-
-        DB::table('establecimiento')
-            ->where('id',$idClub)->delete();
-
+        DeportesEstablecimiento::deleteByClubId($idClub);
+        Tournaments::deleteTournamentsOfClub($idClub);
+        Establecimiento::deleteClub($idClub);
         return redirect()->route('eliminar')->withErrors(['Club eliminado','Club eliminado']);
     }
 
@@ -106,16 +94,9 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function deleteDeporte($idDeporte){
-
-        DB::table('tournaments')
-            ->where('id_deporte',$idDeporte)->delete();
-
-        DB::table('deportes_establecimiento')
-            ->where('id_deporte',$idDeporte)->delete();
-
-        DB::table('Deporte')
-            ->where('id',$idDeporte)->delete();
-
+        Tournaments::deleteTournamentsOfSport($idDeporte);
+        DeportesEstablecimiento::deleteBySportId($idDeporte);
+        Deporte::deleteSport($idDeporte);
         return redirect()->route('eliminar')->withErrors(['Deporte eliminado','Deporte eliminado']);
     }
 
@@ -128,13 +109,8 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function deleteServicio($idServe){
-
-        DB::table('servicios_establecimiento')
-            ->where('id_servicio',$idServe)->delete();
-
-        DB::table('servicio')
-            ->where('id',$idServe)->delete();
-
+        ServiciosEstablecimiento::deleteByServiceId($idServe);
+        Servicio::deleteService($idServe);
         return redirect()->route('eliminar')->withErrors(['Servicio eliminado','Servicio eliminado']);
     }
 
@@ -147,10 +123,7 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function deletePista($idpista){
-
-        DB::table('pista')
-            ->where('id',$idpista)->delete();
-
+        Pista::deleteField($idpista);
         return redirect()->route('eliminar')->withErrors(['Club eliminado','Club eliminado']);
     }
 
@@ -163,10 +136,7 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function deleteTorneo($torneo){
-
-        DB::table('tournaments')
-            ->where('id',$torneo)->delete();
-
+        Tournaments::deleteTournament($torneo);
         return redirect()->route('eliminar')->withErrors(['Torneo eliminado','Torneo eliminado']);
     }
 

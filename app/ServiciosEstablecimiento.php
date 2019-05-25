@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class ServiciosEstablecimiento extends Model
 {
@@ -12,5 +13,12 @@ class ServiciosEstablecimiento extends Model
             ->join('servicio','servicio.id','=','servicios_establecimiento.id_servicio')
             ->get();
     }
+
+    public static function deleteByServiceId($id){
+        DB::table('servicios_establecimiento')
+            ->where('id_servicio',$id)->delete();
+    }
+
+
     protected $table='servicios_establecimiento';
 }
