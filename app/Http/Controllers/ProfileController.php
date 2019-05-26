@@ -8,6 +8,7 @@ use App\Tournaments;
 use App\Deporte;
 use App\Servicio;
 use App\Pista;
+use App\User;
 use App\DeportesEstablecimiento;
 use App\ServiciosEstablecimiento;
 use Illuminate\Http\Request;
@@ -18,55 +19,34 @@ class ProfileController extends Controller
 {
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve datos del perfil
      *
-     * Descripción detallada
-     *
-     * @author nickGithub
+     * Recupera y retorna los datos del perfil
+     * con el que se ha iniciado sesión.
+     * @author MarcGallego
      */
     public function getprofileinfo($idprofile, $return){
-        $profileInfo = \DB::table('users')
-            ->where('users.id', '=', $idprofile)
-            ->get();
-
-        $myTournaments = DB::table('reserva_tournament')
-            ->select('*','reserva_tournament.id as id_reserva')
-            ->join('tournaments','tournaments.id','=','reserva_tournament.id_tournament')
-            ->join('deporte','deporte.id','=','tournaments.id_deporte')
-            ->where('id_usuario',\Auth::user()->id )->get()->toArray();
-        $reservas = \DB::table('reserva')
-            ->select('reserva.*','establecimiento.imagen_perfil', 'establecimiento.nombre')
-            ->where('id_usuario', '=', $idprofile)
-            ->join('pista', 'pista.id', '=', 'reserva.id_pista')
-            ->join('establecimiento', 'establecimiento.id', '=', 'pista.id_club')
-            ->get();
+        $profileInfo = User::profileinfo($idprofile);
+        $myTournaments = User::myTournaments();
+        $reservas = User::reservasuser($idprofile);
         //dd($myTournaments);
         return view('myProfile', compact('profileInfo', 'idprofile', 'return','myTournaments', 'reservas'));
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Modifica los datos privados
      *
-     * Descripción detallada
+     * Introducción de los nuevos datos para modificarlos
+     * y recuperarlos.
      *
-     * @author nickGithub
+     * @author MarcGallego
      */
     public function editprofileprivate(Request $request, $idprofile){
         $username = $request->input('username');
         $biography = $request->input('biography');
 
-        $query = \DB::table('users')->where('id',$idprofile);
-        $return = false;
-        if($username != null) {
-            $query->update(['username' => $username]);
-            $return = true;
-        }
-
-        if($biography != null) {
-            $query->update(['descripcion'=> $biography]);
-            $return = true;
-        }
+        $return = User::editprivateprofile($username,$biography,$idprofile);
 
         return $this->getprofileinfo($idprofile, $return);
 
@@ -74,11 +54,12 @@ class ProfileController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Modifica los datos públicos
      *
-     * Descripción detallada
+     * Introducción de los nuevos datos para modificarlos
+     * y recuperarlos.
      *
-     * @author nickGithub
+     * @author MarcGallego
      */
     public function editprofilepublic(Request $request, $idprofile){
         $name = $request->input('name');
@@ -88,37 +69,7 @@ class ProfileController extends Controller
         $city = $request->input('city');
         $adress = $request->input('adress');
 
-        $query = \DB::table('users')->where('id',$idprofile);
-        $return = false;
-        if($name != null) {
-            $query->update(['name' => $name]);
-            $return = true;
-        }
-
-        if($email != null) {
-            $query->update(['email'=> $email]);
-            $return = true;
-        }
-
-        if($tel != null) {
-            $query->update(['telefono' => $tel]);
-            $return = true;
-        }
-
-        if($zip != null) {
-            $query->update(['codigo_postal'=> $zip]);
-            $return = true;
-        }
-
-        if($city != null) {
-            $query->update(['ciudad' => $city]);
-            $return = true;
-        }
-
-        if($adress != null) {
-            $query->update(['direccion'=> $adress]);
-            $return = true;
-        }
+        $return = User::editpublicprofile($idprofile, $name, $email, $tel, $zip, $city, $adress);
 
         return $this->getprofileinfo($idprofile, $return);
 
@@ -126,15 +77,15 @@ class ProfileController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Modifica las contraseñas
      *
-     * Descripción detallada
+     * Introducción de la nueva contraseña
      *
-     * @author nickGithub
+     *
+     * @author MarcGallego
      */
     public function editpassword(Request $request, $idprofile) {
 
-        $bool = false;
         $bool = false;
         $actualPasswordInput = brypt($request->input('inputPasswordCurrent'));
 
@@ -168,11 +119,11 @@ class ProfileController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Elimina la cuenta actual
      *
-     * Descripción detallada
+     * Elimina por completo la cuenta perdiendo todos los datos
      *
-     * @author nickGithub
+     * @author MarcGallego
      */
     public function deleteaccount(Request $request, $idprofile) {
 

@@ -215,10 +215,6 @@
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
                 </li>
-
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="{{ route('eliminar') }}"> AdminTools </a>
-                </li>
             </ul>
         </nav>
 
