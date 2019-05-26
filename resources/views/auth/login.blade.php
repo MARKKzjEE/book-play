@@ -36,18 +36,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1" value="{{ old('remember') ? 'checked' : '' }}">
-                                        <label class="custom-control-label" for="customCheck1"> Recordar contraseña </label>
-                                    </div>
-
                                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"> Iniciar sesión </button>
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-
                                 </form>
                             </div>
                         </div>
