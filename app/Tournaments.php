@@ -23,8 +23,7 @@ class Tournaments extends Model
             ->join('establecimiento','establecimiento.id','=','tournaments.id')
             ->join('deporte','deporte.id','=','tournaments.id_deporte')
             ->where([
-                ['tournaments.prioridad',1],
-                ['tournaments.num_participantes_actual','==','tournaments.num_participantes_max']
+                ['tournaments.prioridad',1]
             ])
             ->get();
     }

@@ -1,6 +1,13 @@
 <?php
+/**
+ * Home
+ */
 
 Route::get('/', 'PagesController@inicio')->name('home');
+
+/**
+ *  Login/Register
+ */
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -10,77 +17,68 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+/**
+ * Search Clubs
+ */
+
 Route::get('search','PagesController@search')->name('search');
 
-Route::get('club/{ID?}','PagesController@club')->name('club');
+/**
+ * Club
+ */
 
-Route::get('registrationClub','PagesController@registrationClub')->name('registrationClub');
+Route::get('club/{ID?}','ClubController@club')->name('club');
 
-Route::get('logOut','PagesController@logOut')->name('logOut');
+/**
+ * Request of new club
+ */
 
+Route::get('registrationClub','RequestNewClubController@registrationClub')->name('registrationClub');
 
+/**
+ * Admin Tools
+ */
+
+Route::get('eliminar','AdminToolsController@Eliminar')->name('eliminar');
+Route::get('deleteClub/{id?}','AdminToolsController@deleteClub')->name('deleteClub');
+Route::get('deleteDeporte/{id?}','AdminToolsController@deleteDeporte')->name('deleteDeporte');
+Route::get('deleteServicio/{id?}','AdminToolsController@deleteServicio')->name('deleteServicio');
+Route::get('deletePista/{id?}','AdminToolsController@deletePista')->name('deletePista');
+Route::get('deleteTorneo/{id?}','AdminToolsController@deleteTorneo')->name('deleteTorneo');
 
 
 /**
- * Eliminar Clubes, Torneos,...
+ *  Book fields 
  */
 
-Route::get('eliminar','PagesController@Eliminar')->name('eliminar');
-Route::get('deleteClub/{id?}','PagesController@deleteClub')->name('deleteClub');
-Route::get('deleteDeporte/{id?}','PagesController@deleteDeporte')->name('deleteDeporte');
-Route::get('deleteServicio/{id?}','PagesController@deleteServicio')->name('deleteServicio');
-Route::get('deletePista/{id?}','PagesController@deletePista')->name('deletePista');
-Route::get('deleteTorneo/{id?}','PagesController@deleteTorneo')->name('deleteTorneo');
+Route::get('timetable/{id?}/{id2?}','ReserveFieldController@timetable')->name('timetable');
+Route::get('insertbookbd/{id?}/{id2?}/{id3?}/{id4?}/{id5?}','ReserveFieldController@insertbookbd')->name('insertbookbd');
+Route::get('timetablepart/{id?}/{id2?}/{id3?}','ReserveFieldController@timetablepart')->name('timetablepart');
+Route::get('filters/{id?}/{id2?}/{id3?}/{id4?}/{id5?}/{id6?}/{id7?}','ReserveFieldController@filters')->name('filters');
+Route::get('detailtimetable/{id?}/{id2?}/{id3?}/{id4?}','ReserveFieldController@detailtimetable')->name('detailtimetable');
 
 
 /**
- *  Functions to book a field
- * 
- * 
+ * Profile
  */
 
-
-
-Route::get('timetable/{id?}/{id2?}','PagesController@timetable')->name('timetable');
-
-Route::get('insertbookbd/{id?}/{id2?}/{id3?}/{id4?}/{id5?}','PagesController@insertbookbd')->name('insertbookbd');
-
-Route::get('timetablepart/{id?}/{id2?}/{id3?}','PagesController@timetablepart')->name('timetablepart');
-
-Route::get('filters/{id?}/{id2?}/{id3?}/{id4?}/{id5?}/{id6?}/{id7?}','PagesController@filters')->name('filters');
-
-Route::get('detailtimetable/{id?}/{id2?}/{id3?}/{id4?}','PagesController@detailtimetable')->name('detailtimetable');
-
+Route::get('getprofileinfo/{id?}/{id2?}','ProfileController@getprofileinfo')->name('getprofileinfo');
+Route::post('editprofileprivate/{id?}','ProfileController@editprofileprivate')->name('editprofileprivate');
+Route::post('editprofilepublic/{id?}','ProfileController@editprofilepublic')->name('editprofilepublic');
+Route::post('editpassword/{id?}','ProfileController@editpassword')->name('editpassword');
+Route::get('deleteaccount/{id?}','ProfileController@deleteaccount')->name('deleteaccount');
+Route::get('deletebook/{id?}/{id2?}','ProfileController@deletebook')->name('deletebook');
 
 /**
- * Functions relative to clubpage
- */
-
-
-Route::get('getprofileinfo/{id?}/{id2?}','PagesController@getprofileinfo')->name('getprofileinfo');
-
-Route::post('editprofileprivate/{id?}','PagesController@editprofileprivate')->name('editprofileprivate');
-
-Route::post('editprofilepublic/{id?}','PagesController@editprofilepublic')->name('editprofilepublic');
-
-Route::post('editpassword/{id?}','PagesController@editpassword')->name('editpassword');
-
-Route::get('deleteaccount/{id?}','PagesController@deleteaccount')->name('deleteaccount');
-
-Route::get('deletebook/{id?}/{id2?}','PagesController@deletebook')->name('deletebook');
-/**
  * 
- *  Functions relative to Tournaments
+ *  Tournaments
  * 
  */
 
-Route::get('tournaments','PagesController@tournaments')->name('tournaments');
-
-Route::get('tournamentsSearched','PagesController@tournamentsSearched')->name('tournamentsSearched');
-
-Route::get('signUpTournament/{id?}','PagesController@signUpTournament')->name('signUpTournament');
-
-Route::get('unsuscribeTournament/{id?}/{id2?}/{id3?}','PagesController@unsuscribeTournament')->name('unsuscribeTournament');
+Route::get('tournaments','TournamentsController@tournaments')->name('tournaments');
+Route::get('tournamentsSearched','TournamentsController@tournamentsSearched')->name('tournamentsSearched');
+Route::get('signUpTournament/{id?}','TournamentsController@signUpTournament')->name('signUpTournament');
+Route::get('unsuscribeTournament/{id?}/{id2?}/{id3?}','TournamentsController@unsuscribeTournament')->name('unsuscribeTournament');
 
 
 Auth::routes();
