@@ -52,16 +52,13 @@ class DeportesEstablecimientoTest extends TestCase
         ]);
         $sports = DeportesEstablecimiento::getAllSportByClubId(99);
         $this->assertTrue($sports[0]->id_deporte == $fakeSport[0]->id);
-
         $sports = DeportesEstablecimiento::getAllSportByClubId(999);
         $this->assertTrue($sports == null);
-        
+
         $sports = DeportesEstablecimiento::getAllSportByClubId("string");
         $this->assertTrue($sports == null);
-
         $sports = DeportesEstablecimiento::getAllSportByClubId(-1);
         $this->assertTrue($sports == null);
-
         $sports = DeportesEstablecimiento::getAllSportByClubId(0);
         $this->assertTrue($sports == null);
     }
@@ -101,29 +98,4 @@ class DeportesEstablecimientoTest extends TestCase
             'id_club' => '333'
         ]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Pista;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -33,7 +34,7 @@ class EstablecimientoTest extends TestCase
         $clubQuery = Establecimiento::getClubById($fakeClub[0]->id);
         $this->assertTrue($clubQuery->id == 4545);
     }
-    /** 
+    /**
      * @test
      */
     public function testGetaAllClubs(){
@@ -48,7 +49,7 @@ class EstablecimientoTest extends TestCase
             }
         }
     }
-    /** 
+    /**
      * @test
      */
     public function testDeleteClub(){
@@ -61,13 +62,39 @@ class EstablecimientoTest extends TestCase
             'nombre' => 'Futbol Club Hospitalet',
             'id' => 4545
         ]);
-        
+
     }
+    /**
+     * @test
+     */
+    public function testdatosestablecimiento()
+    {
+        $fakeClub = factory(Establecimiento::class,1)->create([
+            'id' => 4545,
+            'hora_inicio' => '2019-05-12 08:00:00',
+            'hora_final' => '2019-05-12 22:00'
+        ]);
+        $clubQuery = Establecimiento::datosestablecimiento($fakeClub[0]->id);
+        $this->assertTrue($clubQuery[0]->hora_inicio == '2019-05-12 08:00:00');
+        $this->assertTrue($clubQuery[0]->hora_final == '2019-05-12 22:00');
+    }
+    /**
+     * @test
+     */
+    public function testdatosestablecimientoidpista(){
 
-    
-
-
-
-
+        $fakePista = factory(Pista::class,1)->create([
+            'id' => 999,
+            'id_club' => 4545
+        ]);
+        $fakeClub = factory(Establecimiento::class,1)->create([
+            'id' => 4545,
+            'hora_final' => '2019-05-12 22:00'
+        ]);
+        $clubQuery = Establecimiento::datosestablecimientoidpista($fakePista[0]->id);
+//        var_dump($clubQuery);
+        $this->assertTrue($clubQuery[0]->hora_inicio == '2019-05-12 22:00');
+        $this->assertTrue($clubQuery[0]->id_pista == 999);
+    }
 
 }
