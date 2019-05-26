@@ -33,7 +33,7 @@
                         </div>
                         <!-- Place picker -->
                         <div class="col-sm-4 col-md-4 col-lg-4 my-1">
-                            <input type="text" class="form-control" placeholder="Barcelona" value="Barcelona" name="city">
+                            <input type="text" class="form-control" placeholder="Badalona" value="Badalona" name="city">
                         </div>
                         <!-- Date picker -->
                         <div class="col-auto my-1">

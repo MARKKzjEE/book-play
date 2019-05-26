@@ -42,6 +42,15 @@
         <link href="{{ URL::asset('css/stylish-portfolio.min.css') }}" rel="stylesheet">
 
         <style>
+
+            .masthead2{
+                height:20vh;
+                min-height:50px;
+                background-size:cover;
+                background-position:center;
+                background-repeat:no-repeat;
+
+            }
             :root {
                 --input-padding-x: 1.5rem;
                 --input-padding-y: 0.75rem;

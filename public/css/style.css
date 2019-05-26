@@ -4,8 +4,7 @@
     position: fixed;
     bottom:0;
     width: 100%;
-
-    background-color:	black;opacity:0.84;
+    
 }
 #x {
     height: 40px;
@@ -13,9 +12,8 @@
     cursor: pointer;
 }
 .smallwindow {
-    background-color:	#C0C0C0;opacity:1!important;
+    background-color:white;opacity:1!important;
     margin: 15% auto ;
-
     width: 55%;
     height: 400px;
 }

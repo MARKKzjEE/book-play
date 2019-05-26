@@ -1,5 +1,4 @@
 <div>
-    
     <i class="fas fa-times-circle" onclick="quitX()" id="x">  </i>
 </div>
 <div style="text-align: center; padding-top: 15%;">
@@ -23,10 +22,9 @@
     $string = $hora.":00";
 
     //$string = date($string);
-    echo "<b>Reservar Pista</b>"."<br>";
-    echo "Fecha Seleccionada: ".$fecha." ".$string."<br>"."<br>"."<br>";
-    echo "ID pista: ".$id_pista."<br>";
-    echo "Hora Inicio:"." ".$hora."&nbsp&nbsp&nbsp&nbsp&nbsp";
+    
+    echo "<h5>Fecha Seleccionada: ".$fecha." ".$string."</h5>"."<br>";
+    echo "<h5>Pista nº ".$id_pista . "</h5>"."<br>";
 
     $array = array();
     $inittime = date("Y-m-d H:i:s", strtotime($inittime . "+30 minutes"));
@@ -35,7 +33,7 @@
     }
     $var = strtotime($inittime . "+30 minutes")
     ?>
-    <select name="" id="finalhour">
+    <select name="" id="finalhour" class="custom-select col-sm-5 col-md-3 form-control" >
         <option value="-1" disabled selected hidden>Seleccionar hora final</option>
         @foreach ($array as $one){
         <?php $divide = explode(" ",$one);
@@ -46,7 +44,7 @@
         @endforeach
 
     </select>
-    <input type="button" onclick="insertBook('<?php echo $string?>', '<?php echo $id_user?>', '<?php echo $fecha?>', '<?php echo $id_pista?>')" value="Reservar">
+    <input type="button" class="btn btn-link" onclick="insertBook('<?php echo $string?>', '<?php echo $id_user?>', '<?php echo $fecha?>', '<?php echo $id_pista?>')" value="Reservar">
 
 
 

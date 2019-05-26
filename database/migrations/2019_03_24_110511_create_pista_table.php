@@ -117,6 +117,39 @@ class CreatePistaTable extends Migration
 
         DB::table('pista')->insert(
             array(
+                'nombre' => 'Pista 9',
+                'superficie' => 'TierraBatida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
+                'id_deporte' => '1',
+                'id_club'  => '1'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 10',
+                'superficie' => 'TierraBatida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
+                'id_deporte' => '1',
+                'id_club'  => '1'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
+                'nombre' => 'Pista 11',
+                'superficie' => 'TierraBatida',
+                'cerramiento' => 'Exterior',
+                'precio' => 5.0,
+                'id_deporte' => '1',
+                'id_club'  => '1'
+            )
+        );
+
+        DB::table('pista')->insert(
+            array(
                 'nombre' => 'Pista 1',
                 'superficie' => 'TierraBatida',
                 'cerramiento' => 'Exterior',
