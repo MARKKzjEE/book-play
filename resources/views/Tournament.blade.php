@@ -21,9 +21,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h2> Apuntate a un torneo y compite contra los mejores </h2>
-          <p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-            <a href="https://unsplash.com/">Unsplash</a>!</p>
+          <h2> Apuntate a un torneo y compite contra los mejores </h2><br>
                 <form class="form1" action="{{URL::to('/tournamentsSearched')}}" method="get">
                     {{ csrf_field() }}
                     <div class="form-row align-items-center">
@@ -78,8 +76,8 @@
 <section class="content-section bg-primary text-dark text-center" id="services">
     <div class="container">
         <div class="content-section-heading">
-            <h3 class="text-secondary mb-0"> Los torneos con mas destacados en tu zona </h3>
-            <h2 class="text-light mb-5">Torneos populares </h2>
+            <h3 class="text-secondary mb-0"> Los torneos más destacados en tu zona </h3>
+            <h2 class="text-light mb-5"> Torneos populares </h2>
         </div>
         <div class="row">
             @foreach($tournaments as $tourny)

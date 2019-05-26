@@ -87,7 +87,6 @@ class DeporteTest extends TestCase
 
         $SportQuery = Deporte::datosdeporte();
         $length = (sizeof($SportQuery));
-        var_dump($SportQuery);
 
         $this->assertTrue($SportQuery[$length-1]->id_deporte == 454546);
         $this->assertTrue($SportQuery[$length-2]->id_deporte == 454545);

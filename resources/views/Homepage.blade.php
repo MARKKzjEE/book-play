@@ -17,7 +17,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h2> ¡Busca tu sitio ideal para practica deporte! </h2>
+          <h2> ¡Busca tu sitio ideal para practicar deporte! </h2>
           <p class="lead mb-5"> Hay disponibles decenas de establecimientos </p>
 
                 <form method="get" action="{{URL::to('/search')}}">
@@ -64,7 +64,7 @@
   <section class="callout" style="background-image: url('http://new.lasasport.es/wp-content/uploads/2016/12/padel04.jpg');">
     <div class="container text-center text-light">
       <h2 class="mx-auto mb-5"> <em>Compite</em> contra los mejores</h2>
-      <a class="btn btn-dark btn-xl" href="{{ route('tournaments') }}">Inscribite ya!</a>
+      <a class="btn btn-dark btn-xl" href="{{ route('tournaments') }}"> ¡Inscribite ya!</a>
     </div>
   </section>
 
@@ -73,7 +73,7 @@
     <div class="container">
 
       <div class="content-section-heading text-center">
-        <h3 class="text-secondary mb-0">Los mejores clubes segun nuestros usuarios </h3>
+        <h3 class="text-secondary mb-0">Los mejores clubes según nuestros usuarios </h3>
         <h2 class="mb-5"> Clubs destacados </h2>
       </div>
 
