@@ -1,7 +1,7 @@
 @extends('Template')
 @section('Main')
 <!-- Header -->
-<header class="masthead d-flex" style="  background-image: url('http://football.sportsandgo.com/wp-content/uploads/2018/08/paddle.jpg');">
+<header class="masthead d-flex" style="background-image: url('http://football.sportsandgo.com/wp-content/uploads/2018/08/paddle.jpg');">
     <div class="container text-center my-auto text-light">
       <h1 class="mb-1"> BOOK&PLAY  </h1>
       <h3 class="mb-5">

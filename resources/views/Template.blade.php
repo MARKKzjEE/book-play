@@ -42,51 +42,6 @@
         <link href="{{ URL::asset('css/stylish-portfolio.min.css') }}" rel="stylesheet">
 
         <style>
-            /*Backgorund in homepage*/
-            header {
-                position: relative;
-                background-color: black;
-                height: 75vh;
-                min-height: 25rem;
-                width: 100%;
-                overflow: hidden;
-            }
-
-            .masthead {
-                height: 100vh;
-                min-height: 500px;
-                
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-
-            header .container {
-                position: relative;
-                z-index: 2;
-            }
-
-            header .overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                background-color: black;
-                opacity: 0.5;
-                z-index: 1;
-            }
-
-            /* Background in club page */
-            .masthead2 {
-                height: 20vh;
-                min-height: 50px;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-            /* Login style */
-
             :root {
                 --input-padding-x: 1.5rem;
                 --input-padding-y: 0.75rem;
@@ -255,12 +210,10 @@
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="{{ route('eliminar') }}"> AdminTools </a>
                 </li>
-                
-
-
-
             </ul>
         </nav>
+
+
         <!-- MAIN -->
         <main role="main" >
             @yield('Main')
