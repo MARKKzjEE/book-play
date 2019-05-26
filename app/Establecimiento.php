@@ -37,5 +37,20 @@ class Establecimiento extends Model
         DB::table('establecimiento')
             ->where('id',$id)->delete();
     }
+
+    public static function datosestablecimiento($id){
+        return DB::table('establecimiento')
+            ->select('establecimiento.hora_inicio as hora_inicio', 'establecimiento.hora_final as hora_final')
+            ->where('establecimiento.id', '=', $id)
+            ->get();
+    }
+
+    public static function datosestablecimientoidpista($id){
+        return DB::table('establecimiento')
+            ->select('establecimiento.hora_final as hora_inicio', 'pista.id as id_pista')
+            ->join('pista', 'pista.id_club', '=', 'establecimiento.id')
+            ->where('pista.id', '=', $id)
+            ->get();
+    }
     protected $table='establecimiento';
 }

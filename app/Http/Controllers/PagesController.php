@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Establecimiento;
+use App\Reserva;
 use App\Tournaments;
 use App\Deporte;
 use App\Servicio;
@@ -319,142 +320,94 @@ class PagesController extends Controller
 
      /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve datos de establecimiento
      *
-     * Descripción detallada
+     * Recupera y retorna los datos de un
+      * establecimiento específico
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function datosestablecimiento($id){
-        return \DB::table('establecimiento')
-            ->select('establecimiento.hora_inicio as hora_inicio', 'establecimiento.hora_final as hora_final')
-            ->where('establecimiento.id', '=', $id)
-            ->get();
+        return Establecimiento::datosestablecimiento($id);
     }
 
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve datos de una pista
      *
-     * Descripción detallada
-     *
-     * @author nickGithub
+     * Recupera y retorna los datos de una
+     * pista específico
+     * @author ArnauRovira
      */
     public function datospista($id){
-        return \DB::table('pista')
-            ->select('pista.nombre as nombrepista', 'pista.id as id_pista')
-            ->join('establecimiento', 'pista.id_club', '=', 'establecimiento.id')
-            ->where('establecimiento.id', '=', $id)
-            ->orderBy('pista.id', 'asc')
-            ->get();
+        return Pista::datospista($id);
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve las pistas que tengan esos filtros
      *
-     * Descripción detallada
+     * Recupera y retorna los datos de las pistas que contengan
+     * los filtros de búsqueda que el usuario ha filtrado
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function datospistafilter( $superficie,$cercamiento, $pared, $deporte, $fecha, $id)
     {
-        $filter = \DB::table('pista')
-            ->select('pista.nombre as nombrepista', 'pista.id as id_pista')
-            ->join('establecimiento', 'pista.id_club', '=', 'establecimiento.id')
-            ->where('establecimiento.id', '=', $id);
-        if ($superficie != -1) {
-            $filter->where('pista.superficie', '=', $superficie);
-        }
-        if ($cercamiento != -1) {
-            $filter->where('pista.cerramiento', '=', $cercamiento);
-        }
-        if ($pared != -1) {
-            $filter->where('pista.pared', '=', $pared);
-        }
-        if ($deporte != -1) {
-            $filter->where('pista.id_deporte', '=', $deporte);
-        }
-        $filter->orderBy('pista.id', 'asc');
-        $result = $filter->get();
-        return $result;
+        return Pista::datospistafilter($superficie,$cercamiento, $pared, $deporte, $fecha, $id);
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve todas las reservas echas en este dia según el filtro
      *
-     * Descripción detallada
+     * Recupera todos los datos de las reservas echas en 1 club
+     * y 1 día específico según los filtros que se aplican en la búsqueda y
+     * los retorna
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function datosreservafilter($superficie,$cercamiento, $pared, $deporte, $fecha, $id)
     {
-        $filter = \DB::table('reserva')
-            ->select('reserva.hora_inicio as hora_inicio','reserva.hora_final as hora_final', 'reserva.id_pista as id_pista', 'pista.nombre as nombrepista', 'establecimiento.nombre as nombreestablecimiento')
-            ->join('pista', 'reserva.id_pista', '=', 'pista.id')
-            ->join('establecimiento', 'pista.id_club', '=', 'establecimiento.id')
-            ->where('establecimiento.id', '=', $id)
-            ->where('reserva.fecha_reserva', '=', $fecha);
-        if ($superficie != -1) {
-            $filter->where('pista.superficie', '=', $superficie);
-        }
-        if ($cercamiento != -1) {
-            $filter->where('pista.cerramiento', '=', $cercamiento);
-        }
-        if ($pared != -1) {
-            $filter->where('pista.pared', '=', $pared);
-        }
-        if ($deporte != -1) {
-            $filter->where('pista.id_deporte', '=', $deporte);
-        }
-        $filter->orderBy('reserva.id_pista', 'asc');
-        $filter = $filter->get();
-
-        return $filter;
+        return Reserva::datosreservafilter($superficie,$cercamiento, $pared, $deporte, $fecha, $id);
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve todas las reservas echas en este dia
      *
-     * Descripción detallada
+     * Recupera todos los datos de las reservas echas en 1 club
+     * y 1 día específico y los retorna
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function datosreserva($id,$today){
-        return \DB::table('reserva')
-            ->select('reserva.hora_inicio as hora_inicio','reserva.hora_final as hora_final', 'reserva.id_pista as id_pista', 'pista.nombre as nombrepista', 'establecimiento.nombre as nombreestablecimiento')
-            ->join('pista', 'reserva.id_pista', '=', 'pista.id')
-            ->join('establecimiento', 'pista.id_club', '=', 'establecimiento.id')
-            ->where('establecimiento.id', '=', $id)
-            ->where('reserva.fecha_reserva', '=', $today)
-            ->orderBy('reserva.id_pista', 'asc')
-            ->get();
+        return Reserva::datosreserva($id,$today);
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve todos los deportes
      *
-     * Descripción detallada
+     * Recupera y devuelve todos los deportes
+     * existentes de la base de datos para los filtros de reserva
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function datosdeporte(){
-        return \DB::table('deporte')
-            ->select('deporte.id as id_deporte', 'deporte.nombre as nombre_deporte')
-            ->get();
+        return Deporte::datosdeporte();
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve el container con las pistas que cumplan los filtros
      *
-     * Descripción detallada
+     * Recupera los datos de las pistas, clubes y reservas que
+     * cumplan con los filtros que se pasan por parámetro y luego
+     * devuelve el container de reservas
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function filters($superficie,$cercamiento,  $pared, $deporte, $today, $idclub, $iduser){
         $datospista = $this->datospistafilter($superficie,$cercamiento,  $pared, $deporte, $today, $idclub);
@@ -470,11 +423,12 @@ class PagesController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve Pista de Reservas
      *
-     * Descripción detallada
+     * Recupera los datos para los filtros de reservas y
+     * retorna la vista
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function timetable($idclub, $iduser){
 
@@ -494,11 +448,12 @@ class PagesController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Muestra container de los horarios de la reserva
      *
-     * Descripción detallada
+     * Recupera los datos del establecimiento, reservas
+     * y pistas para retornarlos a la vista
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function timetablepart($idclub, $iduser,$today){
 
@@ -511,45 +466,39 @@ class PagesController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Información sobre la proxima reserva
      *
-     * Descripción detallada
+     * Devuelve los datos de la próxima reserva
+     * respecto la hora que se le pasa
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function timenextbook($id_pista, $fecha_total, $dia){
-        return \DB::table('reserva')
-            ->select('reserva.hora_inicio as hora_inicio', 'reserva.id_pista as id_pista')
-            ->where('reserva.id_pista', '=', $id_pista)
-            ->where('reserva.hora_inicio', '>', $fecha_total)
-            ->where('reserva.fecha_reserva', '=', $dia)
-            ->orderBy('reserva.hora_inicio', 'asc')
-            ->get();
+        return Reserva::timenextbook($id_pista, $fecha_total, $dia);
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Devuelve los datos de un establecimiento
      *
-     * Descripción detallada
+     * Devuelve las franjas horarias del establecimiento que
+     * contiene la id de la pista que se desea
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function datosestablecimientoidpista($id){
-        return \DB::table('establecimiento')
-            ->select('establecimiento.hora_final as hora_inicio', 'pista.id as id_pista')
-            ->join('pista', 'pista.id_club', '=', 'establecimiento.id')
-            ->where('pista.id', '=', $id)
-            ->get();
+        return Establecimiento::datosestablecimientoidpista($id);
     }
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Muestra informacion detallada para resevar
      *
-     * Descripción detallada
+     * Devuelve una vista que muestra la franja horaria
+     * que el usuario puede reservar y le permite reservar
+     * dicha pista
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function detailtimetable($fecha, $hora, $id_pista, $id_user){
         $datetotal = $fecha." ".$hora;
@@ -578,19 +527,18 @@ class PagesController extends Controller
      * @author nickGithub
      */
     public function getpreciopista($idpista){
-        return \DB::table('pista')
-            ->select('pista.precio as preciopista')
-            ->where('pista.id', '=', $idpista)
-            ->get();
+        return Pista::getpreciopista($idpista);
     }
     
     /**
      *
-     * Descripción básica (1 linea)
+     * Insertar reserva base de datos
      *
-     * Descripción detallada
+     * Recupera todos los datos de usuario y de pista
+     * e inserta la reserva en la base de datos,
+     * devuelve una vista mostrando que se ha reservado correctamente
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function insertbookbd($finalhour, $initialhour, $iduser, $date, $idpista){
 
@@ -612,36 +560,11 @@ class PagesController extends Controller
         $precio = $minutos*$precio;
         \DB::table('reserva')->insert(
             ['fecha_reserva' => $date, 'hora_inicio' => $initialhour, 'hora_final' => $finalhour, 'id_usuario' => $iduser, 'id_pista' => $idpista, 'sum_modulos' => 0
-                , 'estado_reserva' => 1, 'estado_pago' => 1, 'id_pago' => 1, 'cantidad' => $precio, 'descripcion' => "hola"]
+                , 'estado_reserva' => 1, 'estado_pago' => 1, 'id_pago' => 1, 'cantidad' => $precio, 'descripcion' => "PistaReservada"]
         );
 
         echo "<b style='padding-left: 40%; font-size: 20px;'>Pista Reservada!</b>";
 
-    }
-
-
-    /**
-     *
-     * Descripción básica (1 linea)
-     *
-     * Descripción detallada
-     *
-     * @author nickGithub
-     */
-    public function insertarReserva(Request $request){
-
-        $fecha_reserva = $request->input('fechareserva');
-        $horainicio = $request->input('fechareserva');
-        $horafinal = $request->input('fechareserva');
-
-        for($i = 0; $i< 3; $i++){
-            \DB::table('reserva')->insert(
-                ['fecha_reserva' => $fecha_reserva, 'hora_inicio' => $horainicio, 'hora_final' => $horafinal, 'sum_modulos' => 0
-                    , 'estado_reserva' => 1, 'estado_pago' => 1, 'id_pago' => 1, 'cantidad' => 1, 'descripcion' => "hola"]
-            );
-
-        }
-        echo "Reservado!";
     }
 
 
@@ -828,24 +751,17 @@ class PagesController extends Controller
 
     /**
      *
-     * Descripción básica (1 linea)
+     * Elimina la reserva seleccionada
      *
-     * Descripción detallada
+     * Devuelve la vista del perfil de usuario con la
+     * lista de reservas actualizada
      *
-     * @author nickGithub
+     * @author ArnauRovira
      */
     public function deletebook($idbook, $idprofile) {
 
-
-        $query = \DB::table('reserva')->where('id',$idbook);
-        $query->delete();
-        //echo '<div style="display:none;" class="card-title mb-0 msgUpdate"><p><b>Cuenta eliminada!</b></p></div>';
-
-
-
+        Reserva::deletebook($idbook, $idprofile);
         return $this->getprofileinfo($idprofile, false);
-
-
     }
 
 

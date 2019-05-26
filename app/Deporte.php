@@ -34,6 +34,10 @@ class Deporte extends Model
         DB::table('Deporte')
             ->where('id',$id)->delete();
     }
-
+    public static function datosdeporte(){
+        return DB::table('deporte')
+            ->select('deporte.id as id_deporte', 'deporte.nombre as nombre_deporte')
+            ->get();
+    }
     protected $table='deporte';
 }

@@ -18,7 +18,7 @@
 <body onload="timetableload('<?php echo $idclub?>','<?php echo $iduser ?>')">
 
     <div class="col-auto my-1 col-md-12 p-lg-5 mx-auto my-5 align-items-center" >
-        <form action="{{ route('insertarReserva') }}" class="form-row align-items-center " >
+        <form  class="form-row align-items-center " >
             
             <select id="superficie" class="custom-select mr-sm-2  form-control col-sm-6 col-md-2" name="superficie">
                 <option value="-1" disabled selected hidden>Superficie</option>

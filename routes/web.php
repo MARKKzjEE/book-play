@@ -39,7 +39,7 @@ Route::get('deleteTorneo/{id?}','PagesController@deleteTorneo')->name('deleteTor
  * 
  */
 
-Route::get('insertarReserva','PagesController@insertarReserva')->name('insertarReserva');
+
 
 Route::get('timetable/{id?}/{id2?}','PagesController@timetable')->name('timetable');
 

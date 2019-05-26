@@ -7,12 +7,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Pista::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->name,
+        'nombre' => $faker->word,
         'superficie' => $faker->word,
         'cerramiento' => $faker->word,
         'pared' => $faker->word,
-        'precio' => $faker->numberBetween($min = 1, $max = 50),
+        'precio' => $faker->numberBetween($min = 1, $max = 100),
         'id_club' => $faker->numberBetween($min = 1, $max = 100),
-        'id_deporte' => $faker->numberBetween($min = 1, $max = 110)
+        'id_deporte' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
