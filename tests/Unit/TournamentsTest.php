@@ -33,6 +33,42 @@ class TournamentsTest extends TestCase
             $this->assertTrue($tourny->prioridad == 1);
         }
     }
+    /**
+     *
+     *
+     * @test
+     */
+    public function testDeleteTournament(){
+        $fakeTournament = factory(Tournaments::class,1)->create([
+            'id' => 21,
+            'name' => 'Champions'
+        ]);
+        $this->assertDatabaseHas('tournaments',[
+            'name' => 'Champions'
+        ]);
+        Tournaments::deleteTournament($fakeTournament[0]->id);
+        $this->assertDatabaseMissing('tournaments',[
+            'name' => 'Champions'
+        ]);
+    }
+
+    /**
+     *
+     *
+     * @test
+     */
+    public function testGetAllTournaments()
+    {
+        factory(Tournaments::class,1)->create([
+            'name' => 'Copa del Rey',
+            'id_club' => 22
+        ]);
+
+        Tournaments::getAllTournaments();
+        $this->assertDatabaseHas('tournaments',[
+            'name' => 'Copa del Rey'
+        ]);
+    }
     
     /**
      *
@@ -158,6 +194,48 @@ class TournamentsTest extends TestCase
         $this->assertDatabaseHas('tournaments',[
             'id' => 999,
             'num_participantes_actual' => 60
+        ]);
+    }
+    /**
+     *
+     *
+     * @test
+     */
+    public function testDeleteTournamentofClub(){
+        $fakeTournament = factory (Tournaments::class,1)->create([
+            'id' => 34,
+            'name' => 'Torneo Barcelona',
+            'id_deporte' => 'Basquet',
+            'id_club' => '4'
+        ]);
+        $this->assertDatabaseHas('tournaments',[
+            'name' => 'Torneo Barcelona'
+        ]);
+        Tournaments::deleteTournamentsOfClub($fakeTournament[0]->id_club);
+
+        $this->assertDatabaseMissing('tournaments',[
+            'name' => 'Torneo Barcelona'
+        ]);
+    }
+    /**
+     *
+     *
+     * @test
+     */
+    public function testDeleteTournamentOfSport(){
+        $fakeTournament = factory (Tournaments::class,1)->create([
+            'id' => 34,
+            'name' => 'Torneo Barcelona',
+            'id_deporte' => '4',
+            'id_club' => '4'
+        ]);
+        $this->assertDatabaseHas('tournaments',[
+            'name' => 'Torneo Barcelona'
+        ]);
+        Tournaments::deleteTournamentsOfSport($fakeTournament[0]->id_deporte);
+
+        $this->assertDatabaseMissing('tournaments',[
+            'name' => 'Torneo Barcelona'
         ]);
     }
 }
