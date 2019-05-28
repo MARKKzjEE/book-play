@@ -34,12 +34,17 @@ class PagesController extends Controller
     }
     
     /**
-     * 
-     * Descripción básica (1 linea)
-     * 
-     * Descripción detallada
      *
-     * @author nickGithub
+     * Vista de filtros básicos y avanzados de club
+     * 
+     * Función get que se puede llamar desde la pagina de principal,
+     * con los tres filtros básicos: Deporte, ciudad y fecha.
+     * Se puede volver a filtrar en la propia vista, añadiendo los filtros avanzados de: Superficie,
+     * Cerramiento y Pared de las pistas del club, solo controla método get.
+     * No hay ningún parámetro obligatorio.
+     *
+     * @author ismaelsanchezf
+     * @return \Illuminate\View\View search
      */
     public function search(Request $request){
         $city = $request->input('city');

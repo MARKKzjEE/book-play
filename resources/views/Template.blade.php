@@ -183,6 +183,11 @@
 
                 @if (Route::has('login'))
                         @auth
+                        @if (Auth::user()->id == 1)
+                            <li class="sidebar-nav-item">
+                                <a class="js-scroll-trigger" href="{{ route('eliminar') }}"> AdminTools </a>
+                            </li>
+                        @endif
                             <li class="sidebar-nav-item">
                                 <a class="js-scroll-trigger" href="{{ route('getprofileinfo') }}/{{ \Auth::user()->id }}/false">Mi perfil</a>
                             </li>
@@ -214,9 +219,6 @@
                 
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="{{ route('registrationClub') }}">!Inscribe tu club!</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="{{ route('eliminar') }}"> AdminTools </a>
                 </li>
             </ul>
         </nav>

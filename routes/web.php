@@ -38,6 +38,11 @@ Route::get('registrationClub','RequestNewClubController@registrationClub')->name
 /**
  * Admin Tools
  */
+Route::post('insertSport','AdminToolsController@insertSport');
+Route::post('insertService','AdminToolsController@insertService');
+Route::post('createPista','AdminToolsController@StorePista');
+Route::post('insertTournament','AdminToolsController@insertTournament');
+Route::post('insertClub','AdminToolsController@insertClub');
 
 Route::get('eliminar','AdminToolsController@Eliminar')->name('eliminar');
 Route::get('deleteClub/{id?}','AdminToolsController@deleteClub')->name('deleteClub');
