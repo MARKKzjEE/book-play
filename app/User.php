@@ -35,11 +35,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Función que devuelve las reservas relacionadas con este usuario
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany array de reservas
+     */
     public function reservas(){
         return $this->hasMany("App\Reserva");
     }
     protected $table='users';
 
+    /**
+     * Función que devuelve la información del usuario a partir de su id
+     * @param $idprofile int id usuario
+     * @return mixed
+     */
     public static function profileinfo($idprofile){
         $profileInfo = DB::table('users')
             ->where('users.id', '=', $idprofile)
@@ -47,6 +57,12 @@ class User extends Authenticatable
 
         return $profileInfo;
     }
+
+    /**
+     * Función que devuelve los torneos a los que se ha inscrito
+     * el usuario conectado
+     * @return mixed array de torneos
+     */
     public static function myTournaments(){
         $myTournaments = DB::table('reserva_tournament')
             ->select('*','reserva_tournament.id as id_reserva')
@@ -56,6 +72,13 @@ class User extends Authenticatable
 
         return $myTournaments;
     }
+
+    /**
+     * Función que devuelve las reservas que ha realizado
+     * el usuario con el identificador indicado
+     * @param $idprofile int id del usuario
+     * @return mixed
+     */
     public static function reservasuser($idprofile){
 
         $reservas = DB::table('reserva')
@@ -67,6 +90,14 @@ class User extends Authenticatable
 
         return $reservas;
     }
+
+    /**
+     * Función para editar la información privada del usuario
+     * @param $username string nombre del usuario
+     * @param $biography string descripcion del usuario
+     * @param $idprofile int id del usuario
+     * @return bool devuelve true si se ha modificado
+     */
     public static function editprivateprofile($username,$biography,$idprofile){
         $query = DB::table('users')->where('id',$idprofile);
         $return = false;
@@ -82,6 +113,17 @@ class User extends Authenticatable
         return $return;
     }
 
+    /**
+     * unción para editar la información publica del usuario
+     * @param $idprofile int id usuario
+     * @param $name string nombre del usuario
+     * @param $email string email del usuario
+     * @param $tel int telefono del usuario
+     * @param $zip int codigo postal del usuario
+     * @param $city string ciudad del usuario
+     * @param $adress string dirección del usuario
+     * @return bool devuelve true si se ha modificado
+     */
     public static function editpublicprofile($idprofile, $name, $email, $tel, $zip, $city, $adress) {
         $query = \DB::table('users')->where('id',$idprofile);
         $return = false;

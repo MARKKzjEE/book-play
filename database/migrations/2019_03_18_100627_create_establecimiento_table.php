@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateEstablecimientoTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla establecimiento con la información del club.
+     * Relacionada con galeria
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

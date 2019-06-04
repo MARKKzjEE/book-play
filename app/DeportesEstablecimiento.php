@@ -8,6 +8,12 @@ use DB;
 class DeportesEstablecimiento extends Model
 {
     public $timestamps = false;
+    /**
+     * Devuelve todos los deportes que tiene un club a partir de su id
+     * @param int $id identificador de club
+     * @return null| array null o array de deportes
+     * @author HolgerCastillo
+     */
     public static function getAllSportByClubId($id){
         $sports = DeportesEstablecimiento::where('id_club',$id)
             ->join('deporte','deporte.id','=','deportes_establecimiento.id_deporte')
@@ -19,12 +25,26 @@ class DeportesEstablecimiento extends Model
             return $sports;
         }
     }
-
+    /**
+     * Elimina todas las relaciones de club y deportes a
+     * partir de la id de club
+     *
+     * @param int $id identificador de club
+     * @return void
+     * @author HolgerCastillo
+     */
     public static function deleteByClubId($id){
         DB::table('deportes_establecimiento')
             ->where('id_club',$id)->delete();
     }
-
+    /**
+     * Elimina todas las relaciones de club y deportes a
+     * partir de la id de deporte
+     *
+     * @param int $id identificador de deporte
+     * @return void
+     * @author HolgerCastillo
+     */
     public static function deleteBySportId($id){
         DB::table('deportes_establecimiento')
             ->where('id_deporte',$id)->delete();

@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateReservaTournamentTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla reserva_torunament con la información
+     * de las inscripciones de un usuario sobre un torneo.
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

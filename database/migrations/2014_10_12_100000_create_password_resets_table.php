@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePasswordResetsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla password_resets interna de laravel
+     * para guardar cuando se reestablece una contraseña
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

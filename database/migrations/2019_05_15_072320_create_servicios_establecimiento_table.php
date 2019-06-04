@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateServiciosEstablecimientoTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla intermedia entre servicio y establecimiento
+     * llamada servicios_establecimiento
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

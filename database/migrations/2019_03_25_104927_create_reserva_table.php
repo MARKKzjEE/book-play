@@ -7,7 +7,11 @@ use Illuminate\Database\Migrations\Migration;
 class CreateReservaTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla reserva con la información de las reserva
+     * de pistas de un usuario.
+     * Relacionada con pista y usuario.
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

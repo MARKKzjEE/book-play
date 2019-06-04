@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePistaTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla pista con la información de cada pista.
+     * Relacionada con club y deporte.
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

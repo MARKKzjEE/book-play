@@ -7,7 +7,9 @@ use Illuminate\Database\Migrations\Migration;
 class CreateDeporteTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una table deporte con id,nombre y id_imagen
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

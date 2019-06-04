@@ -7,7 +7,9 @@ use Illuminate\Database\Migrations\Migration;
 class CreateServiciosTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla servicio con id,nombre y id_imagen
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateDeportesEstablecimientoTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla intermedia entre deporte y establecimiento
+     * llamada deportes_establecimiento
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

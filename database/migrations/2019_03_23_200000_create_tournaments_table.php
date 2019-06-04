@@ -7,7 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateTournamentsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla tournaments con la información del torneo.
+     * Relacionada con club y deporte.
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

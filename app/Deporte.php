@@ -8,17 +8,52 @@ use DB;
 class Deporte extends Model
 {
     public $timestamps = false;
+
+    /**
+     * Devuelve un array con todos los clubs de este deporte,
+     * al ser una relacion N:N con esta función nos ahorramos hacer una
+     * consulta para devolverlo
+     *
+     * @author ismaelsanchezf
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany array de clubs
+     */
     public function establecimientos(){
         return $this->belongsToMany("App\Establecimiento")->using(DeportesEstablecimiento::class);
     }
+    /**
+     *
+     * Devuelve un array con todos los deportes con formato
+     * id,nombre
+     *
+     * @author HolgerCastillo
+     * @return Deporte array de deportes
+     */
     public static function getAllSports(){
         return Deporte::select('id', 'nombre')->distinct()->get();
     }
-
+    /**
+     *
+     * Devuelve un array con todos los deportes, filtrando por
+     * la id especificada por parametro
+     * @param $id int identificador del deporte
+     * @author HolgerCastillo
+     * @return Deporte array de deportes
+     */
     public static function getSportNameById($id){
         return Deporte::where('id',$id)->firstOrfail()->nombre;
     }
 
+    /**
+     * Transforma el género de integer a Masculino,Femenino o Mixto
+     * Devuelve Masculino,Femenino  o Mixto dependiendo del integer4
+     * que se le indica por parametro.
+     * 1 - Masculino
+     * 2 - Femenino
+     * else - Mixto
+     * @param int $gender integer con el género
+     * @return string $gender string con el género
+     * @author HolgerCastillo
+     */
     public static function transformIdToGender($gender){
         if($gender == 1){
             $gender = 'Masculino';
@@ -29,11 +64,24 @@ class Deporte extends Model
         }
         return $gender;
     }
-
+    /**
+     * Elimina el deporte indicado a partir del parametro $id
+     *
+     * @param int $id identificador del deporte
+     * @return void
+     * @author HolgerCastillo
+     */
     public static function deleteSport($id){
         DB::table('Deporte')
             ->where('id',$id)->delete();
     }
+    /**
+     * Función que busca en base de datos todos los deportes y los devuelve
+     * con formato id, nombre
+     *
+     * @return array deportes con formato id,nombre
+     * @author HolgerCastillo
+     */
     public static function datosdeporte(){
         return DB::table('deporte')
             ->select('deporte.id as id_deporte', 'deporte.nombre as nombre_deporte')

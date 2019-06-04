@@ -8,11 +8,24 @@ use DB;
 class Tournaments extends Model
 {
     public $timestamps = false;
+    /**
+     * Función que devuelve el club al que pertenece este torneo
+     *
+     * @author ismaelsanchezf
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo devuelve un objeto de la clase torneo
+     */
     public function establecimiento(){
         return $this->belongsTo('App\Establecimiento', 'id_club', 'id');
     }
     protected $table ='tournaments';
-
+    /**
+     * Devuelve todos los torneos vip
+     *
+     * Devuelve un array con todos los torneos con prioridad 1
+     *
+     * @author HolgerCastillo
+     * @return array array con los torneos
+     */
     public static function getAllTournamentsVip(){
         return Tournaments::select('*',
             'tournaments.id as id_tournament',
@@ -27,7 +40,17 @@ class Tournaments extends Model
             ])
             ->get();
     }
-
+    /**
+     * Devuelve todos los torneos a partir de los filtros enviados por
+     * parametro
+     *
+     * @param $city string ciudad a la que pertenece el club del torneo
+     * @param $gender int genero del torneo
+     * @param $sport int id del deporte
+     * @param $date string fecha del torneo
+     * @author HolgerCastillo
+     * @return array array con los torneos
+     */
     public static function findTournaments($city,$gender,$sport,$date){
         return Tournaments::select('*','tournaments.id as id_tourny')
             ->join('establecimiento','establecimiento.id','=','tournaments.id_club')
@@ -40,12 +63,26 @@ class Tournaments extends Model
             ->get();
     }
 
+
+    /**
+     * Funcion que actualiza el numero de participantes del torneo
+     * a partir de la id del torneo
+     * @param $idTournament int id torneo
+     * @param $numPlayers int numero de participantes
+     * @author HolgerCastillo
+     */
     public static function incrementParticipantsInATournament($idTournament,$numPlayers){
         DB::table('tournaments')
             ->where('id',$idTournament)
             ->increment('num_participantes_actual', $numPlayers);
     }
-
+    /**
+     * Funcion que añade a un usuario que se ha inscrito a un torneo
+     * @param $idTournament int id torneo
+     * @param $numPlayers int numero de participantes
+     * @param $idUserint int id usuario
+     * @author HolgerCastillo
+     */
     public static function signUpForATournament($idTournament,$numPlayers,$idUser){
         DB::table('reserva_tournament')->insert(
             array(
@@ -56,31 +93,64 @@ class Tournaments extends Model
         );
     }
 
+    /**
+     * Función que elimina una inscripcion de usuario
+     * a partir de la id de la inscripción
+     * @param $idInscription int id inscripción
+     * @author HolgerCastillo
+     */
     public static function deleteInscription($idInscription){
         DB::table('reserva_tournament')
             ->where('id',$idInscription)->delete();        
     }
 
+    /**
+     * Función que reduce el numero de participantes en un torneo
+     * @param $idTournament int id torneo
+     * @param $numPlayers int numero de participantes
+     * @author HolgerCastillo
+     */
     public static function decrementParticipantsInATournament($idTournament,$numPlayers){
         DB::table('tournaments')
             ->where('id',$idTournament)
             ->decrement('num_participantes_actual',$numPlayers);
     }
 
+    /**
+     * Función que devuelve todos los torneos con el formato
+     * id,nombre,id_club y id_deporte
+     * @return mixed array de torneos
+     * @author HolgerCastillo
+     */
     public static function getAllTournaments(){
         return Tournaments::select('id','name','id_club','id_deporte')->distinct()->get();
     }
 
+    /**
+     * Función que elimina un torneo a partir de su id de club
+     * @param $id int id del torneo
+     * @author HolgerCastillo
+     */
     public static function deleteTournamentsOfClub($id){
         DB::table('tournaments')
             ->where('id_club',$id)->delete();
     }
 
+    /**
+     * Función que elimina un torneo a partir de su id de deporte
+     * @param $id
+     * @author HolgerCastillo
+     */
     public static function deleteTournamentsOfSport($id){
         DB::table('tournaments')
             ->where('id_deporte',$id)->delete();
     }
 
+    /**
+     * Función que elimina un torneo a partir de su id
+     * @param $id int id del torneo
+     * @author HolgerCastillo
+     */
     public static function deleteTournament($id){
         DB::table('tournaments')
             ->where('id',$id)->delete();
