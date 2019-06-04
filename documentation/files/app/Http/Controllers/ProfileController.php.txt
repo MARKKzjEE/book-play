@@ -24,6 +24,9 @@ class ProfileController extends Controller
      * Recupera y retorna los datos del perfil
      * con el que se ha iniciado sesión.
      * @author MarcGallego
+     * @param int $idprofile Contiene la id del perfil del usuario
+     * @param bool $return Booleano para controlar vista resultante
+     * @return \Illuminate\View\View Vista del perfil con la información completa
      */
     public function getprofileinfo($idprofile, $return){
         $profileInfo = User::profileinfo($idprofile);
@@ -41,6 +44,9 @@ class ProfileController extends Controller
      * y recuperarlos.
      *
      * @author MarcGallego
+     * @param Request $request Petición con la información privada de nombre de usuario y la biografía
+     * @param int $idprofile Contiene la id del perfil del usuario
+     * @return \Illuminate\View\View Vista del perfil con la información completa
      */
     public function editprofileprivate(Request $request, $idprofile){
         $username = $request->input('username');
@@ -60,6 +66,10 @@ class ProfileController extends Controller
      * y recuperarlos.
      *
      * @author MarcGallego
+     * @param Request $request Petición con la información pública de nombre, email, teléfono, código, postal, ciudad
+     * y dirección
+     * @param int $idprofile Contiene la id del perfil del usuario
+     * @return \Illuminate\View\View Vista del perfil con la información editada
      */
     public function editprofilepublic(Request $request, $idprofile){
         $name = $request->input('name');
@@ -83,6 +93,9 @@ class ProfileController extends Controller
      *
      *
      * @author MarcGallego
+     * @param Request $request Petición con la contraseña que introduce el usuario
+     * @param int $idprofile Contiene la id del perfil del usuario
+     * @return \Illuminate\View\View Vista del perfil con la información editada
      */
     public function editpassword(Request $request, $idprofile) {
 
@@ -124,6 +137,9 @@ class ProfileController extends Controller
      * Elimina por completo la cuenta perdiendo todos los datos
      *
      * @author MarcGallego
+     * @param Request $request Petición con la confirmación del usuario de Sí o No
+     * @param int $idprofile Contiene la id del perfil del usuario
+     * @return \Illuminate\View\View Vista con la confirmación de la eliminación de la cuenta
      */
     public function deleteaccount(Request $request, $idprofile) {
 
@@ -146,7 +162,10 @@ class ProfileController extends Controller
      * Devuelve la vista del perfil de usuario con la
      * lista de reservas actualizada
      *
-     * @author ArnauRovira
+     * @author MarcGallego
+     * @param int $idbook Id de la reserva
+     * @param int $idprofile Contiene la id del perfil del usuario
+     * @return \Illuminate\View\View Vista del perfil con toda la información
      */
     public function deletebook($idbook, $idprofile) {
 

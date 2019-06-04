@@ -11,7 +11,7 @@ class CreateEstablecimientoTable extends Migration
      * Relacionada con galeria
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

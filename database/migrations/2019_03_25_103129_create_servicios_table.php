@@ -10,7 +10,7 @@ class CreateServiciosTable extends Migration
      * Crea una tabla servicio con id,nombre y id_imagen
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

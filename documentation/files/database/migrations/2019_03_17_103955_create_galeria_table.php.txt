@@ -7,7 +7,9 @@ use Illuminate\Database\Migrations\Migration;
 class CreateGaleriaTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla galeria con id,nombre
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

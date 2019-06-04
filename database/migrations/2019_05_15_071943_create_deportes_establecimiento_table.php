@@ -11,7 +11,7 @@ class CreateDeportesEstablecimientoTable extends Migration
      * llamada deportes_establecimiento
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

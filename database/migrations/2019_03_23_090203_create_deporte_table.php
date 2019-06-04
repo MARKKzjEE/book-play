@@ -10,7 +10,7 @@ class CreateDeporteTable extends Migration
      * Crea una table deporte con id,nombre y id_imagen
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

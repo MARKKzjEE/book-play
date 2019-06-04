@@ -23,6 +23,8 @@ class AdminToolsController extends Controller
      * Recoge todo los datos de la BBDD para la vista del administrador
      *
      * @author albertfor
+     * @return \Illuminate\View\View Vista con todos los elementos clubs, deportes, servicios, pistas, torneos
+     * deportes, clubs y servicios para poder eliminarlos
      */
     public function eliminar(){
         $clubs  = Establecimiento::getAllClubs(); 
@@ -43,6 +45,8 @@ class AdminToolsController extends Controller
      * Función que elimina un club y sus torneos de la BBDD
      *
      * @author albertfor
+     * @param $idClub int La id del club para poder referenciar al objeto específico
+     * @return \Illuminate\View\View Vista de eliminación
      */
     public function deleteClub($idClub){
         DeportesEstablecimiento::deleteByClubId($idClub);
@@ -59,6 +63,8 @@ class AdminToolsController extends Controller
      * torneos de ese deporte
      *
      * @author albertfor
+     * @param int $idDeporte La id del deporte para poder referenciar al objeto específico
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function deleteDeporte($idDeporte){
         Tournaments::deleteTournamentsOfSport($idDeporte);
@@ -74,6 +80,8 @@ class AdminToolsController extends Controller
      * 
      *
      * @author albertfor
+     * @param int $idServe La id del servicio para poder referenciar al objeto específico
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function deleteServicio($idServe){
         ServiciosEstablecimiento::deleteByServiceId($idServe);
@@ -88,6 +96,8 @@ class AdminToolsController extends Controller
      * 
      *
      * @author albertfor
+     * @param int $idpista La id de la pista para poder referenciar al objeto específico
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function deletePista($idpista){
         Pista::deleteField($idpista);
@@ -101,6 +111,8 @@ class AdminToolsController extends Controller
      * 
      *
      * @author albertfor
+     * @param int $torneo La id del torneo para poder referenciar al objeto específico
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function deleteTorneo($torneo){
         Tournaments::deleteTournament($torneo);
@@ -110,6 +122,8 @@ class AdminToolsController extends Controller
      * Función que añade la relacion de deportes_establecimientos
      *
      * @author oriol
+     * @param Request $request Objeto de la petición que se hace desde el front para obtener los deportes y clubs
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function InsertSport(Request $request)
     {
@@ -122,6 +136,8 @@ class AdminToolsController extends Controller
      * Función que añade la relación de servicios_establecimiento
      *
      * @author oriol
+     * @param Request $request Objeto de la petición que se hace desde el front para obtener los servicios y clubs
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function InsertService(Request $request)
     {
@@ -134,6 +150,9 @@ class AdminToolsController extends Controller
      * Función que añade una pista
      *
      * @author oriol
+     * @param Request $request Objeto de la petición que se hace desde el front para obtener los datos  de una pista
+     * desde el front. Nombre, superfície, cerramiento, pared, precio, club y deporte
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function StorePista(Request $request)
     {
@@ -156,6 +175,10 @@ class AdminToolsController extends Controller
      * Función que añade un torneo
      *
      * @author oriol
+     * @param Request $request Objeto de la petición que se hace desde el front para obtener los datos  de un torneo
+     * desde el front. Nombre, club, email, deporte, género, fecha, precio, prioridad, número de parejas máximo y
+     * número de parejas actual
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function insertTournament(Request $request)
     {
@@ -181,6 +204,10 @@ class AdminToolsController extends Controller
      * Función que añade un club
      *
      * @author oriol
+     * @param Request $request Objeto de la petición que se hace desde el front para obtener los datos  de un club
+     * desde el front. Email, nombre, dirección, código postal, teléfono, prioridad, descripción, imagen de perfil,
+     * hora inicial, hora final.
+     * @return \Illuminate\View\View Vista con la confirmación
      */
     public function insertClub(Request $request)
     {

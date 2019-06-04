@@ -11,7 +11,7 @@ class CreateServiciosEstablecimientoTable extends Migration
      * llamada servicios_establecimiento
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

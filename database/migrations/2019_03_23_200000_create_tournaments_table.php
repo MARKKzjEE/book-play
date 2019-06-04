@@ -11,7 +11,7 @@ class CreateTournamentsTable extends Migration
      * Relacionada con club y deporte.
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

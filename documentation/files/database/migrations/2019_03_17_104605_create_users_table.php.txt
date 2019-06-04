@@ -7,7 +7,9 @@ use Illuminate\Database\Migrations\Migration;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea una tabla users con la información del usuario.
+     *
+     * @author ismaelsanchezf
      *
      * @return void
      */

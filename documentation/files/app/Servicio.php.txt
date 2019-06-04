@@ -8,14 +8,35 @@ use DB;
 class Servicio extends Model
 {
     public $timestamps = false;
+    /**
+     * Devuelve los club relacionados con este servicio
+     *
+     * Devuelve un array con todos los clubs de este servicio,
+     * al ser una relacion N:N con esta función nos ahorramos hacer una
+     * consulta para devolverlo
+     *
+     * @author ismaelsanchezf
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany array de clubs
+     */
     public function establecimientos(){
         return $this->belongsToMany("App\Establecimiento")->using(ServiciosEstablecimiento::class);
     }
-
+    /**
+     * Devuelve todos los servicios en formato id,nombre
+     *
+     * @author HolgerCastillo
+     * @return Deporte array de deportes
+     */
     public static function getAllServices(){
         return Servicio::select('id','nombre')->distinct()->get();
     }
-
+    /**
+     * Elimina el servicio indicado a partir del parametro $id
+     *
+     * @param int $id identificador del servicio
+     * @return void
+     * @author HolgerCastillo
+     */
     public static function deleteService($id){
         DB::table('servicio')
             ->where('id',$id)->delete();

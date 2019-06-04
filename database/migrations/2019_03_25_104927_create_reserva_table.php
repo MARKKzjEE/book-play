@@ -12,7 +12,7 @@ class CreateReservaTable extends Migration
      * Relacionada con pista y usuario.
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()

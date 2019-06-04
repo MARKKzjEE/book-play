@@ -11,7 +11,7 @@ class CreateReservaTournamentTable extends Migration
      * de las inscripciones de un usuario sobre un torneo.
      *
      * @author ismaelsanchezf
-     *
+     * @author albertfor
      * @return void
      */
     public function up()
