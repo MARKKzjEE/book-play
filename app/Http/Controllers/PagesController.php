@@ -25,7 +25,9 @@ class PagesController extends Controller
      * destacados. Y un formulario con diferentes filtros
      * para buscar clubes.
      *
-     *  @author HolgerCastillo
+     * @author HolgerCastillo
+     * @return \Illuminate\View\View Vista principal de la página web, donde se muestra un formulario
+     * donde el usuario puede buscar un establecimiento y los clubes destacados
      */
     public function inicio(){
         $sportTypes  = Deporte::getAllSports();
@@ -44,7 +46,10 @@ class PagesController extends Controller
      * No hay ningún parámetro obligatorio.
      *
      * @author ismaelsanchezf
-     * @return \Illuminate\View\View search
+     * @param Request $request Información relativa a la búsqueda del usuario
+     * (ciudad,deporte,fecha,cerramiento,superfície,muro)
+     * @return \Illuminate\View\View Vista donde se muestran todos los clubes que coinciden 
+     * con la búsqueda del usuario
      */
     public function search(Request $request){
         $city = $request->input('city');

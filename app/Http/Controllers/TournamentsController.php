@@ -25,7 +25,7 @@ class TournamentsController extends Controller
      *
      * @author HolgerCastillo
      * @author marcgarcia1997
-     * @return view Vista principal de torneos donde se muestra el formulario de búsqueda de torneos y los torneos destacados
+     * @return \Illuminate\View\View Vista principal de torneos donde se muestra el formulario de búsqueda de torneos y los torneos destacados
      */
     public function tournaments(){
         $tournaments = Tournaments::getAllTournamentsVip();
@@ -36,10 +36,8 @@ class TournamentsController extends Controller
     /**
      * 
      * Función que transforma una fecha de string a date
-     *
-     * 
-     *
      * @author HolgerCastillo
+     * @return date Devuelve la fecha actual en el formato yyyy/mm/dd
      */
     public function getActualDate(){
         $dateArray = getDate();
@@ -62,7 +60,8 @@ class TournamentsController extends Controller
      * @author HolgerCastillo
      * @author marcgarcia1997
      * @param Request $request Información sobre la búsqueda de torneos del usuario
-     * 
+     * @return \Illuminate\View\View Vista donde es muestran los diferentes torneos con las características que ha seleccionado el
+     * usuario
      */
     public function tournamentsSearched(Request $request){
         $city = $request->input('name');
@@ -89,6 +88,9 @@ class TournamentsController extends Controller
      *
      * @author HolgerCastillo
      * @author marcgarcia1997
+     * @param int $idTournament Identificador del torneo seleccionado para inscribirse
+     * @param Request $request Información sobre el numero de inscripciones que quiere reservar el usuario
+     * @return \Illuminate\View\View Vista principal de torneos
      */
     public function signUpTournament($idTournament,Request $request){
         $numPlayers = $request->input('number');
@@ -106,6 +108,10 @@ class TournamentsController extends Controller
      *
      * @author HolgerCastillo
      * @author marcgarcia1997
+     * @param int $idInscription Identificador de la reserva que se quiere cancelar
+     * @param int $idTourny Identificador del torneo seleccionado para desuscribirse 
+     * @param int $numPlayers Numero de inscripciones que se habían reservado
+     * @return \Illuminate\View\View Vista principal de la página web
      */
     public function unsuscribeTournament($idInscription, $idTourny, $numPlayers){
         Tournaments::deleteInscription($idInscription);

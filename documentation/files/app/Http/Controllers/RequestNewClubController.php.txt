@@ -24,6 +24,8 @@ class RequestNewClubController extends Controller
      * a la página web.
      *
      * @author HolgerCastillo
+     * @return \Illuminate\View\View Vista con un formulario que el usuario puede rellenar para poder registrar 
+     * su club en nuestra web
      */
     public function registrationClub(){
         return view('RegistrationClub');

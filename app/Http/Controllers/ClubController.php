@@ -24,6 +24,8 @@ class ClubController extends Controller
      * y una pequeña descripción de este.
      *
      * @author HolgerCastillo
+     * @param int $ID Identificador del club que ha seleccionado el usuario
+     * @return \Illuminate\View\View Vista del club con sus descripción, servicios y deportes 
      */
     public function club($ID){
         $center = Establecimiento::getClubById($ID);
