@@ -1,0 +1,63 @@
+<div>
+    <i class="fas fa-times-circle" onclick="quitX()" id="x">  </i>
+</div>
+<div style="text-align: center; padding-top: 15%;">
+    <?php
+
+    $inittime = date($datetotal.":00");
+    $finaltime = date($nextschedule->hora_inicio);
+
+    //echo $minutos."<br>";
+//    echo $inittime."<br>";
+//    echo $finaltime."<br>";
+    if($booky == 0){
+        $aux1 = explode(" ",$inittime);
+        $aux2 = explode(" ", $finaltime);
+        $finaltime = $aux1[0]." ".$aux2[1];
+    }
+
+//    echo $inittime."<br>";
+//    echo $finaltime."<br>";
+//    echo "ID user: ".$id_user."<br>";
+    $string = $hora.":00";
+
+    //$string = date($string);
+    
+    echo "<h5>Fecha Seleccionada: ".$fecha." ".$string."</h5>"."<br>";
+    echo "<h5>Pista nº ".$id_pista . "</h5>"."<br>";
+
+    $array = array();
+    $inittime = date("Y-m-d H:i:s", strtotime($inittime . "+30 minutes"));
+    for($inittime; $inittime <= $finaltime; $inittime = date("Y-m-d H:i:s", strtotime($inittime . "+30 minutes"))){
+        array_push($array,$inittime);
+    }
+    $var = strtotime($inittime . "+30 minutes")
+    ?>
+    <select name="" id="finalhour" class="custom-select col-sm-5 col-md-3 form-control" >
+        <option value="-1" disabled selected hidden>Seleccionar hora final</option>
+        @foreach ($array as $one){
+        <?php $divide = explode(" ",$one);
+        $both = $divide[0].$divide[1];
+        $onlytime = substr($divide[1],0,-3);
+        ?>
+        <option value="{{$onlytime.":00"}}">{{$onlytime}}</option>
+        @endforeach
+
+    </select>
+    <input type="button" class="btn btn-link" onclick="insertBook('<?php echo $string?>', '<?php echo $id_user?>', '<?php echo $fecha?>', '<?php echo $id_pista?>')" value="Reservar">
+
+
+
+</div>
+<script>
+    function insertBook($hourinitial, $iduser, $fecha, $idpista){
+        var $hourfinal = $('#finalhour').val();
+        if($hourfinal == null){
+            alert("escoja un horario");
+        }
+        console.log($hourfinal, $hourinitial, $iduser, $fecha, $idpista);
+        $("#containertimetable").load("{{ route('insertbookbd') }}/" + $hourfinal + "/"+ $hourinitial + "/"+ $iduser + "/"+ $fecha + "/"+ $idpista);
+        quitX();
+
+    }
+</script>

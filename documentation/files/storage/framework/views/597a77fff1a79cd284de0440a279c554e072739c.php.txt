@@ -1,0 +1,84 @@
+<?php $__env->startSection('Main'); ?>
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"> </div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4"> Registra tu club </h3>
+                                <form method="POST" action="mailto:someone@example.com" enctype="text/plain">
+                                <?php echo csrf_field(); ?>
+                                    <!-- Name input -->
+                                    <div class="form-label-group">
+                                        <input id="name" type="text" class="form-control<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" name="name" placeholder="Nombre" required autofocus>
+                                        <label for="name"> Nombre </label>
+                                        <?php if($errors->has('name')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('name')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <!-- Mail input -->
+                                    <div class="form-label-group">
+                                        <input id="email" type="email" class="form-control<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" name="email" placeholder="Correo" required>
+                                        <label for="email"> Correo </label>
+                                        <?php if($errors->has('email')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('email')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <!-- Phone number input -->
+                                    <div class="form-label-group">
+                                        <input id="number" type="tel" class="form-control<?php echo e($errors->has('number') ? ' is-invalid' : ''); ?>" name="number" placeholder="Teléfono" required>
+                                        <label for="number"> Teléfono </label>
+                                        <?php if($errors->has('number')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('number')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+
+                                    <!-- City input -->
+                                    <div class="form-label-group">
+                                        <input id="city" type="text" class="form-control<?php echo e($errors->has('city') ? ' is-invalid' : ''); ?>" name="city" placeholder="Ciudad" required>
+                                        <label for="city"> Ciudad </label>
+                                        <?php if($errors->has('city')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('city')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+
+                                    <!-- Club name input -->
+                                    <div class="form-label-group">
+                                        <input id="clubName" type="text" class="form-control<?php echo e($errors->has('clubName') ? ' is-invalid' : ''); ?>" name="clubName" placeholder="Nombre del club" required>
+                                        <label for="clubName"> Nombre del club </label>
+                                        <?php if($errors->has('clubName')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('clubName')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"> Enviar petición </button>
+                                
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('Template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\or_ce\PhpstormProjects\book-play\resources\views/RegistrationClub.blade.php ENDPATH**/ ?>

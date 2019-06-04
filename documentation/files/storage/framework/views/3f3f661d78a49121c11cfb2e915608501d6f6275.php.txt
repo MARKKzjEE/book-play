@@ -1,0 +1,87 @@
+<?php $__env->startSection('Main'); ?>
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"> </div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4"> Registra una pista </h3>
+                                <form method="POST" action="/createPista">
+                                <?php echo csrf_field(); ?>
+                                <!-- Name input -->
+                                    <div class="form-label-group">
+                                        <input id="name" type="text" class="form-control<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" name="name" placeholder="Nombre" required autofocus>
+                                        <label for="name"> Nombre </label>
+                                        <?php if($errors->has('name')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('name')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                <!-- Superficie input -->
+                                    <div class="form-label-group">
+                                        <input id="superficie" type="text" class="form-control<?php echo e($errors->has('superficie') ? ' is-invalid' : ''); ?>" name="superficie" placeholder="Superficie" required autofocus>
+                                        <label for="superficie"> Superficie </label>
+                                        <?php if($errors->has('superficie')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('superficie')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <!-- Cerramiento input -->
+                                    <div class="form-label-group">
+                                        <input id="cerramiento" type="text" class="form-control" name="cerramiento" placeholder="Cerramiento" required autofocus>
+                                        <label for="cerramiento"> Cerramiento </label>
+                                        <?php if($errors->has('cerramiento')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('cerramiento')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <!-- Wall input -->
+                                    <div class="form-label-group">
+                                        <input id="wall" type="text" class="form-control<?php echo e($errors->has('wall') ? ' is-invalid' : ''); ?>" name="wall" placeholder="Wall" required autofocus>
+                                        <label for="wall"> Wall </label>
+                                        <?php if($errors->has('wall')): ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($errors->first('wall')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <!-- Sport input -->
+                                    <div class="col-sm-3 col-md-5 col-lg-3 my-1">
+                                        <select class="custom-select mr-sm-2 form-control " name="sports">
+                                            <?php $__currentLoopData = $sports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($sport->id); ?>"><?php echo e($sport->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                    <!-- Club input -->
+                                    <div class="col-sm-3 col-md-5 col-lg-3 my-1">
+                                        <select class="custom-select mr-sm-2 form-control " name="clubs">
+                                            <?php $__currentLoopData = $clubs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($club->id); ?>"><?php echo e($club->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"> Enviar petición </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('Template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Library/WebServer/Documents/Book-Play-Git/resources/views/RegisterPista.blade.php ENDPATH**/ ?>

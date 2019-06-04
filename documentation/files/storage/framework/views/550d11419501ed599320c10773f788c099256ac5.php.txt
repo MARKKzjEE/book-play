@@ -1,0 +1,68 @@
+<?php $__env->startSection('Main'); ?>
+    <!-- Tournaments searched -->
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+        <div class="album py-5 ">
+            <h2 class="display-5 container-fluid"> Torneos encontrados </h2>
+            <br/>
+            <div class="container">
+                <div class="row">
+                    <?php $__currentLoopData = $tournsSearched; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tourny): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body bg-light text-dark">
+
+                                    <h4 class="card-text"> <?php echo e($tourny->name); ?> </h4>
+                                    <small class="card-text"> <?php echo e($tourny->nombre); ?> </small> <br><br>
+                                    
+                                    <i class='fa fa-map-marker'></i>
+                                    <small class="text"> <?php echo e($tourny->direccion); ?> </small>
+                                    <br><br>
+                                    <i class='far fa-calendar-alt'></i>
+                                    <small class="text"> <?php echo e(date_format(date_create($tourny->fecha),"d/m/y")); ?> </small> 
+                                    
+                                    <i class="fas fa-trophy ml-5"></i>
+                                    <small class="text"> <?php echo e($sportName); ?> </small><br><br>
+
+                                    <i class="fas fa-venus-mars"></i>
+                                    <small class="text"> <?php echo e($gender); ?>  </small>
+
+                                    <i class="fas fa-money-bill-wave ml-5"></i>
+                                    <small class="text"> <?php echo e($tourny->precio); ?>€/pers. </small><br> <br>
+
+                                    <?php if(Auth::check()): ?>
+
+                                        <p class="text-muted"> Numero de inscripciones: </p>
+
+                                        <form class="formTournament" action=" <?php echo e(URL::to('/signUpTournament' , $tourny->id_tourny)); ?>" method="get" >
+                                                <?php echo e(csrf_field()); ?>
+
+
+                                                <div class="form-group col">
+                                                    <label class="sr-only" for="numParticipantes"> Numero participantes </label>
+                                                    <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="<?php echo e($tourny->num_participantes_max - $tourny->num_participantes_actual); ?>" >
+                                                </div>
+
+                                                <div class="form-group col">
+                                                    <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
+                                                </div>
+
+                                                
+
+
+                                        </form>
+
+                                    <?php else: ?>
+                                    <p class="text-muted"> Inicia sesión para inscribirte </p>
+
+                                    <?php endif; ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('Template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Library/WebServer/Documents/Book-Play-Git/resources/views/TournamentsSearched.blade.php ENDPATH**/ ?>

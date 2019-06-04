@@ -1,0 +1,45 @@
+<?php $__env->startSection('Main'); ?>
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"> </div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4"> Añade un deporte al club </h3>
+                                <form method="POST" action="/insertSport">
+
+                                <!-- Sport input -->
+                                    <div class="col-sm-3 col-md-5 col-lg-3 my-1">
+                                        <select class="custom-select mr-sm-2 form-control " name="sports">
+                                            <?php $__currentLoopData = $sports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($sport->id); ?>"><?php echo e($sport->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                    <!-- Club input -->
+                                    <div class="col-sm-3 col-md-5 col-lg-3 my-1">
+                                        <select class="custom-select mr-sm-2 form-control " name="sports">
+                                            <?php $__currentLoopData = $clubs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($club->id); ?>"><?php echo e($club->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"> Registra </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('Template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\or_ce\PhpstormProjects\book-play\resources\views/RegisterSport.blade.php ENDPATH**/ ?>

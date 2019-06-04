@@ -1,0 +1,129 @@
+<?php $__env->startSection('Main'); ?>
+<?php if($errors->any()): ?>
+<div class="p-3 mb-2 bg-success text-white text-center"> <h3><?php echo e($errors->first()); ?></h3> </div>
+<?php endif; ?>
+
+<!-- Header -->
+<header class="masthead d-flex" style="background-image: url('https://contenidos.enter.co/custom/uploads/2017/04/champions1024.jpg');">
+    <div class="container text-center my-auto text-light">
+      <h1 class="mb-1"> BOOK&PLAY  </h1>
+      <h3 class="mb-5">
+        <em> ¡Apúntate y compite contra otros jugadores! </em>
+      </h3>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#search"> ¡Apúntate! </a>
+    </div>
+    <div class="overlay"></div>
+</header>
+
+<!-- Search fform -->
+<section class="content-section bg-light" id="search">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2> Apúntate a un torneo y compite contra los mejores </h2><br>
+                <form class="form1" action="<?php echo e(URL::to('/tournamentsSearched')); ?>" method="get">
+                    <?php echo e(csrf_field()); ?>
+
+                    <div class="form-row align-items-center">
+                        <!-- Place picker -->
+                        <div class="col-sm-4 col-md-5 col-lg-3 my-1">
+                            <label class="sr-only" for="inlineFormInput"> Establecimiento </label>
+                            <input type="text" class="form-control" id="inlineFormInput" placeholder="Establecimiento o ciudad " value="Barcelona" name="name">
+                        </div>
+                        <!-- Sport picker -->
+                        <div class="col-sm-3 col-md-5 col-lg-2 my-1">
+                            <label class="sr-only" for="inlineFormCustomSelect"> Deporte </label>
+                            <select class="custom-select mr-sm-2 form-control " name="sport">
+                                <?php $__currentLoopData = $sportTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sportType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($sportType->id); ?>"> <?php echo e($sportType->nombre); ?> </option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+                        </div>
+                        <!-- Gender picker -->
+                        <div class="col-sm-2 col-md-2 col-lg-2 my-1">
+                            <label class="sr-only" for="inlineFormCustomSelect"> Género </label>
+                            <select class="custom-select mr-sm-2 " id="inlineFormCustomSelect" name="gender">
+                                <option value="1"> Masculino </option>
+                                <option value="2"> Femenino </option>
+                                <option value="3"> Mixto </option>
+                            </select>
+                        </div>
+                        <!-- Date picker -->
+                        <div class="col-auto my-1">
+                            <input class="form-control" id="datepicker" width="150" placeholder="Hoy" name="fecha" />
+                            <script>
+                                $('#datepicker').datepicker({
+                                    language: 'en',
+                                    minDate: new Date(),
+                                    dateFormat: "dd-mm-yyyy",
+                                    todayButton: new Date(),
+                                    clearButton: true
+                                });
+                            </script>
+                        </div>
+                        <!-- Send info -->
+                        <div class="col-auto my-1">
+                            <button type="submit" class="btn btn-primary"> Buscar </button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="content-section bg-primary text-dark text-center" id="services">
+    <div class="container">
+        <div class="content-section-heading">
+            <h3 class="text-secondary mb-0"> Los torneos más destacados </h3>
+            <h2 class="text-light mb-5"> Torneos populares </h2>
+        </div>
+        <div class="row">
+            <?php $__currentLoopData = $tournaments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tourny): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <h5 class="card-text"> <?php echo e($tourny->name_tourny); ?>
+
+                                <br>
+                                <small class="card-text"> <?php echo e($tourny->name_club); ?> </small>
+                            </h5> <br>
+                            <i class='fa fa-map-marker'></i>
+                            <small class="text"> <?php echo e($tourny->direccion); ?>  </small>
+                            <br><br>
+                            <i class="fas fa-trophy"></i>
+                            <small class="text"> <?php echo e($tourny->name_sport); ?></small>
+                            <i class="fas fa-venus-mars ml-5"></i>
+                            <small class="text"> <?php echo e($tourny->genero); ?></small><br><br>
+                            <i class='far fa-calendar-alt'></i>
+                            <small class="text"> <?php echo e(date('d/m/Y',strtotime($tourny->fecha))); ?> </small>
+                            <i class="fas fa-money-bill-wave ml-5"></i>
+                            <small class="text"> <?php echo e($tourny->precio); ?>€/pers. </small><br> <br>
+                            <?php if(Auth::check()): ?>
+                                <p class="text-muted"> Numero de inscripciones: </p>
+                                <form class="formTournament" action=" <?php echo e(URL::to('/signUpTournament' , $tourny->id_tournament)); ?>" method="get" >
+                                    <?php echo e(csrf_field()); ?>
+
+
+                                    <div class="form-group col">
+                                        <label class="sr-only" for="numParticipantes"> Numero participantes </label>
+                                        <input type="number" class="form-control" id="numParticipantes" value="1" placeholder="1" name="number" max="<?php echo e($tourny->num_participantes_max - $tourny->num_participantes_actual); ?>" >
+                                    </div>
+                                    <div class="form-group col">
+                                        <button type="submit" class="btn btn-primary"> Inscríbite ya! </button>
+                                    </div>
+                                </form>
+                            <?php else: ?>
+                                <p class="text-muted"> Inicia sesión para inscribirte </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+    </div>
+</section>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('Template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Library/WebServer/Documents/Book-Play-Git/resources/views/tournament.blade.php ENDPATH**/ ?>
